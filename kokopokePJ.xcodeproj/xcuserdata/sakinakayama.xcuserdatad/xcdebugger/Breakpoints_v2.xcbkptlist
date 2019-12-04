@@ -8,7 +8,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "44167D4C-44EB-4C5A-88E9-F873CD240625"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kokopokePJ/AppDelegate.swift"
@@ -21,7 +21,7 @@
             <Locations>
                <Location
                   uuid = "44167D4C-44EB-4C5A-88E9-F873CD240625 - 65df1c8774b41702"
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "kokopokePJ.AppDelegate.__allocating_init() -&gt; kokopokePJ.AppDelegate"
@@ -36,7 +36,7 @@
                </Location>
                <Location
                   uuid = "44167D4C-44EB-4C5A-88E9-F873CD240625 - b0ee0439cf98bc3a"
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "kokopokePJ.AppDelegate.init() -&gt; kokopokePJ.AppDelegate"
@@ -51,7 +51,7 @@
                </Location>
                <Location
                   uuid = "44167D4C-44EB-4C5A-88E9-F873CD240625 - 41b92595a8b7009b"
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "kokopokePJ.AppDelegate.__deallocating_deinit"
@@ -66,7 +66,7 @@
                </Location>
                <Location
                   uuid = "44167D4C-44EB-4C5A-88E9-F873CD240625 - 75af9a4c026e81e0"
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "main"

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4412846A23974CAC0025E051 /* whiteLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4412846923974CAC0025E051 /* whiteLogo.png */; };
+		4412846C23977CBC0025E051 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4412846B23977CBC0025E051 /* logo.png */; };
+		4412846E2397878E0025E051 /* topViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4412846D2397878E0025E051 /* topViewController.swift */; };
 		44263F6C2394B750008D0BA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44263F6B2394B750008D0BA3 /* AppDelegate.swift */; };
 		44263F6E2394B750008D0BA3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44263F6D2394B750008D0BA3 /* SceneDelegate.swift */; };
 		44263F702394B750008D0BA3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44263F6F2394B750008D0BA3 /* ViewController.swift */; };
@@ -17,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4412846923974CAC0025E051 /* whiteLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteLogo.png; sourceTree = "<group>"; };
+		4412846B23977CBC0025E051 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		4412846D2397878E0025E051 /* topViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = topViewController.swift; sourceTree = "<group>"; };
 		44263F682394B750008D0BA3 /* kokopokePJ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kokopokePJ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44263F6B2394B750008D0BA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44263F6D2394B750008D0BA3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,11 +67,14 @@
 				44263F6B2394B750008D0BA3 /* AppDelegate.swift */,
 				44263F6D2394B750008D0BA3 /* SceneDelegate.swift */,
 				44263F6F2394B750008D0BA3 /* ViewController.swift */,
+				4412846D2397878E0025E051 /* topViewController.swift */,
 				44263F712394B750008D0BA3 /* Main.storyboard */,
 				44263F772394B751008D0BA3 /* Assets.xcassets */,
 				44263F792394B751008D0BA3 /* LaunchScreen.storyboard */,
 				44263F7C2394B751008D0BA3 /* Info.plist */,
 				44263F742394B750008D0BA3 /* kokopokePJ.xcdatamodeld */,
+				4412846923974CAC0025E051 /* whiteLogo.png */,
+				4412846B23977CBC0025E051 /* logo.png */,
 			);
 			path = kokopokePJ;
 			sourceTree = "<group>";
@@ -128,6 +137,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4412846A23974CAC0025E051 /* whiteLogo.png in Resources */,
+				4412846C23977CBC0025E051 /* logo.png in Resources */,
 				44263F7B2394B751008D0BA3 /* LaunchScreen.storyboard in Resources */,
 				44263F782394B751008D0BA3 /* Assets.xcassets in Resources */,
 				44263F732394B750008D0BA3 /* Main.storyboard in Resources */,
@@ -142,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44263F762394B750008D0BA3 /* kokopokePJ.xcdatamodeld in Sources */,
+				4412846E2397878E0025E051 /* topViewController.swift in Sources */,
 				44263F702394B750008D0BA3 /* ViewController.swift in Sources */,
 				44263F6C2394B750008D0BA3 /* AppDelegate.swift in Sources */,
 				44263F6E2394B750008D0BA3 /* SceneDelegate.swift in Sources */,

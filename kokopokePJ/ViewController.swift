@@ -14,12 +14,15 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //kokopokeロゴ画像設定
         let image = UIImage(named: "whiteLogo")
         topImage.image = image
         
+        //起動画面の表示タイマーを2秒に設定
         let _ : Timer = Timer.scheduledTimer(timeInterval:2, target: self, selector: #selector(pageTransition), userInfo: nil, repeats: false)
         
     }
+    //top画面へ遷移
     @objc func pageTransition(timer : Timer) {
         print("hello!")
         let storyboard: UIStoryboard = self.storyboard!

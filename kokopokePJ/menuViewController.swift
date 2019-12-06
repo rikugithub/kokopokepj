@@ -14,10 +14,16 @@ class menuViewController: UIViewController /*,UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
     }
     
-    //func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    //}
+    // 各セルを生成し返却
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
     
-    //func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    //}
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
+        
+        cell.textLabel?.text = "あいうえお"
+        return cell
+    }
     
 }

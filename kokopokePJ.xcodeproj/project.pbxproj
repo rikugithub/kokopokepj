@@ -17,6 +17,7 @@
 		44263F762394B750008D0BA3 /* kokopokePJ.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 44263F742394B750008D0BA3 /* kokopokePJ.xcdatamodeld */; };
 		44263F782394B751008D0BA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44263F772394B751008D0BA3 /* Assets.xcassets */; };
 		44263F7B2394B751008D0BA3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44263F792394B751008D0BA3 /* LaunchScreen.storyboard */; };
+		A90B64152399E2D80093981A /* settingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90B64142399E2D80093981A /* settingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		44263F772394B751008D0BA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		44263F7A2394B751008D0BA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		44263F7C2394B751008D0BA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A90B64142399E2D80093981A /* settingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				44263F6D2394B750008D0BA3 /* SceneDelegate.swift */,
 				44263F6F2394B750008D0BA3 /* ViewController.swift */,
 				4412846D2397878E0025E051 /* topViewController.swift */,
+				A90B64142399E2D80093981A /* settingViewController.swift */,
 				44263F712394B750008D0BA3 /* Main.storyboard */,
 				44263F772394B751008D0BA3 /* Assets.xcassets */,
 				44263F792394B751008D0BA3 /* LaunchScreen.storyboard */,
@@ -157,6 +160,7 @@
 				44263F702394B750008D0BA3 /* ViewController.swift in Sources */,
 				44263F6C2394B750008D0BA3 /* AppDelegate.swift in Sources */,
 				44263F6E2394B750008D0BA3 /* SceneDelegate.swift in Sources */,
+				A90B64152399E2D80093981A /* settingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

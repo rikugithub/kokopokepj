@@ -10,8 +10,6 @@ import UIKit
 
 class menuViewController: UIViewController  UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var listTable: UITableView!
-    
     override func viewDidLoad() {
     }
     

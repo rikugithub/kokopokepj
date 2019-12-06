@@ -17,11 +17,6 @@
 		44263F762394B750008D0BA3 /* kokopokePJ.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 44263F742394B750008D0BA3 /* kokopokePJ.xcdatamodeld */; };
 		44263F782394B751008D0BA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44263F772394B751008D0BA3 /* Assets.xcassets */; };
 		44263F7B2394B751008D0BA3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44263F792394B751008D0BA3 /* LaunchScreen.storyboard */; };
-<<<<<<< HEAD
-		44FC0EB72399FC9600E02BE1 /* menuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FC0EB62399FC9600E02BE1 /* menuViewController.swift */; };
-=======
-		A90B64152399E2D80093981A /* settingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90B64142399E2D80093981A /* settingViewController.swift */; };
->>>>>>> b06922c009c49bd96e866c35468040fbb426f988
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,11 +32,6 @@
 		44263F772394B751008D0BA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		44263F7A2394B751008D0BA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		44263F7C2394B751008D0BA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		44FC0EB62399FC9600E02BE1 /* menuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuViewController.swift; sourceTree = "<group>"; };
-=======
-		A90B64142399E2D80093981A /* settingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingViewController.swift; sourceTree = "<group>"; };
->>>>>>> b06922c009c49bd96e866c35468040fbb426f988
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,11 +68,6 @@
 				44263F6D2394B750008D0BA3 /* SceneDelegate.swift */,
 				44263F6F2394B750008D0BA3 /* ViewController.swift */,
 				4412846D2397878E0025E051 /* topViewController.swift */,
-<<<<<<< HEAD
-				44FC0EB62399FC9600E02BE1 /* menuViewController.swift */,
-=======
-				A90B64142399E2D80093981A /* settingViewController.swift */,
->>>>>>> b06922c009c49bd96e866c35468040fbb426f988
 				44263F712394B750008D0BA3 /* Main.storyboard */,
 				44263F772394B751008D0BA3 /* Assets.xcassets */,
 				44263F792394B751008D0BA3 /* LaunchScreen.storyboard */,
@@ -170,10 +155,8 @@
 				44263F762394B750008D0BA3 /* kokopokePJ.xcdatamodeld in Sources */,
 				4412846E2397878E0025E051 /* topViewController.swift in Sources */,
 				44263F702394B750008D0BA3 /* ViewController.swift in Sources */,
-				44FC0EB72399FC9600E02BE1 /* menuViewController.swift in Sources */,
 				44263F6C2394B750008D0BA3 /* AppDelegate.swift in Sources */,
 				44263F6E2394B750008D0BA3 /* SceneDelegate.swift in Sources */,
-				A90B64152399E2D80093981A /* settingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

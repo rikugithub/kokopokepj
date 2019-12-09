@@ -31,10 +31,10 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="115.59220389805098"/>
         </scene>
-        <!--View Controller-->
+        <!--Top View Controller-->
         <scene sceneID="jxO-Vp-dVh">
             <objects>
-                <viewController storyboardIdentifier="top" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hcP-1s-UbB" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="top" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hcP-1s-UbB" customClass="topViewController" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hvL-TC-aDw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -74,6 +74,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Rvr-S9-qNy"/>
                     </view>
+                    <connections>
+                        <outlet property="menuButton" destination="udx-E0-2Po" id="VJU-ja-9ef"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G2u-qF-vEU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -114,10 +117,10 @@
             </objects>
             <point key="canvasLocation" x="2297" y="843"/>
         </scene>
-        <!--View Controller-->
+        <!--Menu View Controller-->
         <scene sceneID="XOF-na-HE8">
             <objects>
-                <viewController storyboardIdentifier="menu" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ieA-cX-r9U" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="menu" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ieA-cX-r9U" customClass="menuViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HPi-ee-kSi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

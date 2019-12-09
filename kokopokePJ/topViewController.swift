@@ -17,8 +17,7 @@ class topViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    menuButton.isUserInteractionEnabled = true
-    menuButton.addGestureRecognize(target : self, action : #selector(self.menuTaped(_ :)))
+    
     
     
     @objc func menuTaped(_ sender : UITapGestureRecognizer) {

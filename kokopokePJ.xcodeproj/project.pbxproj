@@ -36,6 +36,8 @@
 		44263F7A2394B751008D0BA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		44263F7C2394B751008D0BA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F4047F435F9C02E668BB618 /* Pods-kokopokePJ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kokopokePJ.debug.xcconfig"; path = "Target Support Files/Pods-kokopokePJ/Pods-kokopokePJ.debug.xcconfig"; sourceTree = "<group>"; };
+		44FC0EB8239A2CC400E02BE1 /* menuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuViewController.swift; sourceTree = "<group>"; };
+		44FC0EBA239A2F9700E02BE1 /* settingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,8 @@
 		44263F6A2394B750008D0BA3 /* kokopokePJ */ = {
 			isa = PBXGroup;
 			children = (
+				44FC0EBA239A2F9700E02BE1 /* settingViewController.swift */,
+				44FC0EB8239A2CC400E02BE1 /* menuViewController.swift */,
 				44263F6B2394B750008D0BA3 /* AppDelegate.swift */,
 				44263F6D2394B750008D0BA3 /* SceneDelegate.swift */,
 				44263F6F2394B750008D0BA3 /* ViewController.swift */,
@@ -221,6 +225,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44FC0EBB239A2F9700E02BE1 /* settingViewController.swift in Sources */,
+				44FC0EB9239A2CC400E02BE1 /* menuViewController.swift in Sources */,
 				44263F762394B750008D0BA3 /* kokopokePJ.xcdatamodeld in Sources */,
 				4412846E2397878E0025E051 /* topViewController.swift in Sources */,
 				44263F702394B750008D0BA3 /* ViewController.swift in Sources */,
@@ -302,6 +308,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -356,6 +363,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

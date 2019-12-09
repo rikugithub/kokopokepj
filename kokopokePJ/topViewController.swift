@@ -11,8 +11,15 @@ import UIKit
 
 class topViewController: UIViewController {
     
-    override func viewDidLoad() {
+   
+    @IBAction func listButton(_ sender: Any) {
+        self.listButton(menuViewController())
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
     
 }
   

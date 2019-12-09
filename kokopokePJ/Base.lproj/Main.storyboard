@@ -59,8 +59,8 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="list.dash" catalog="system" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="udx-E0-2Po">
                                         <rect key="frame" x="5" y="11" width="36" height="23"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <gestureRecognizers/>
                                         <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <gestureRecognizers/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -74,9 +74,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Rvr-S9-qNy"/>
                     </view>
-                    <connections>
-                        <outlet property="menuButton" destination="ZEr-3r-AZd" id="mU1-mm-Vpb"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G2u-qF-vEU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -349,7 +346,8 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAl-Fc-4K7">
                                 <rect key="frame" x="16" y="87" width="305" height="86"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <string key="text">ありがとうございます！口コミの投稿が完了しました！</string>
+                                <string key="text">ありがとうございます！
+口コミの投稿が完了しました！</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

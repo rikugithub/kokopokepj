@@ -17,11 +17,12 @@
 		44263F762394B750008D0BA3 /* kokopokePJ.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 44263F742394B750008D0BA3 /* kokopokePJ.xcdatamodeld */; };
 		44263F782394B751008D0BA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44263F772394B751008D0BA3 /* Assets.xcassets */; };
 		44263F7B2394B751008D0BA3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44263F792394B751008D0BA3 /* LaunchScreen.storyboard */; };
-		44FC0EB9239A2CC400E02BE1 /* menuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FC0EB8239A2CC400E02BE1 /* menuViewController.swift */; };
-		44FC0EBB239A2F9700E02BE1 /* settingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FC0EBA239A2F9700E02BE1 /* settingViewController.swift */; };
+		6CDEAC31B91F181F51571D7F /* Pods_kokopokePJ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20BC471902BE98B11422B315 /* Pods_kokopokePJ.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		20BC471902BE98B11422B315 /* Pods_kokopokePJ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kokopokePJ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D174E553BD93697ABB53BDD /* Pods-kokopokePJ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kokopokePJ.release.xcconfig"; path = "Target Support Files/Pods-kokopokePJ/Pods-kokopokePJ.release.xcconfig"; sourceTree = "<group>"; };
 		4412846923974CAC0025E051 /* whiteLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteLogo.png; sourceTree = "<group>"; };
 		4412846B23977CBC0025E051 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		4412846D2397878E0025E051 /* topViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = topViewController.swift; sourceTree = "<group>"; };
@@ -34,6 +35,7 @@
 		44263F772394B751008D0BA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		44263F7A2394B751008D0BA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		44263F7C2394B751008D0BA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7F4047F435F9C02E668BB618 /* Pods-kokopokePJ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kokopokePJ.debug.xcconfig"; path = "Target Support Files/Pods-kokopokePJ/Pods-kokopokePJ.debug.xcconfig"; sourceTree = "<group>"; };
 		44FC0EB8239A2CC400E02BE1 /* menuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuViewController.swift; sourceTree = "<group>"; };
 		44FC0EBA239A2F9700E02BE1 /* settingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -43,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CDEAC31B91F181F51571D7F /* Pods_kokopokePJ.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +57,8 @@
 			children = (
 				44263F6A2394B750008D0BA3 /* kokopokePJ */,
 				44263F692394B750008D0BA3 /* Products */,
+				80DE6CF60A5FACC7D99486E5 /* Pods */,
+				4B7B83B0972DE13BBD12E65C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,6 +90,24 @@
 			path = kokopokePJ;
 			sourceTree = "<group>";
 		};
+		4B7B83B0972DE13BBD12E65C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				20BC471902BE98B11422B315 /* Pods_kokopokePJ.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		80DE6CF60A5FACC7D99486E5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7F4047F435F9C02E668BB618 /* Pods-kokopokePJ.debug.xcconfig */,
+				3D174E553BD93697ABB53BDD /* Pods-kokopokePJ.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -92,9 +115,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 44263F7F2394B751008D0BA3 /* Build configuration list for PBXNativeTarget "kokopokePJ" */;
 			buildPhases = (
+				9433A7A3C94FC3932F52BC15 /* [CP] Check Pods Manifest.lock */,
 				44263F642394B750008D0BA3 /* Sources */,
 				44263F652394B750008D0BA3 /* Frameworks */,
 				44263F662394B750008D0BA3 /* Resources */,
+				678AE71F9ABE20317F180EB3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -152,6 +177,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		678AE71F9ABE20317F180EB3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-kokopokePJ/Pods-kokopokePJ-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-kokopokePJ/Pods-kokopokePJ-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-kokopokePJ/Pods-kokopokePJ-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9433A7A3C94FC3932F52BC15 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-kokopokePJ-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		44263F642394B750008D0BA3 /* Sources */ = {
@@ -240,6 +307,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -294,6 +362,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -306,6 +375,7 @@
 		};
 		44263F802394B751008D0BA3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F4047F435F9C02E668BB618 /* Pods-kokopokePJ.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -323,6 +393,7 @@
 		};
 		44263F812394B751008D0BA3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D174E553BD93697ABB53BDD /* Pods-kokopokePJ.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

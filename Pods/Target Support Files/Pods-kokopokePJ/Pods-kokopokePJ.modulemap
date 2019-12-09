@@ -1,0 +1,6 @@
+framework module Pods_kokopokePJ {
+  umbrella header "Pods-kokopokePJ-umbrella.h"
+
+  export *
+  module * { export * }
+}

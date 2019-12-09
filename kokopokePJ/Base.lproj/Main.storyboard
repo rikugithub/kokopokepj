@@ -60,9 +60,6 @@
                                         <rect key="frame" x="8" y="7.5" width="29" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="bCp-0e-ydj" appends="YES" id="ALf-89-9sV"/>
-                                        </connections>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -76,13 +73,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Rvr-S9-qNy"/>
                     </view>
+                    <connections>
+                        <outlet property="menuButton" destination="ZEr-3r-AZd" id="mU1-mm-Vpb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G2u-qF-vEU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="bCp-0e-ydj">
-                    <connections>
-                        <action selector="listButton:" destination="hcP-1s-UbB" id="E7T-tZ-xdH"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="880.79999999999995" y="115.59220389805098"/>
         </scene>
@@ -163,7 +158,7 @@ ONにする</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XvT-f3-gNW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="884" y="803.74812593703155"/>
+            <point key="canvasLocation" x="2297" y="843"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="XOF-na-HE8">

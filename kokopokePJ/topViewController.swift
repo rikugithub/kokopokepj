@@ -10,15 +10,23 @@ import Foundation
 import UIKit
 
 class topViewController: UIViewController {
-    
-   
-    @IBAction func listButton(_ sender: Any) {
-        self.listButton(menuViewController())
-    }
+
+    @IBOutlet weak var menuButton: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    menuButton.isUserInteractionEnabled = true
+    menuButton.addGestureRecognize(target : self, action : #selector(self.menuTaped(_ :)))
+    
+    
+    @objc func menuTaped(_ sender : UITapGestureRecognizer) {
+        let storyboad: UIStoryboard = self.storyboard!
+        let top = storyboard.instantiateViewController(identifier: "menu")
+        self.present(top,animated: true,completion: nil)
+    }
+    
     
     
 }

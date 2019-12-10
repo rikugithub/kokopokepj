@@ -8,22 +8,14 @@
 
 import UIKit
 
-class menuViewController: UIViewController /*,UITableViewDelegate, UITableViewDataSource*/ {
+class menuViewController: UIViewController {
 
+    
+    var menu :String = ["訪れた場所","行きたい場所","設定"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    // 各セルを生成し返却
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
-        
-        cell.textLabel?.text = "あいうえお"
-        return cell
-    }
     
 }

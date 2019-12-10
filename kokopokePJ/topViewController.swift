@@ -11,19 +11,18 @@ import UIKit
 
 class topViewController: UIViewController {
 
-    @IBOutlet weak var menuButton: UITapGestureRecognizer!
+    @IBOutlet weak var menuButton: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        menuButton.isUserInteractionEnabled = true
+       //menuButtonがタップされたら呼ばれる
+        menuButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.menuTaped(_:))))
     }
     
-    /* menuButton.isUserInteractionEnabled = true
-    menuButton = addGestureRecognizer(action: #selector(menuTaped(_ :)))
-
     @objc func menuTaped(_ sender : UITapGestureRecognizer) {
-        let storyboad: UIStoryboard = self.storyboard!
-        let top = storyboard.instantiateViewController(identifier: "menu")
-        self.present(top,animated: true,completion: nil)
+        let _: UIStoryboard = self.storyboard!
+        let menu = storyboard?.instantiateViewController(identifier: "menu")
+        self.present(menu!,animated: true,completion: nil)
     }
- */
 }

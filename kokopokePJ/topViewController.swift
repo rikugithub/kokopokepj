@@ -20,6 +20,10 @@ UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+            menuButton.isUserInteractionEnabled = true
+           //menuButtonがタップされたら呼ばれる
+            menuButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.menuTaped(_:))))
+        
         //位置情報を初期化
             initMap()
             
@@ -112,20 +116,19 @@ UIGestureRecognizerDelegate {
                 
             }
         }
-        menuButton.isUserInteractionEnabled = true
-       //menuButtonがタップされたら呼ばれる
-        menuButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.menuTaped(_:))))
-    }
     
     @objc func menuTaped(_ sender : UITapGestureRecognizer) {
         let _: UIStoryboard = self.storyboard!
         let menu = storyboard?.instantiateViewController(identifier: "menu")
         self.present(menu!,animated: true,completion: nil)
     }
-}
 
     @IBOutlet var MapView: MKMapView!
     var locManager: CLLocationManager!
-    @IBOutlet var LongPressGesRec: UILongPressGestureRecognizer!
+    
+    @IBAction func LongPressGesRec(_ sender: Any) {
+    }
+    
     var pointAno: MKPointAnnotation = MKPointAnnotation()
     
+}

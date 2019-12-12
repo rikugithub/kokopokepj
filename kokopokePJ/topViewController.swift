@@ -17,6 +17,7 @@ UIGestureRecognizerDelegate {
 
     @IBOutlet var MapView: MKMapView!
     var locManager: CLLocationManager!
+
     @IBOutlet var LongPressGesRec: UILongPressGestureRecognizer!
     
     var pointAno: MKPointAnnotation = MKPointAnnotation()
@@ -24,7 +25,7 @@ UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        menuButton.isUserInteractionEnabled = true
         //menuButtonがタップされたら呼ばれる
         menuButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.menuTaped(_:))))
         

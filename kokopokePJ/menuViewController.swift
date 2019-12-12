@@ -9,16 +9,25 @@
 import Foundation
 import UIKit
 
-class menuViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
-
-    @IBOutlet weak var backButton: UIImageView!
-    let list = ["訪れた場所","行きたい場所","設定"]
+class menuViewController: UIViewController, UITableViewDataSource ,UITableViewDelegate {
     
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var backButton: UIImageView!
+    
+    let list = ["訪れた場所","行きたい場所","設定"]
+
     override func viewDidLoad() {
         super.viewDidLoad()
         backButton.isUserInteractionEnabled = true
        //backButtonnがタップされたら呼ばれる
         backButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.backTaped(_:))))
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
     
     

@@ -13,6 +13,7 @@ class menuViewController: UIViewController, UITableViewDataSource ,UITableViewDe
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backButton: UIImageView!
+    var selectedText : String?
     
     let list = ["訪れた場所","行きたい場所","設定"]
 
@@ -42,9 +43,38 @@ class menuViewController: UIViewController, UITableViewDataSource ,UITableViewDe
         return cell
     }
     
+    //cellが選択された時の処理
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            
+            let a: Int = indexPath.row
+            
+            switch a {
+            case (0) :
+                //訪れた場所
+                let _: UIStoryboard = self.storyboard!
+                let visited = storyboard?.instantiateViewController(identifier: "visited")
+                self.present(visited!,animated: true,completion: nil)
+            case (1) :
+                //行きたい場所
+                let _: UIStoryboard = self.storyboard!
+                let wentToGo = storyboard?.instantiateViewController(identifier: "wentToGo")
+                self.present(wentToGo!,animated: true,completion: nil)
+            case (2) :
+                //設定
+                let _: UIStoryboard = self.storyboard!
+                let setting = storyboard?.instantiateViewController(identifier: "setting")
+                self.present(setting!,animated: true,completion: nil)
+            default :
+                print("エラー")
+            }
+        }
+    
+    
     @objc func backTaped(_ sender : UITapGestureRecognizer) {
         let _: UIStoryboard = self.storyboard!
         let top = storyboard?.instantiateViewController(identifier: "top")
         self.present(top!,animated: true,completion: nil)
     }
+    
+    
 }

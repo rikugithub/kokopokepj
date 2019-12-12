@@ -102,7 +102,7 @@
         <!--Menu View Controller-->
         <scene sceneID="vlZ-ND-ZcI">
             <objects>
-                <viewController storyboardIdentifier="menu" id="3nF-br-dDv" customClass="menuViewController" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="menu" modalPresentationStyle="fullScreen" id="3nF-br-dDv" customClass="menuViewController" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ard-g9-Qeh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -147,10 +147,10 @@
             </objects>
             <point key="canvasLocation" x="1580" y="118.29085457271366"/>
         </scene>
-        <!--View Controller-->
+        <!--Setting View Controller-->
         <scene sceneID="fli-7N-8tQ">
             <objects>
-                <viewController id="Q1t-OE-BxV" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setting" id="Q1t-OE-BxV" customClass="settingViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c0Q-R8-xv1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -182,10 +182,10 @@
             </objects>
             <point key="canvasLocation" x="2297" y="843"/>
         </scene>
-        <!--View Controller-->
+        <!--Visted View Controller-->
         <scene sceneID="hpJ-I6-w5f">
             <objects>
-                <viewController id="IYk-Cb-nje" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="visited" id="IYk-Cb-nje" customClass="vistedViewController" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QUL-GV-aA1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -205,6 +205,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="EaK-yt-akR"/>
                     </view>
+                    <connections>
+                        <outlet property="backButton" destination="dva-n4-o0A" id="9hB-Pa-yYm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ozA-NF-bcr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -413,6 +416,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fYc-V3-dVY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4997.6000000000004" y="115.59220389805098"/>
+        </scene>
+        <!--Want To Go View Controller-->
+        <scene sceneID="kD2-aX-Fwo">
+            <objects>
+                <viewController storyboardIdentifier="wentToGo" id="h4w-6I-Rg2" customClass="wantToGoViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Chj-Wz-yDh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="arrow.left.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ssF-Ww-Wtw">
+                                <rect key="frame" x="16" y="12.5" width="48" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="行きたい場所" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gky-5R-q90">
+                                <rect key="frame" x="78" y="20" width="171" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="szf-cO-0d3"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g85-14-VVm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2989.5999999999999" y="-546.47676161919048"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="HwX-Qe-dfn">

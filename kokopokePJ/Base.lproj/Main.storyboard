@@ -80,6 +80,7 @@
                         <viewLayoutGuide key="safeArea" id="Rvr-S9-qNy"/>
                     </view>
                     <connections>
+                        <outlet property="LongPressGesRec" destination="cU2-cN-QGt" id="HuP-3g-fkN"/>
                         <outlet property="MapView" destination="88i-bL-pHK" id="zt6-fk-yH1"/>
                         <outlet property="menuButton" destination="udx-E0-2Po" id="VJU-ja-9ef"/>
                     </connections>
@@ -87,7 +88,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G2u-qF-vEU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="cU2-cN-QGt">
                     <connections>
-                        <action selector="LongPressGesRec:" destination="hcP-1s-UbB" id="Ocm-3S-rQb"/>
+                        <action selector="LongPressGesRec" destination="hcP-1s-UbB" id="eDb-Wb-Aho"/>
                     </connections>
                 </pongPressGestureRecognizer>
                 <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="6b2-0M-MQ5">

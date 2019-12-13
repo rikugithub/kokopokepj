@@ -11,7 +11,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class topViewController: UIViewController,
+class TopViewController: UIViewController,
 CLLocationManagerDelegate,
 UIGestureRecognizerDelegate {
 

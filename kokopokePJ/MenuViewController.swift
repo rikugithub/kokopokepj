@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class menuViewController: UIViewController, UITableViewDataSource ,UITableViewDelegate {
+class MenuViewController: UIViewController, UITableViewDataSource ,UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backButton: UIImageView!

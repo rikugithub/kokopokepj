@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -34,7 +34,7 @@
         <!--Top View Controller-->
         <scene sceneID="jxO-Vp-dVh">
             <objects>
-                <viewController storyboardIdentifier="top" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hcP-1s-UbB" customClass="topViewController" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="top" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hcP-1s-UbB" customClass="TopViewController" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hvL-TC-aDw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -102,7 +102,7 @@
         <!--Menu View Controller-->
         <scene sceneID="vlZ-ND-ZcI">
             <objects>
-                <viewController storyboardIdentifier="menu" modalPresentationStyle="fullScreen" id="3nF-br-dDv" customClass="menuViewController" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="menu" modalPresentationStyle="fullScreen" id="3nF-br-dDv" customClass="MenuViewController" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ard-g9-Qeh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -185,7 +185,7 @@
         <!--Visted View Controller-->
         <scene sceneID="hpJ-I6-w5f">
             <objects>
-                <viewController storyboardIdentifier="visited" id="IYk-Cb-nje" customClass="vistedViewController" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="visited" id="IYk-Cb-nje" customClass="VistedViewController" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QUL-GV-aA1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -417,10 +417,10 @@
             </objects>
             <point key="canvasLocation" x="4997.6000000000004" y="115.59220389805098"/>
         </scene>
-        <!--Want To Go View Controller-->
+        <!--View Controller-->
         <scene sceneID="kD2-aX-Fwo">
             <objects>
-                <viewController storyboardIdentifier="wentToGo" id="h4w-6I-Rg2" customClass="wantToGoViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="wentToGo" id="h4w-6I-Rg2" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Chj-Wz-yDh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

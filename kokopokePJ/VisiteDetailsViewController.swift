@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 //訪れた場所の詳しい情報
-class visiteDetailsViewController: UIViewController{
+class VisiteDetailsViewController: UIViewController{
     
     @IBOutlet weak var backButton: UIImageView!
     

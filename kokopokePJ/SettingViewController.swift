@@ -12,13 +12,13 @@ import UIKit
 //訪れた場所
 class SettingViewController: UIViewController{
     
-    @IBOutlet weak var bToMenuFromSetting: UIImageView!
+    @IBOutlet weak var backToMenuFromSetting: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bToMenuFromSetting.isUserInteractionEnabled = true
+        backToMenuFromSetting.isUserInteractionEnabled = true
        //bToMenuFromSettingがタップされたら呼ばれる
-        bToMenuFromSetting.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.backTaped(_:))))
+        backToMenuFromSetting.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.backTaped(_:))))
     }
     
     

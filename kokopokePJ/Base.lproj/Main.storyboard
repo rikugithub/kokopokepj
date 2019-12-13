@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -178,7 +178,7 @@
                         <viewLayoutGuide key="safeArea" id="U11-l4-wh1"/>
                     </view>
                     <connections>
-                        <outlet property="bToMenuFromSetting" destination="bAs-ZQ-YuH" id="yBF-O7-U71"/>
+                        <outlet property="backToMenuFromSetting" destination="bAs-ZQ-YuH" id="35D-L8-sgz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XvT-f3-gNW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -209,7 +209,7 @@
                         <viewLayoutGuide key="safeArea" id="EaK-yt-akR"/>
                     </view>
                     <connections>
-                        <outlet property="bToMenuFromvisited" destination="dva-n4-o0A" id="KX2-oH-Dbg"/>
+                        <outlet property="backToMenuFromVisited" destination="dva-n4-o0A" id="Yt0-kB-cqd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ozA-NF-bcr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -444,7 +444,7 @@
                         <viewLayoutGuide key="safeArea" id="szf-cO-0d3"/>
                     </view>
                     <connections>
-                        <outlet property="bToMenuFromWant" destination="ssF-Ww-Wtw" id="6oF-ri-DRJ"/>
+                        <outlet property="backToMenuFromWant" destination="ssF-Ww-Wtw" id="iOS-3j-Opm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g85-14-VVm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -12,13 +12,13 @@ import UIKit
 //行きたい場所
 class WantToGoViewController: UIViewController{
     
-    @IBOutlet weak var bToMenuFromWant: UIImageView!
-    
+
+    @IBOutlet weak var backToMenuFromWant: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        bToMenuFromWant.isUserInteractionEnabled = true
+        backToMenuFromWant.isUserInteractionEnabled = true
        //bToMenuFromWantがタップされたら呼ばれる
-        bToMenuFromWant.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.backTaped(_:))))
+        backToMenuFromWant.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.backTaped(_:))))
     }
     
     

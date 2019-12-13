@@ -12,16 +12,16 @@ import UIKit
 class MenuViewController: UIViewController, UITableViewDataSource ,UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var backButton: UIImageView!
+    @IBOutlet weak var backToTop: UIImageView!
     var selectedText : String?
     
     let list = ["訪れた場所","行きたい場所","設定"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        backButton.isUserInteractionEnabled = true
-       //backButtonnがタップされたら呼ばれる
-        backButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.backTaped(_:))))
+        backToTop.isUserInteractionEnabled = true
+       //backToTopがタップされたら呼ばれる
+        backToTop.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.backTaped(_:))))
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -57,8 +57,8 @@ class MenuViewController: UIViewController, UITableViewDataSource ,UITableViewDe
             case (1) :
                 //行きたい場所
                 let _: UIStoryboard = self.storyboard!
-                let wentToGo = storyboard?.instantiateViewController(identifier: "wentToGo")
-                self.present(wentToGo!,animated: true,completion: nil)
+                let wantToGo = storyboard?.instantiateViewController(identifier: "wantToGo")
+                self.present(wantToGo!,animated: true,completion: nil)
             case (2) :
                 //設定
                 let _: UIStoryboard = self.storyboard!

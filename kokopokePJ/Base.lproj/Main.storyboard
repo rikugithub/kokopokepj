@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -139,7 +139,7 @@
                         <viewLayoutGuide key="safeArea" id="aQN-3x-3tB"/>
                     </view>
                     <connections>
-                        <outlet property="backButton" destination="9NX-PI-Lbv" id="1h9-hJ-CXK"/>
+                        <outlet property="backToTop" destination="9NX-PI-Lbv" id="Tg9-qM-MWr"/>
                         <outlet property="tableView" destination="qMi-YC-FWf" id="wUv-gw-eck"/>
                     </connections>
                 </viewController>
@@ -150,7 +150,7 @@
         <!--Setting View Controller-->
         <scene sceneID="fli-7N-8tQ">
             <objects>
-                <viewController storyboardIdentifier="setting" id="Q1t-OE-BxV" customClass="settingViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setting" id="Q1t-OE-BxV" customClass="SettingViewController" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c0Q-R8-xv1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -177,6 +177,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="U11-l4-wh1"/>
                     </view>
+                    <connections>
+                        <outlet property="bToMenuFromSetting" destination="bAs-ZQ-YuH" id="yBF-O7-U71"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XvT-f3-gNW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -206,7 +209,7 @@
                         <viewLayoutGuide key="safeArea" id="EaK-yt-akR"/>
                     </view>
                     <connections>
-                        <outlet property="backButton" destination="dva-n4-o0A" id="9hB-Pa-yYm"/>
+                        <outlet property="bToMenuFromvisited" destination="dva-n4-o0A" id="KX2-oH-Dbg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ozA-NF-bcr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -417,10 +420,10 @@
             </objects>
             <point key="canvasLocation" x="4997.6000000000004" y="115.59220389805098"/>
         </scene>
-        <!--View Controller-->
+        <!--Want To Go View Controller-->
         <scene sceneID="kD2-aX-Fwo">
             <objects>
-                <viewController storyboardIdentifier="wentToGo" id="h4w-6I-Rg2" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="wantToGo" id="h4w-6I-Rg2" customClass="WantToGoViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Chj-Wz-yDh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -440,10 +443,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="szf-cO-0d3"/>
                     </view>
+                    <connections>
+                        <outlet property="bToMenuFromWant" destination="ssF-Ww-Wtw" id="6oF-ri-DRJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g85-14-VVm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2989.5999999999999" y="-546.47676161919048"/>
+            <point key="canvasLocation" x="2297" y="-546"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="HwX-Qe-dfn">

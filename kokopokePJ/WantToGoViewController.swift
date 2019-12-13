@@ -1,24 +1,24 @@
 //
-//  settingViewController.swift
+//  WantToGoViewController.swift
 //  kokopokePJ
 //
-//  Created by 二川純哉 on 2019/12/06.
+//  Created by Saki Nakayama on 2019/12/13.
 //  Copyright © 2019 Saki Nakayama. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-//訪れた場所
-class SettingViewController: UIViewController{
+//行きたい場所
+class WantToGoViewController: UIViewController{
     
-    @IBOutlet weak var bToMenuFromSetting: UIImageView!
+    @IBOutlet weak var bToMenuFromWant: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bToMenuFromSetting.isUserInteractionEnabled = true
-       //bToMenuFromSettingがタップされたら呼ばれる
-        bToMenuFromSetting.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.backTaped(_:))))
+        bToMenuFromWant.isUserInteractionEnabled = true
+       //bToMenuFromWantがタップされたら呼ばれる
+        bToMenuFromWant.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.backTaped(_:))))
     }
     
     

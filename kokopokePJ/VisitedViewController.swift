@@ -45,8 +45,8 @@ class VistedViewController: UIViewController, UITableViewDataSource ,UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //tableView.delegate = self
-        //tableView.dataSource = self
+        tableView.delegate = self
+        tableView.dataSource = self
         backToMenuFromVisited.isUserInteractionEnabled = true
        //bToMenuFromvisitedがタップされたら呼ばれる
         backToMenuFromVisited.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.backTaped(_:))))

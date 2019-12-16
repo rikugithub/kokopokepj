@@ -102,7 +102,7 @@
         <!--Menu View Controller-->
         <scene sceneID="vlZ-ND-ZcI">
             <objects>
-                <viewController storyboardIdentifier="menu" modalPresentationStyle="fullScreen" id="3nF-br-dDv" customClass="MenuViewController" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="menu" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3nF-br-dDv" customClass="MenuViewController" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ard-g9-Qeh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -150,7 +150,7 @@
         <!--Setting View Controller-->
         <scene sceneID="fli-7N-8tQ">
             <objects>
-                <viewController storyboardIdentifier="setting" id="Q1t-OE-BxV" customClass="SettingViewController" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setting" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Q1t-OE-BxV" customClass="SettingViewController" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c0Q-R8-xv1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -230,7 +230,7 @@
         <!--Visted View Controller-->
         <scene sceneID="hpJ-I6-w5f">
             <objects>
-                <viewController storyboardIdentifier="visited" id="IYk-Cb-nje" customClass="VistedViewController" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="visited" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IYk-Cb-nje" customClass="VistedViewController" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QUL-GV-aA1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -785,7 +785,7 @@
         <!--Want To Go View Controller-->
         <scene sceneID="kD2-aX-Fwo">
             <objects>
-                <viewController storyboardIdentifier="wantToGo" id="h4w-6I-Rg2" customClass="WantToGoViewController" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="wantToGo" useStoryboardIdentifierAsRestorationIdentifier="YES" id="h4w-6I-Rg2" customClass="WantToGoViewController" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Chj-Wz-yDh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -866,8 +866,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="3nF-br-dDv" id="PXi-3J-7dr"/>
-                                    <outlet property="delegate" destination="3nF-br-dDv" id="OvW-yP-GTg"/>
+                                    <outlet property="dataSource" destination="pBf-bD-ZbQ" id="Yva-zL-C5h"/>
+                                    <outlet property="delegate" destination="pBf-bD-ZbQ" id="mNq-vN-aY1"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -876,6 +876,7 @@
                     </view>
                     <connections>
                         <outlet property="backToVisitedDetailFromReview" destination="Brf-n6-vAN" id="P2y-3V-HUV"/>
+                        <outlet property="tableView" destination="mj0-8Z-0Wd" id="izz-5b-YcW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0cw-J1-7ov" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -885,7 +886,7 @@
         <!--Review Detail View Conroller-->
         <scene sceneID="B8d-zb-u4n">
             <objects>
-                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="W8t-3O-i9t" customClass="ReviewDetailViewConroller" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="reviewDetail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="W8t-3O-i9t" customClass="ReviewDetailViewConroller" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2sp-Fh-qp4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -24,10 +24,7 @@ class ViewController: UIViewController {
     }
     //top画面へ遷移
     @objc func pageTransition(timer : Timer) {
-        print("hello!")
-        let storyboard: UIStoryboard = self.storyboard!
-        let top = storyboard.instantiateViewController(identifier: "top")
-        self.present(top,animated: false,completion: nil)
+        performSegue(withIdentifier: "splashToTopSegue", sender: self)
     }
 }
 

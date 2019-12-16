@@ -25,18 +25,19 @@
                     </view>
                     <connections>
                         <outlet property="topImage" destination="S33-3H-MjZ" id="WVP-B4-r1I"/>
+                        <segue destination="Scu-gX-fio" kind="show" identifier="splashToTopSegue" id="RGe-Yi-X29"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="115.59220389805098"/>
+            <point key="canvasLocation" x="-724" y="144"/>
         </scene>
         <!--Top View Controller-->
         <scene sceneID="jxO-Vp-dVh">
             <objects>
                 <viewController storyboardIdentifier="top" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hcP-1s-UbB" customClass="TopViewController" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hvL-TC-aDw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="88i-bL-pHK">
@@ -79,10 +80,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Rvr-S9-qNy"/>
                     </view>
+                    <navigationItem key="navigationItem" id="fZu-U1-VCP"/>
                     <connections>
                         <outlet property="LongPressGesRec" destination="cU2-cN-QGt" id="cjY-IZ-cFD"/>
                         <outlet property="MapView" destination="88i-bL-pHK" id="zt6-fk-yH1"/>
                         <outlet property="menuButton" destination="udx-E0-2Po" id="rWL-Xz-Itc"/>
+                        <segue destination="3nF-br-dDv" kind="show" identifier="topToMenuSegue" id="2Dc-Cq-aGK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G2u-qF-vEU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -97,26 +100,18 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="880.79999999999995" y="115.59220389805098"/>
+            <point key="canvasLocation" x="959" y="144"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="vlZ-ND-ZcI">
             <objects>
                 <viewController storyboardIdentifier="menu" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3nF-br-dDv" customClass="MenuViewController" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ard-g9-Qeh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="arrow.left.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9NX-PI-Lbv">
-                                <rect key="frame" x="16" y="21" width="58" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="s46-xR-Lbh">
-                                <rect key="frame" x="16" y="56" width="162" height="101"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qMi-YC-FWf">
-                                <rect key="frame" x="0.0" y="151" width="375" height="225"/>
+                                <rect key="frame" x="0.0" y="145" width="375" height="225"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
@@ -134,29 +129,36 @@
                                     <outlet property="delegate" destination="3nF-br-dDv" id="yKN-TN-mH0"/>
                                 </connections>
                             </tableView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="s46-xR-Lbh">
+                                <rect key="frame" x="0.0" y="44" width="162" height="101"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="aQN-3x-3tB"/>
                     </view>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="tDS-fn-znz"/>
                     <connections>
-                        <outlet property="backToTop" destination="9NX-PI-Lbv" id="Tg9-qM-MWr"/>
                         <outlet property="tableView" destination="qMi-YC-FWf" id="wUv-gw-eck"/>
+                        <segue destination="h4w-6I-Rg2" kind="show" identifier="menuToWantSegue" id="R0N-TN-2JW"/>
+                        <segue destination="IYk-Cb-nje" kind="show" identifier="menuToVisitedSegue" id="wFA-iL-312"/>
+                        <segue destination="Q1t-OE-BxV" kind="show" identifier="menuToSettingSegue" id="p0u-GJ-NrI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="04L-N9-O0K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1580" y="118.29085457271366"/>
+            <point key="canvasLocation" x="1982" y="143"/>
         </scene>
-        <!--Setting View Controller-->
+        <!--設定-->
         <scene sceneID="fli-7N-8tQ">
             <objects>
-                <viewController storyboardIdentifier="setting" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Q1t-OE-BxV" customClass="SettingViewController" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setting" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Q1t-OE-BxV" customClass="SettingViewController" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c0Q-R8-xv1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="arrow.left.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="bAs-ZQ-YuH">
-                                <rect key="frame" x="16" y="21" width="55" height="47"/>
+                                <rect key="frame" x="16" y="3" width="55" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="設定" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJx-Xg-ncU">
@@ -219,20 +221,21 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="U11-l4-wh1"/>
                     </view>
+                    <navigationItem key="navigationItem" title="設定" id="SWz-dX-ATZ"/>
                     <connections>
                         <outlet property="backToMenuFromSetting" destination="bAs-ZQ-YuH" id="35D-L8-sgz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XvT-f3-gNW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2296.8000000000002" y="842.42878560719646"/>
+            <point key="canvasLocation" x="2940" y="934"/>
         </scene>
-        <!--Visted View Controller-->
+        <!--訪れた場所-->
         <scene sceneID="hpJ-I6-w5f">
             <objects>
-                <viewController storyboardIdentifier="visited" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IYk-Cb-nje" customClass="VistedViewController" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="visited" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IYk-Cb-nje" customClass="VistedViewController" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QUL-GV-aA1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="arrow.left.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dva-n4-o0A">
@@ -269,21 +272,23 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="EaK-yt-akR"/>
                     </view>
+                    <navigationItem key="navigationItem" title="訪れた場所" id="iuw-O5-tTb"/>
                     <connections>
                         <outlet property="backToMenuFromVisited" destination="dva-n4-o0A" id="Yt0-kB-cqd"/>
                         <outlet property="tableView" destination="Hm9-kb-U8t" id="2Ov-8W-pn7"/>
+                        <segue destination="Gbz-wE-pmt" kind="show" identifier="visitedToDetailSegue" id="TMl-Kv-Ifu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ozA-NF-bcr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2296.8000000000002" y="115.59220389805098"/>
+            <point key="canvasLocation" x="2940" y="143"/>
         </scene>
-        <!--Visite Details View Controller-->
+        <!--詳細-->
         <scene sceneID="IYU-Ku-7h1">
             <objects>
-                <viewController storyboardIdentifier="visitedDetail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Gbz-wE-pmt" customClass="VisiteDetailsViewController" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="visitedDetail" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Gbz-wE-pmt" customClass="VisiteDetailsViewController" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OdB-Cu-KqM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="arrow.left.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="F7z-uB-VeJ">
@@ -349,22 +354,25 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Oyv-51-d16"/>
                     </view>
+                    <navigationItem key="navigationItem" title="詳細" id="xUw-EH-nYQ"/>
                     <connections>
                         <outlet property="PostOrSaveButton" destination="WE0-6f-yTF" id="a1g-2H-mmx"/>
                         <outlet property="backButton" destination="F7z-uB-VeJ" id="9Iu-wu-3Rd"/>
                         <outlet property="seeReviewButton" destination="drf-5K-l4H" id="cmp-z5-Z0j"/>
+                        <segue destination="G2h-4e-e0P" kind="show" identifier="detailToPostSegue" id="pwF-hv-t2L"/>
+                        <segue destination="pBf-bD-ZbQ" kind="show" identifier="detailToReviewSegue" id="eRE-Dv-H98"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hid-47-r6T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2991" y="116"/>
+            <point key="canvasLocation" x="3881" y="143"/>
         </scene>
         <!--Review Post View Conroller-->
         <scene sceneID="r6V-ID-jly">
             <objects>
-                <viewController storyboardIdentifier="reviewPost" useStoryboardIdentifierAsRestorationIdentifier="YES" id="G2h-4e-e0P" customClass="ReviewPostViewConroller" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="reviewPost" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="G2h-4e-e0P" customClass="ReviewPostViewConroller" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DCh-A4-o9E">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="arrow.left.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ll0-UZ-VvQ">
@@ -523,20 +531,22 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="e5X-mx-0Fo"/>
                     </view>
+                    <navigationItem key="navigationItem" id="yG7-kq-t0S"/>
                     <connections>
                         <outlet property="backToReviewDetailFromReviewPost" destination="ll0-UZ-VvQ" id="9CP-DB-JAG"/>
+                        <segue destination="0PA-eu-XsA" kind="show" identifier="postToConfirmSegue" id="SGu-Uz-n2P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WLM-JA-BiV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3644" y="115.59220389805098"/>
+            <point key="canvasLocation" x="4742" y="143"/>
         </scene>
         <!--Review Confirm View Conroller-->
         <scene sceneID="4rf-4Z-VIx">
             <objects>
-                <viewController storyboardIdentifier="reviewConfirm" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0PA-eu-XsA" customClass="ReviewConfirmViewConroller" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="reviewConfirm" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0PA-eu-XsA" customClass="ReviewConfirmViewConroller" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Ge-Cf-A6m">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" ambiguous="YES" image="arrow.left.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="tcg-Gh-cT6">
@@ -725,13 +735,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="PbY-wB-4JK"/>
                     </view>
+                    <navigationItem key="navigationItem" id="PXJ-Xn-pEK"/>
                     <connections>
                         <outlet property="backToReviewPostFromReviewConfirm" destination="tcg-Gh-cT6" id="Ykd-vf-RHq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vmg-pg-mKx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4328.8000000000002" y="115.59220389805098"/>
+            <point key="canvasLocation" x="5582" y="143"/>
         </scene>
         <!--Review Complete View Conroller-->
         <scene sceneID="Vki-07-dPx">
@@ -780,14 +791,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fYc-V3-dVY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4997.6000000000004" y="115.59220389805098"/>
+            <point key="canvasLocation" x="6375" y="143"/>
         </scene>
-        <!--Want To Go View Controller-->
+        <!--行きたい場所-->
         <scene sceneID="kD2-aX-Fwo">
             <objects>
-                <viewController storyboardIdentifier="wantToGo" useStoryboardIdentifierAsRestorationIdentifier="YES" id="h4w-6I-Rg2" customClass="WantToGoViewController" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="wantToGo" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="h4w-6I-Rg2" customClass="WantToGoViewController" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Chj-Wz-yDh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="arrow.left.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ssF-Ww-Wtw">
@@ -802,7 +813,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Lnw-yX-b2i">
-                                <rect key="frame" x="0.0" y="76" width="375" height="591"/>
+                                <rect key="frame" x="0.0" y="65" width="375" height="602"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
@@ -824,20 +835,21 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="szf-cO-0d3"/>
                     </view>
+                    <navigationItem key="navigationItem" title="行きたい場所" id="4yI-Lw-MBh"/>
                     <connections>
                         <outlet property="backToMenuFromWant" destination="ssF-Ww-Wtw" id="iOS-3j-Opm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g85-14-VVm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2296.8000000000002" y="-546.47676161919048"/>
+            <point key="canvasLocation" x="2940" y="-591.45427286356824"/>
         </scene>
-        <!--Review List View Conroller-->
+        <!--口コミ-->
         <scene sceneID="HwX-Qe-dfn">
             <objects>
-                <viewController storyboardIdentifier="reviewList" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pBf-bD-ZbQ" customClass="ReviewListViewConroller" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="reviewList" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pBf-bD-ZbQ" customClass="ReviewListViewConroller" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RxT-M7-Fa8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="arrow.left.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Brf-n6-vAN">
@@ -874,21 +886,23 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="3Wd-eu-CPL"/>
                     </view>
+                    <navigationItem key="navigationItem" title="口コミ" id="68i-Xj-iio"/>
                     <connections>
                         <outlet property="backToVisitedDetailFromReview" destination="Brf-n6-vAN" id="P2y-3V-HUV"/>
                         <outlet property="tableView" destination="mj0-8Z-0Wd" id="izz-5b-YcW"/>
+                        <segue destination="W8t-3O-i9t" kind="show" identifier="reviewToDetailSegue" id="wNn-Em-Jm5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0cw-J1-7ov" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3644" y="-546"/>
+            <point key="canvasLocation" x="4742" y="-591"/>
         </scene>
         <!--Review Detail View Conroller-->
         <scene sceneID="B8d-zb-u4n">
             <objects>
-                <viewController storyboardIdentifier="reviewDetail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="W8t-3O-i9t" customClass="ReviewDetailViewConroller" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="reviewDetail" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="W8t-3O-i9t" customClass="ReviewDetailViewConroller" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2sp-Fh-qp4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="arrow.left.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="frN-vk-89C">
@@ -941,13 +955,33 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="nAz-Zb-8CL"/>
                     </view>
+                    <navigationItem key="navigationItem" id="jKY-BN-MKj"/>
                     <connections>
                         <outlet property="backToReviewListFromReviewDetail" destination="frN-vk-89C" id="gr9-qb-gqF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jRZ-EY-GcZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4330" y="-546"/>
+            <point key="canvasLocation" x="5602" y="-591"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ZfG-5G-6a5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="Scu-gX-fio" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="qGB-ih-G71"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qiU-lo-Pjf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hcP-1s-UbB" kind="relationship" relationship="rootViewController" id="cbV-QZ-827"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Aoq-YZ-9TD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="134" y="143"/>
         </scene>
     </scenes>
     <resources>

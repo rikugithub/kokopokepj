@@ -32,9 +32,7 @@ class VistedViewController: UIViewController, UITableViewDataSource ,UITableView
     //cellが選択された時の処理
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
   
-        let _: UIStoryboard = self.storyboard!
-        let visited = storyboard?.instantiateViewController(identifier: "visitedDetail")
-        self.present(visited!,animated: true,completion: nil)
+        performSegue(withIdentifier: "visitedToDetailSegue", sender: self)
     }
     
     

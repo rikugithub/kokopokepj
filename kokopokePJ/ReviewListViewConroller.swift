@@ -36,9 +36,7 @@ class ReviewListViewConroller: UIViewController, UITableViewDataSource ,UITableV
     //cellが選択された時の処理
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let _: UIStoryboard = self.storyboard!
-        let visited = storyboard?.instantiateViewController(identifier: "reviewDetail")
-        self.present(visited!,animated: true,completion: nil)
+        performSegue(withIdentifier: "reviewToDetailSegue", sender: self)
     }
     
     

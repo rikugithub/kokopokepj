@@ -12,17 +12,13 @@ import UIKit
 class MenuViewController: UIViewController, UITableViewDataSource ,UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var backToTop: UIImageView!
     var selectedText : String?
     
     let list = ["訪れた場所","行きたい場所","設定"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        backToTop.isUserInteractionEnabled = true
-        //backToTopがタップされたら呼ばれる
-        backToTop.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.backTaped(_:))))
-        
+        navigationController?.setNavigationBarHidden(false,animated: true)
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -51,19 +47,13 @@ class MenuViewController: UIViewController, UITableViewDataSource ,UITableViewDe
         switch a {
         case (0) :
             //訪れた場所
-            let _: UIStoryboard = self.storyboard!
-            let visited = storyboard?.instantiateViewController(identifier: "visited")
-            self.present(visited!,animated: true,completion: nil)
+            performSegue(withIdentifier: "menuToVisitedSegue", sender: self)
         case (1) :
             //行きたい場所
-            let _: UIStoryboard = self.storyboard!
-            let wantToGo = storyboard?.instantiateViewController(identifier: "wantToGo")
-            self.present(wantToGo!,animated: true,completion: nil)
+            performSegue(withIdentifier: "menuToWantSegue", sender: self)
         case (2) :
             //設定
-            let _: UIStoryboard = self.storyboard!
-            let setting = storyboard?.instantiateViewController(identifier: "setting")
-            self.present(setting!,animated: true,completion: nil)
+            performSegue(withIdentifier: "menuToSettingSegue", sender: self)
         default :
             print("エラー")
         }

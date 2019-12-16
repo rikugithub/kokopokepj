@@ -23,15 +23,11 @@ class VisiteDetailsViewController: UIViewController{
         backButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.backTaped(_:))))
     }
     @IBAction func seeReviewButtonTapped(_ sender: Any) {
-        let _: UIStoryboard = self.storyboard!
-        let visited = storyboard?.instantiateViewController(identifier: "reviewList")
-        self.present(visited!,animated: true,completion: nil)
+        performSegue(withIdentifier: "detailToReviewSegue", sender: self)
     }
     
     @IBAction func PostOrSaveButtonTapped(_ sender: Any) {
-        let _: UIStoryboard = self.storyboard!
-        let visited = storyboard?.instantiateViewController(identifier: "reviewPost")
-        self.present(visited!,animated: true,completion: nil)
+        performSegue(withIdentifier: "detailToPostSegue", sender: self)
     }
     
     

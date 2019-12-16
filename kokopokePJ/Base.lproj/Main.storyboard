@@ -277,10 +277,10 @@
             </objects>
             <point key="canvasLocation" x="2296.8000000000002" y="115.59220389805098"/>
         </scene>
-        <!--View Controller-->
+        <!--Visited Detail View Conroller-->
         <scene sceneID="IYU-Ku-7h1">
             <objects>
-                <viewController storyboardIdentifier="visitedDetail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Gbz-wE-pmt" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="visitedDetail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Gbz-wE-pmt" customClass="VisitedDetailViewConroller" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OdB-Cu-KqM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -347,10 +347,10 @@
             </objects>
             <point key="canvasLocation" x="2991" y="116"/>
         </scene>
-        <!--View Controller-->
+        <!--Review Post View Conroller-->
         <scene sceneID="r6V-ID-jly">
             <objects>
-                <viewController storyboardIdentifier="reviewPost" useStoryboardIdentifierAsRestorationIdentifier="YES" id="G2h-4e-e0P" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="reviewPost" useStoryboardIdentifierAsRestorationIdentifier="YES" id="G2h-4e-e0P" customClass="ReviewPostViewConroller" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DCh-A4-o9E">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -516,10 +516,10 @@
             </objects>
             <point key="canvasLocation" x="3644" y="115.59220389805098"/>
         </scene>
-        <!--View Controller-->
+        <!--Review Confirm View Conroller-->
         <scene sceneID="4rf-4Z-VIx">
             <objects>
-                <viewController storyboardIdentifier="reviewConfirm" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0PA-eu-XsA" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="reviewConfirm" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0PA-eu-XsA" customClass="ReviewConfirmViewConroller" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Ge-Cf-A6m">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -713,10 +713,10 @@
             </objects>
             <point key="canvasLocation" x="4328.8000000000002" y="115.59220389805098"/>
         </scene>
-        <!--View Controller-->
+        <!--Review Complete View Conroller-->
         <scene sceneID="Vki-07-dPx">
             <objects>
-                <viewController storyboardIdentifier="reviewComplete" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wiO-pI-efJ" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="reviewComplete" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wiO-pI-efJ" customClass="ReviewCompleteViewConroller" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QYy-UE-UHS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -809,10 +809,10 @@
             </objects>
             <point key="canvasLocation" x="2296.8000000000002" y="-546.47676161919048"/>
         </scene>
-        <!--View Controller-->
+        <!--Review List View Conroller-->
         <scene sceneID="HwX-Qe-dfn">
             <objects>
-                <viewController storyboardIdentifier="reviewList" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pBf-bD-ZbQ" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="reviewList" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pBf-bD-ZbQ" customClass="ReviewListViewConroller" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RxT-M7-Fa8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -856,10 +856,10 @@
             </objects>
             <point key="canvasLocation" x="3644" y="-546"/>
         </scene>
-        <!--View Controller-->
+        <!--Review Detail View Conroller-->
         <scene sceneID="B8d-zb-u4n">
             <objects>
-                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="W8t-3O-i9t" sceneMemberID="viewController">
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="W8t-3O-i9t" customClass="ReviewDetailViewConroller" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2sp-Fh-qp4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

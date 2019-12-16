@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2459DECC23A75E24006027A1 /* ReviewConfirmViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2459DEC723A75E24006027A1 /* ReviewConfirmViewConroller.swift */; };
+		2459DECD23A75E24006027A1 /* ReviewListViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2459DEC823A75E24006027A1 /* ReviewListViewConroller.swift */; };
+		2459DECE23A75E24006027A1 /* ReviewPostViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2459DEC923A75E24006027A1 /* ReviewPostViewConroller.swift */; };
+		2459DECF23A75E24006027A1 /* ReviewDetailViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2459DECA23A75E24006027A1 /* ReviewDetailViewConroller.swift */; };
+		2459DED023A75E24006027A1 /* ReviewCompleteViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2459DECB23A75E24006027A1 /* ReviewCompleteViewConroller.swift */; };
 		24741E5923A31D6000B41FE1 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24741E5823A31D6000B41FE1 /* MenuViewController.swift */; };
 		24741E5B23A31DC400B41FE1 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24741E5A23A31DC400B41FE1 /* TopViewController.swift */; };
 		24741E5D23A31E0600B41FE1 /* VisitedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24741E5C23A31E0600B41FE1 /* VisitedViewController.swift */; };
@@ -29,6 +34,11 @@
 
 /* Begin PBXFileReference section */
 		20BC471902BE98B11422B315 /* Pods_kokopokePJ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kokopokePJ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2459DEC723A75E24006027A1 /* ReviewConfirmViewConroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewConfirmViewConroller.swift; sourceTree = "<group>"; };
+		2459DEC823A75E24006027A1 /* ReviewListViewConroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewListViewConroller.swift; sourceTree = "<group>"; };
+		2459DEC923A75E24006027A1 /* ReviewPostViewConroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewPostViewConroller.swift; sourceTree = "<group>"; };
+		2459DECA23A75E24006027A1 /* ReviewDetailViewConroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailViewConroller.swift; sourceTree = "<group>"; };
+		2459DECB23A75E24006027A1 /* ReviewCompleteViewConroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewCompleteViewConroller.swift; sourceTree = "<group>"; };
 		24741E5823A31D6000B41FE1 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		24741E5A23A31DC400B41FE1 /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		24741E5C23A31E0600B41FE1 /* VisitedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +111,11 @@
 				24741E5A23A31DC400B41FE1 /* TopViewController.swift */,
 				24741E5C23A31E0600B41FE1 /* VisitedViewController.swift */,
 				24741E5E23A31E3B00B41FE1 /* ReviewViewController.swift */,
+				2459DECB23A75E24006027A1 /* ReviewCompleteViewConroller.swift */,
+				2459DEC723A75E24006027A1 /* ReviewConfirmViewConroller.swift */,
+				2459DECA23A75E24006027A1 /* ReviewDetailViewConroller.swift */,
+				2459DEC823A75E24006027A1 /* ReviewListViewConroller.swift */,
+				2459DEC923A75E24006027A1 /* ReviewPostViewConroller.swift */,
 				24741E6023A31E5D00B41FE1 /* VisiteDetailsViewController.swift */,
 				24741E6223A31EEE00B41FE1 /* SettingViewController.swift */,
 			);
@@ -246,12 +261,17 @@
 				44263F702394B750008D0BA3 /* ViewController.swift in Sources */,
 				24741E5923A31D6000B41FE1 /* MenuViewController.swift in Sources */,
 				24741E5B23A31DC400B41FE1 /* TopViewController.swift in Sources */,
+				2459DECC23A75E24006027A1 /* ReviewConfirmViewConroller.swift in Sources */,
 				24741E5D23A31E0600B41FE1 /* VisitedViewController.swift in Sources */,
+				2459DED023A75E24006027A1 /* ReviewCompleteViewConroller.swift in Sources */,
 				24741E6323A31EEE00B41FE1 /* SettingViewController.swift in Sources */,
+				2459DECE23A75E24006027A1 /* ReviewPostViewConroller.swift in Sources */,
 				44263F6C2394B750008D0BA3 /* AppDelegate.swift in Sources */,
 				44263F6E2394B750008D0BA3 /* SceneDelegate.swift in Sources */,
+				2459DECF23A75E24006027A1 /* ReviewDetailViewConroller.swift in Sources */,
 				24741E5F23A31E3B00B41FE1 /* ReviewViewController.swift in Sources */,
 				24741E6123A31E5D00B41FE1 /* VisiteDetailsViewController.swift in Sources */,
+				2459DECD23A75E24006027A1 /* ReviewListViewConroller.swift in Sources */,
 				24741E6523A3316B00B41FE1 /* WantToGoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

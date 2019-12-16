@@ -10,7 +10,7 @@ import UIKit
 
 class ReviewDetailViewConroller: UIViewController {
 
-    @IBOutlet weak var backToReviewListFromReviewDetail:UIButton!
+    @IBOutlet weak var backToReviewListFromReviewDetail:UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

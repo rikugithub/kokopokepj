@@ -10,7 +10,7 @@ import UIKit
 
 class ReviewCompleteViewConroller: UIViewController {
 
-    @IBOutlet weak var backToReviewCompleteFromReviewPost:UIButton!
+    @IBOutlet weak var backToReviewCompleteFromReviewPost:UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

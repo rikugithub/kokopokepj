@@ -278,10 +278,10 @@
             </objects>
             <point key="canvasLocation" x="2296.8000000000002" y="115.59220389805098"/>
         </scene>
-        <!--Visited Detail View Conroller-->
+        <!--Visite Details View Controller-->
         <scene sceneID="IYU-Ku-7h1">
             <objects>
-                <viewController storyboardIdentifier="visitedDetail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Gbz-wE-pmt" customClass="VisitedDetailViewConroller" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="visitedDetail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Gbz-wE-pmt" customClass="VisiteDetailsViewController" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OdB-Cu-KqM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -333,16 +333,27 @@
                                 <rect key="frame" x="16" y="495" width="215" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="口コミを投稿またはメモを保存"/>
+                                <connections>
+                                    <action selector="PostOrSaveButtonTapped:" destination="Gbz-wE-pmt" eventType="touchUpInside" id="Rjc-K4-RQd"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drf-5K-l4H">
                                 <rect key="frame" x="16" y="463" width="169" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="この場所の口コミを見る"/>
+                                <connections>
+                                    <action selector="seeReviewButtonTapped:" destination="Gbz-wE-pmt" eventType="touchUpInside" id="qLV-Qv-VpO"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Oyv-51-d16"/>
                     </view>
+                    <connections>
+                        <outlet property="PostOrSaveButton" destination="WE0-6f-yTF" id="a1g-2H-mmx"/>
+                        <outlet property="backButton" destination="F7z-uB-VeJ" id="9Iu-wu-3Rd"/>
+                        <outlet property="seeReviewButton" destination="drf-5K-l4H" id="cmp-z5-Z0j"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hid-47-r6T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -512,6 +523,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="e5X-mx-0Fo"/>
                     </view>
+                    <connections>
+                        <outlet property="backToReviewDetailFromReviewPost" destination="ll0-UZ-VvQ" id="9CP-DB-JAG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WLM-JA-BiV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -525,9 +539,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="arrow.left.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="tcg-Gh-cT6">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" ambiguous="YES" image="arrow.left.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="tcg-Gh-cT6">
                                 <rect key="frame" x="16" y="20.5" width="44" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="2Ee-xC-jjO"/>
+                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="口コミを投稿する" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="85K-Eo-6oW">
                                 <rect key="frame" x="76" y="26" width="203" height="30"/>
@@ -709,6 +725,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="PbY-wB-4JK"/>
                     </view>
+                    <connections>
+                        <outlet property="backToReviewPostFromReviewConfirm" destination="tcg-Gh-cT6" id="Ykd-vf-RHq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vmg-pg-mKx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -755,6 +774,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6x7-e1-w5a"/>
                     </view>
+                    <connections>
+                        <outlet property="backToReviewCompleteFromReviewPost" destination="TOV-Ee-cbb" id="xXh-g5-JuN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fYc-V3-dVY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -852,6 +874,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="3Wd-eu-CPL"/>
                     </view>
+                    <connections>
+                        <outlet property="backToVisitedDetailFromReview" destination="Brf-n6-vAN" id="P2y-3V-HUV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0cw-J1-7ov" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -915,6 +940,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="nAz-Zb-8CL"/>
                     </view>
+                    <connections>
+                        <outlet property="backToReviewListFromReviewDetail" destination="frN-vk-89C" id="gr9-qb-gqF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jRZ-EY-GcZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

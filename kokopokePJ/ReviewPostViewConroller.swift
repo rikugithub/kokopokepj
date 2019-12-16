@@ -10,7 +10,8 @@ import UIKit
 
 class ReviewPostViewConroller: UIViewController {
 
-    @IBOutlet weak var backToReviewDetailFromReviewPost:UIButton!
+        
+    @IBOutlet weak var backToReviewDetailFromReviewPost: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +23,7 @@ class ReviewPostViewConroller: UIViewController {
     
     @objc func backTaped(_ sender : UITapGestureRecognizer) {
         let _: UIStoryboard = self.storyboard!
-        let menu = storyboard?.instantiateViewController(identifier: "reviewDetail")
+        let menu = storyboard?.instantiateViewController(identifier: "visitedDetail")
         self.present(menu!,animated: true,completion: nil)
     }
     

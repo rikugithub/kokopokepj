@@ -13,12 +13,25 @@ import UIKit
 class VisiteDetailsViewController: UIViewController{
     
     @IBOutlet weak var backButton: UIImageView!
+    @IBOutlet weak var seeReviewButton: UIButton!
+    @IBOutlet weak var PostOrSaveButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         backButton.isUserInteractionEnabled = true
        //backButtonnがタップされたら呼ばれる
         backButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.backTaped(_:))))
+    }
+    @IBAction func seeReviewButtonTapped(_ sender: Any) {
+        let _: UIStoryboard = self.storyboard!
+        let visited = storyboard?.instantiateViewController(identifier: "reviewList")
+        self.present(visited!,animated: true,completion: nil)
+    }
+    
+    @IBAction func PostOrSaveButtonTapped(_ sender: Any) {
+        let _: UIStoryboard = self.storyboard!
+        let visited = storyboard?.instantiateViewController(identifier: "reviewPost")
+        self.present(visited!,animated: true,completion: nil)
     }
     
     

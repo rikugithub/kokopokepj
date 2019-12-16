@@ -261,8 +261,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="3nF-br-dDv" id="XFz-aX-xdo"/>
-                                    <outlet property="delegate" destination="3nF-br-dDv" id="fRf-EB-d2N"/>
+                                    <outlet property="dataSource" destination="IYk-Cb-nje" id="gNa-h7-h4s"/>
+                                    <outlet property="delegate" destination="IYk-Cb-nje" id="Txd-Zk-quT"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -271,6 +271,7 @@
                     </view>
                     <connections>
                         <outlet property="backToMenuFromVisited" destination="dva-n4-o0A" id="Yt0-kB-cqd"/>
+                        <outlet property="tableView" destination="Hm9-kb-U8t" id="2Ov-8W-pn7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ozA-NF-bcr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

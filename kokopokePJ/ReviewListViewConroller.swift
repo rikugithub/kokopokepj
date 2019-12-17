@@ -11,16 +11,12 @@ import UIKit
 class ReviewListViewConroller: UIViewController, UITableViewDataSource ,UITableViewDelegate{
     let list = ["口コミ1","口コミ2","口コミ3","口コミ4"]
     
-    @IBOutlet weak var backToVisitedDetailFromReview:UIImageView!
     @IBOutlet weak var tableView:UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        backToVisitedDetailFromReview.isUserInteractionEnabled = true
-        //bToMenuFromWantがタップされたら呼ばれる
-        backToVisitedDetailFromReview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.backTaped(_:))))
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

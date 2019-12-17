@@ -11,17 +11,19 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class TopViewController: UIViewController,
-CLLocationManagerDelegate,
+class TopViewController: UIViewController,UISearchBarDelegate,
+    CLLocationManagerDelegate,
 UIGestureRecognizerDelegate {
-
+    
     @IBOutlet var MapView: MKMapView!
     var locManager: CLLocationManager!
-
+    
     @IBOutlet var LongPressGesRec: UILongPressGestureRecognizer!
     
     var pointAno: MKPointAnnotation = MKPointAnnotation()
     @IBOutlet weak var menuButton: UIImageView!
+    
+    @IBOutlet weak var searchBar:UISearchBar!
     
     override func viewDidAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: true)
@@ -29,11 +31,15 @@ UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //ナビゲーションバーの非表示
         navigationController?.setNavigationBarHidden(true, animated: true)
         menuButton.isUserInteractionEnabled = true
         //menuButtonがタップされたら呼ばれる
         menuButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.menuTaped(_:))))
+        
+        searchBar.delegate = self
+        searchBar.showsCancelButton = true
+        searchBar.backgroundImage = UIImage()
         
         //位置情報を初期化
         initMap()
@@ -55,6 +61,43 @@ UIGestureRecognizerDelegate {
         }
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        //TODO:履歴を検索する
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar:UISearchBar) {
+        if let searchKey = searchBar.searchTextField.text {
+            
+            print(searchKey)
+            
+            let geocoder = CLGeocoder()
+            
+            geocoder.geocodeAddressString(searchKey, completionHandler: { (placemarks, error) in
+                
+                if let unwrapPlacemarks = placemarks {
+                    if let firstPlacemark = unwrapPlacemarks.first {
+                        if let location = firstPlacemark.location {
+                            let targetCoordinate = location.coordinate
+                            print(targetCoordinate)
+                            
+                            let pin = MKPointAnnotation()
+                            
+                            pin.coordinate = targetCoordinate
+                            pin.title = searchKey
+                            self.MapView.addAnnotation(pin)
+                            
+                            self.MapView.region = MKCoordinateRegion(center: targetCoordinate, latitudinalMeters: 500.0, longitudinalMeters: 500.0)
+                        }
+                    }
+                }
+            })
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        print("キャンセルボタンがタップ")
+    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations:[CLLocation]) {
         // 現在地取得
         let lonStr = (locations.last?.coordinate.longitude.description)!
@@ -63,12 +106,12 @@ UIGestureRecognizerDelegate {
         print("lat : " + latStr)
         // 現在位置とタッウプした位置の距離(m)を算出する
         let distance = calcDistance(MapView.userLocation.coordinate, pointAno.coordinate)
-
+        
         if (0 != distance) {
             // ピンに設定する文字列を生成する
             var str:String = Int(distance).description
             str = str + " m"
-
+            
             if pointAno.title != str {
                 // ピンまでの距離に変化があればtitleを更新する
                 pointAno.title = str
@@ -84,7 +127,7 @@ UIGestureRecognizerDelegate {
         region.span.latitudeDelta = 0.02
         region.span.longitudeDelta = 0.02
         MapView.setRegion(region,animated:true)
-
+        
         // 現在位置表示の有効化
         MapView.showsUserLocation = true
         // 現在位置設定（デバイスの動きとしてこの時の一回だけ中心位置が現在位置で更新される）
@@ -106,17 +149,17 @@ UIGestureRecognizerDelegate {
         // ロングタップ開始
         if sender.state == .began {
         }
-        // ロングタップ終了（手を離した）
+            // ロングタップ終了（手を離した）
         else if sender.state == .ended {
             // タップした位置（CGPoint）を指定してMkMapView上の緯度経度を取得する
             let tapPoint = sender.location(in: view)
             let center = MapView.convert(tapPoint, toCoordinateFrom: MapView)
-
+            
             let lonStr = center.longitude.description
             let latStr = center.latitude.description
             print("lon : " + lonStr)
             print("lat : " + latStr)
-
+            
             // 現在位置とタッウプした位置の距離(m)を算出する
             let distance = calcDistance(MapView.userLocation.coordinate, center)
             print("distance : " + distance.description)

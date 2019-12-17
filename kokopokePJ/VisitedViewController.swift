@@ -38,22 +38,11 @@ class VistedViewController: UIViewController, UITableViewDataSource ,UITableView
     
     
     
-    @IBOutlet weak var backToMenuFromVisited: UIImageView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
-        backToMenuFromVisited.isUserInteractionEnabled = true
-       //bToMenuFromvisitedがタップされたら呼ばれる
-        backToMenuFromVisited.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.backTaped(_:))))
-    }
+        }
     
-    
-    @objc func backTaped(_ sender : UITapGestureRecognizer) {
-        let _: UIStoryboard = self.storyboard!
-        let menu = storyboard?.instantiateViewController(identifier: "menu")
-        self.present(menu!,animated: true,completion: nil)
-    }
 }

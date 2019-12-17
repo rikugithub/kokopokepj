@@ -10,13 +10,8 @@ import UIKit
 
 class ReviewDetailViewConroller: UIViewController {
 
-    @IBOutlet weak var backToReviewListFromReviewDetail:UIImageView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        backToReviewListFromReviewDetail.isUserInteractionEnabled = true
-        //bToMenuFromWantがタップされたら呼ばれる
-        backToReviewListFromReviewDetail.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.backTaped(_:))))
     }
     
     

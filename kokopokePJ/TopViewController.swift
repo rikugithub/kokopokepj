@@ -23,8 +23,13 @@ UIGestureRecognizerDelegate {
     var pointAno: MKPointAnnotation = MKPointAnnotation()
     @IBOutlet weak var menuButton: UIImageView!
     
+    override func viewDidAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navigationController?.setNavigationBarHidden(true, animated: true)
         menuButton.isUserInteractionEnabled = true
         //menuButtonがタップされたら呼ばれる

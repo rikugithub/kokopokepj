@@ -27,7 +27,7 @@ UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource {
     
     //履歴テストデータ
     var tableView: UITableView?
-    let history = ["","test","test2","test3"]
+    let history = ["test","test2","test3"]
 
     override func viewDidAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: true)
@@ -66,15 +66,30 @@ UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    
+    @objc func searchBarTaped(){
+        
+        self.tableView = {
+            let tableView = UITableView(frame: CGRect(x: 0, y: 44, width: 1000, height: 300), style: .plain)
+            tableView.autoresizingMask = [
+                .flexibleWidth,
+                .flexibleHeight
+            ]
+            tableView.delegate = self
+            tableView.dataSource = self
+            self.view.addSubview(tableView)
+            return tableView
+        }()
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-      return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      return self.history.count
-    }
-    
-    
+             return 1
+           }
+           
+           func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+             return self.history.count
+           }
+          
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
       ?? UITableViewCell(style: .default, reuseIdentifier: "Cell")
@@ -84,24 +99,9 @@ UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource {
       return cell
     }
     
-    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         //TODO:履歴を検索する
-        
-        
-        self.tableView = {
-          let tableView = UITableView(frame: self.view.bounds, style: .plain)
-          tableView.autoresizingMask = [
-            .flexibleWidth,
-            .flexibleHeight
-          ]
-            tableView.delegate = self
-            tableView.dataSource = self
-          self.view.addSubview(tableView)
-
-          return tableView
-
-        }()
+        self.searchBarTaped()
     }
     
     func searchBarSearchButtonClicked(_ searchBar:UISearchBar) {

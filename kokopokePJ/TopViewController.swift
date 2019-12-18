@@ -13,7 +13,7 @@ import CoreLocation
 
 class TopViewController: UIViewController,UISearchBarDelegate,
     CLLocationManagerDelegate,
-UIGestureRecognizerDelegate {
+UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var MapView: MKMapView!
     var locManager: CLLocationManager!
@@ -25,12 +25,17 @@ UIGestureRecognizerDelegate {
     
     @IBOutlet weak var searchBar:UISearchBar!
     
+    //履歴テストデータ
+    var tableView: UITableView?
+    let history = ["","test","test2","test3"]
+
     override func viewDidAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //ナビゲーションバーの非表示
         navigationController?.setNavigationBarHidden(true, animated: true)
         menuButton.isUserInteractionEnabled = true
@@ -61,11 +66,48 @@ UIGestureRecognizerDelegate {
         }
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    func numberOfSections(in tableView: UITableView) -> Int {
+      return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+      return self.history.count
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+      let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
+      ?? UITableViewCell(style: .default, reuseIdentifier: "Cell")
+
+      cell.textLabel?.text = self.history[indexPath.row]
+
+      return cell
+    }
+    
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         //TODO:履歴を検索する
+        
+        
+        self.tableView = {
+          let tableView = UITableView(frame: self.view.bounds, style: .plain)
+          tableView.autoresizingMask = [
+            .flexibleWidth,
+            .flexibleHeight
+          ]
+            tableView.delegate = self
+            tableView.dataSource = self
+          self.view.addSubview(tableView)
+
+          return tableView
+
+        }()
     }
     
     func searchBarSearchButtonClicked(_ searchBar:UISearchBar) {
+        
+        
+        //searchKeyが入力されたら情報取得してマップに表示
         if let searchKey = searchBar.searchTextField.text {
             
             print(searchKey)

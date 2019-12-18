@@ -35,9 +35,6 @@ class VistedViewController: UIViewController, UITableViewDataSource ,UITableView
         performSegue(withIdentifier: "visitedToDetailSegue", sender: self)
     }
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

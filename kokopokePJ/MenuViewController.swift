@@ -19,6 +19,7 @@ class MenuViewController: UIViewController, UITableViewDataSource ,UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(false,animated: true)
+        tableView.separatorColor = .systemGray
         tableView.delegate = self
         tableView.dataSource = self
     }

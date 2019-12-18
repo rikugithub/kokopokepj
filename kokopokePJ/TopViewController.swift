@@ -28,6 +28,7 @@ UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource {
     //履歴テストデータ
     var tableView: UITableView?
     let history = ["test","test2","test3"]
+    let sectionTitle = ["今日","昨日","今週","先週"]
 
     override func viewDidAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: true)
@@ -70,7 +71,7 @@ UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource {
     @objc func searchBarTaped(){
         
         self.tableView = {
-            let tableView = UITableView(frame: CGRect(x: 0, y: 44, width: 1000, height: 300), style: .plain)
+            let tableView = UITableView(frame: CGRect(x: 0, y: 44, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2), style: .plain)
             tableView.autoresizingMask = [
                 .flexibleWidth,
                 .flexibleHeight
@@ -83,13 +84,15 @@ UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-             return 1
+             return 4
            }
-           
-           func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-             return self.history.count
-           }
-          
+    
+    //1セクションごとに表示する行数
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+             return 3
+    }
+    
+    //セルの中身設定
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
       ?? UITableViewCell(style: .default, reuseIdentifier: "Cell")
@@ -97,6 +100,11 @@ UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource {
       cell.textLabel?.text = self.history[indexPath.row]
 
       return cell
+    }
+    
+    //セクションタイトルを返す
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionTitle[section]
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -137,6 +145,7 @@ UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.view.sendSubviewToBack(self.tableView!)
         print("キャンセルボタンがタップ")
     }
     

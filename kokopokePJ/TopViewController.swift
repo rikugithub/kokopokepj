@@ -37,6 +37,10 @@ UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //serchBar入力状態でマップをシングルタップして入力解除するための処理
+        let singleTapGesture = UITapGestureRecognizer(target: self, action: #selector(singleTap(_:)))
+        singleTapGesture.numberOfTapsRequired = 1
+        
         //ナビゲーションバーの非表示
         navigationController?.setNavigationBarHidden(true, animated: true)
         menuButton.isUserInteractionEnabled = true
@@ -65,24 +69,28 @@ UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource {
                 break
             }
         }
-    }
-    
-    
-    @objc func searchBarTaped(){
         
         self.tableView = {
-            let tableView = UITableView(frame: CGRect(x: 0, y: 44, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2), style: .plain)
-            tableView.autoresizingMask = [
-                .flexibleWidth,
-                .flexibleHeight
-            ]
-            tableView.delegate = self
-            tableView.dataSource = self
-            self.view.addSubview(tableView)
-            return tableView
-        }()
+                 let tableView = UITableView(frame: CGRect(x: 0, y: 44, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2), style: .plain)
+                 tableView.autoresizingMask = [
+                     .flexibleWidth,
+                     .flexibleHeight
+                 ]
+                 tableView.delegate = self
+                 tableView.dataSource = self
+                 self.view.addSubview(tableView)
+                 return tableView
+             }()
+        self.view.sendSubviewToBack(self.tableView!)
+        self.view.addGestureRecognizer(singleTapGesture)
     }
     
+    //シングルタップによる入力解除の処理
+    @objc func singleTap(_ gesture: UITapGestureRecognizer) {
+         searchBar.endEditing(true)
+        self.searchBarTextDidEndEditing(_ : searchBar)
+    }
+
     func numberOfSections(in tableView: UITableView) -> Int {
              return 4
            }
@@ -106,14 +114,19 @@ UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sectionTitle[section]
     }
-    
+        
+     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         //TODO:履歴を検索する
-        self.searchBarTaped()
+        searchBar.showsCancelButton = true
+        self.view.bringSubviewToFront(self.tableView!)
+        print("入力ボタンがタップ")
     }
+    
     
     func searchBarSearchButtonClicked(_ searchBar:UISearchBar) {
         
+        self.view.sendSubviewToBack(self.tableView!)
         
         //searchKeyが入力されたら情報取得してマップに表示
         if let searchKey = searchBar.searchTextField.text {
@@ -144,8 +157,15 @@ UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar){
         self.view.sendSubviewToBack(self.tableView!)
+        print("編集終了？")
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        //self.view.sendSubviewToBack(self.tableView!)
+         searchBar.endEditing(true)
+        self.searchBarTextDidEndEditing(_ : searchBar)
         print("キャンセルボタンがタップ")
     }
     

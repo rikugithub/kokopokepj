@@ -159,11 +159,10 @@ UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource {
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar){
         self.view.sendSubviewToBack(self.tableView!)
-        print("編集終了？")
+        print("編集終了")
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        //self.view.sendSubviewToBack(self.tableView!)
          searchBar.endEditing(true)
         self.searchBarTextDidEndEditing(_ : searchBar)
         print("キャンセルボタンがタップ")

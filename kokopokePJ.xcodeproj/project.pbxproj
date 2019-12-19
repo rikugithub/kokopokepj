@@ -30,6 +30,12 @@
 		44263F782394B751008D0BA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44263F772394B751008D0BA3 /* Assets.xcassets */; };
 		44263F7B2394B751008D0BA3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44263F792394B751008D0BA3 /* LaunchScreen.storyboard */; };
 		6CDEAC31B91F181F51571D7F /* Pods_kokopokePJ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20BC471902BE98B11422B315 /* Pods_kokopokePJ.framework */; };
+		A9FD55B123AB1C84006CBE77 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = A9FD55AE23AB1C83006CBE77 /* 3.png */; };
+		A9FD55B223AB1C84006CBE77 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = A9FD55AF23AB1C84006CBE77 /* 2.png */; };
+		A9FD55B323AB1C84006CBE77 /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = A9FD55B023AB1C84006CBE77 /* 4.png */; };
+		A9FD55B523AB1C92006CBE77 /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = A9FD55B423AB1C91006CBE77 /* 0.png */; };
+		A9FD55B723AB1CB0006CBE77 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = A9FD55B623AB1CB0006CBE77 /* 1.png */; };
+		A9FD55B923AB1CBF006CBE77 /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = A9FD55B823AB1CBF006CBE77 /* 5.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +66,12 @@
 		44263F7A2394B751008D0BA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		44263F7C2394B751008D0BA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F4047F435F9C02E668BB618 /* Pods-kokopokePJ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kokopokePJ.debug.xcconfig"; path = "Target Support Files/Pods-kokopokePJ/Pods-kokopokePJ.debug.xcconfig"; sourceTree = "<group>"; };
+		A9FD55AE23AB1C83006CBE77 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3.png; path = ../../Downloads/3.png; sourceTree = "<group>"; };
+		A9FD55AF23AB1C84006CBE77 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2.png; path = ../../Downloads/2.png; sourceTree = "<group>"; };
+		A9FD55B023AB1C84006CBE77 /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 4.png; path = ../../Downloads/4.png; sourceTree = "<group>"; };
+		A9FD55B423AB1C91006CBE77 /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 0.png; path = ../../Downloads/0.png; sourceTree = "<group>"; };
+		A9FD55B623AB1CB0006CBE77 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1.png; path = ../../Downloads/1.png; sourceTree = "<group>"; };
+		A9FD55B823AB1CBF006CBE77 /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 5.png; path = ../../Downloads/5.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +117,12 @@
 				44263F742394B750008D0BA3 /* kokopokePJ.xcdatamodeld */,
 				4412846923974CAC0025E051 /* whiteLogo.png */,
 				4412846B23977CBC0025E051 /* logo.png */,
+				A9FD55B423AB1C91006CBE77 /* 0.png */,
+				A9FD55B623AB1CB0006CBE77 /* 1.png */,
+				A9FD55AF23AB1C84006CBE77 /* 2.png */,
+				A9FD55AE23AB1C83006CBE77 /* 3.png */,
+				A9FD55B023AB1C84006CBE77 /* 4.png */,
+				A9FD55B823AB1CBF006CBE77 /* 5.png */,
 				24741E6423A3316A00B41FE1 /* WantToGoViewController.swift */,
 				32D74D25239DE4B300CA2BBE /* GoogleService-Info.plist */,
 				24741E5823A31D6000B41FE1 /* MenuViewController.swift */,
@@ -199,11 +217,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9FD55B723AB1CB0006CBE77 /* 1.png in Resources */,
+				A9FD55B323AB1C84006CBE77 /* 4.png in Resources */,
 				4412846A23974CAC0025E051 /* whiteLogo.png in Resources */,
 				4412846C23977CBC0025E051 /* logo.png in Resources */,
+				A9FD55B223AB1C84006CBE77 /* 2.png in Resources */,
 				44263F7B2394B751008D0BA3 /* LaunchScreen.storyboard in Resources */,
 				44263F782394B751008D0BA3 /* Assets.xcassets in Resources */,
+				A9FD55B523AB1C92006CBE77 /* 0.png in Resources */,
 				44263F732394B750008D0BA3 /* Main.storyboard in Resources */,
+				A9FD55B923AB1CBF006CBE77 /* 5.png in Resources */,
+				A9FD55B123AB1C84006CBE77 /* 3.png in Resources */,
 				32D74D26239DE4B300CA2BBE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

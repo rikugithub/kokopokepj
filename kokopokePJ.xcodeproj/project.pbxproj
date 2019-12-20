@@ -36,6 +36,9 @@
 		A9FD55CF23AB2017006CBE77 /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = A9FD55C923AB2017006CBE77 /* 0.png */; };
 		A9FD55D023AB2017006CBE77 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = A9FD55CA23AB2017006CBE77 /* 2.png */; };
 		A9FD55D123AB2017006CBE77 /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = A9FD55CB23AB2017006CBE77 /* 5.png */; };
+		A9FD560323AC50AE006CBE77 /* VisitedDetailViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD560123AC50AE006CBE77 /* VisitedDetailViewConroller.swift */; };
+		A9FD560423AC50AE006CBE77 /* LocationIDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD560223AC50AE006CBE77 /* LocationIDetailsViewController.swift */; };
+		A9FD560623AC5163006CBE77 /* ReviewPostFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD560523AC5163006CBE77 /* ReviewPostFormViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +75,9 @@
 		A9FD55C923AB2017006CBE77 /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
 		A9FD55CA23AB2017006CBE77 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		A9FD55CB23AB2017006CBE77 /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
+		A9FD560123AC50AE006CBE77 /* VisitedDetailViewConroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitedDetailViewConroller.swift; sourceTree = "<group>"; };
+		A9FD560223AC50AE006CBE77 /* LocationIDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationIDetailsViewController.swift; sourceTree = "<group>"; };
+		A9FD560523AC5163006CBE77 /* ReviewPostFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPostFormViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +113,8 @@
 		44263F6A2394B750008D0BA3 /* kokopokePJ */ = {
 			isa = PBXGroup;
 			children = (
+				A9FD560223AC50AE006CBE77 /* LocationIDetailsViewController.swift */,
+				A9FD560123AC50AE006CBE77 /* VisitedDetailViewConroller.swift */,
 				44263F6B2394B750008D0BA3 /* AppDelegate.swift */,
 				44263F6D2394B750008D0BA3 /* SceneDelegate.swift */,
 				44263F6F2394B750008D0BA3 /* ViewController.swift */,
@@ -136,6 +144,7 @@
 				2459DEC923A75E24006027A1 /* ReviewPostViewConroller.swift */,
 				24741E6023A31E5D00B41FE1 /* VisiteDetailsViewController.swift */,
 				24741E6223A31EEE00B41FE1 /* SettingViewController.swift */,
+				A9FD560523AC5163006CBE77 /* ReviewPostFormViewController.swift */,
 			);
 			path = kokopokePJ;
 			sourceTree = "<group>";
@@ -281,12 +290,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9FD560423AC50AE006CBE77 /* LocationIDetailsViewController.swift in Sources */,
 				44263F762394B750008D0BA3 /* kokopokePJ.xcdatamodeld in Sources */,
 				44263F702394B750008D0BA3 /* ViewController.swift in Sources */,
+				A9FD560623AC5163006CBE77 /* ReviewPostFormViewController.swift in Sources */,
 				24741E5923A31D6000B41FE1 /* MenuViewController.swift in Sources */,
 				24741E5B23A31DC400B41FE1 /* TopViewController.swift in Sources */,
 				2459DECC23A75E24006027A1 /* ReviewConfirmViewConroller.swift in Sources */,
 				24741E5D23A31E0600B41FE1 /* VisitedViewController.swift in Sources */,
+				A9FD560323AC50AE006CBE77 /* VisitedDetailViewConroller.swift in Sources */,
 				2459DED023A75E24006027A1 /* ReviewCompleteViewConroller.swift in Sources */,
 				24741E6323A31EEE00B41FE1 /* SettingViewController.swift in Sources */,
 				2459DECE23A75E24006027A1 /* ReviewPostViewConroller.swift in Sources */,

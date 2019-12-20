@@ -1018,12 +1018,12 @@
                                     <color key="titleShadowColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E6Y-E6-qCE">
-                                <rect key="frame" x="281" y="112" width="49" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VKk-AE-sbT">
                                 <rect key="frame" x="281" y="18" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E6Y-E6-qCE">
+                                <rect key="frame" x="281" y="112" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </switch>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="0.png" translatesAutoresizingMaskIntoConstraints="NO" id="KWV-5L-Lg5">
@@ -1047,7 +1047,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nij-Wh-HyF">
-                                <rect key="frame" x="51" y="359" width="261" height="83"/>
+                                <rect key="frame" x="49" y="363" width="261" height="83"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="共有せずにメモとして保存する" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16j-c6-9d4">
@@ -1057,10 +1057,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="paperclip" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="aWH-J1-GmL">
-                                <rect key="frame" x="113" y="679" width="21" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Wb-EZ-6Ez">
                                 <rect key="frame" x="0.0" y="438" width="359" height="180"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -1069,13 +1065,24 @@
                                     <outlet property="delegate" destination="YsT-2q-dBi" id="JSq-6n-bB3"/>
                                 </connections>
                             </pickerView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="paperclip" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="aWH-J1-GmL">
+                                <rect key="frame" x="113" y="679" width="21" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="t6v-ee-0G7"/>
                     </view>
                     <size key="freeformSize" width="359" height="1000"/>
                     <connections>
+                        <outlet property="evaluationDisplay" destination="Nij-Wh-HyF" id="QPF-qK-EXl"/>
+                        <outlet property="evaluationFive" destination="9q1-3C-cxX" id="Op3-b6-Knd"/>
+                        <outlet property="evaluationFour" destination="M65-az-320" id="1lm-9o-dHu"/>
+                        <outlet property="evaluationOne" destination="KWV-5L-Lg5" id="LkA-60-9Bx"/>
+                        <outlet property="evaluationThree" destination="YzP-wc-JFV" id="g8z-Wi-af1"/>
+                        <outlet property="evaluationTwo" destination="YCZ-1V-t8C" id="P7c-bu-a59"/>
                         <outlet property="pickerView" destination="6Wb-EZ-6Ez" id="KFO-hm-P31"/>
+                        <outlet property="s" destination="KWV-5L-Lg5" id="6fg-1W-c3Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dM4-lW-0Ly" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

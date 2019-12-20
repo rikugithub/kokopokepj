@@ -11,12 +11,18 @@ import UIKit
 class ReviewPostFormViewController: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
     
     
+    @IBOutlet weak var evaluationOne: UIImageView!
+    @IBOutlet weak var evaluationTwo: UIImageView!
+    @IBOutlet weak var evaluationThree: UIImageView!
+    @IBOutlet weak var evaluationFour: UIImageView!
+    @IBOutlet weak var evaluationFive: UIImageView!
+    @IBOutlet weak var evaluationDisplay: UIImageView!
     @IBOutlet weak var pickerView: UIPickerView!
     
     // ジャンル内容
     let dataList = [
         "飲食","娯楽","ショッピング","交通",
-        "生活","ポケGO","DQウォーク","その他"
+        "生活","ゲーム","その他"
         
     ]
     

@@ -11,9 +11,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class TopViewController: UIViewController,UISearchBarDelegate,
-    CLLocationManagerDelegate,
-UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource {
+class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerDelegate,UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var MapView: MKMapView!
     var locManager: CLLocationManager!
@@ -127,34 +125,48 @@ UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource {
     func searchBarSearchButtonClicked(_ searchBar:UISearchBar) {
         
         self.view.sendSubviewToBack(self.tableView!)
-        
-        //searchKeyが入力されたら情報取得してマップに表示
-        if let searchKey = searchBar.searchTextField.text {
-            
-            print(searchKey)
-            
-            let geocoder = CLGeocoder()
-            
-            geocoder.geocodeAddressString(searchKey, completionHandler: { (placemarks, error) in
-                
-                if let unwrapPlacemarks = placemarks {
-                    if let firstPlacemark = unwrapPlacemarks.first {
-                        if let location = firstPlacemark.location {
-                            let targetCoordinate = location.coordinate
-                            print(targetCoordinate)
-                            
-                            let pin = MKPointAnnotation()
-                            
-                            pin.coordinate = targetCoordinate
-                            pin.title = searchKey
-                            self.MapView.addAnnotation(pin)
-                            
-                            self.MapView.region = MKCoordinateRegion(center: targetCoordinate, latitudinalMeters: 500.0, longitudinalMeters: 500.0)
-                        }
-                    }
-                }
-            })
+        // キーボードを閉じる
+        self.view.endEditing(true)
+        // 現在表示中のピンをすべて消す
+        self.MapView.removeAnnotations(MapView.annotations)
+
+        // 未入力の場合は終了
+        guard let address = searchBar.text else {
+            return
         }
+
+        CLGeocoder().geocodeAddressString("札幌") { [weak MapView] placemarks, error in
+            guard let loc = placemarks?.first?.location?.coordinate else {
+                return
+            }
+            // 縮尺を設定
+            let region = MKCoordinateRegion(center: loc,
+                                            span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
+
+            Map.search(query: address, region: region) { (result) in
+                switch result {
+                case .success(let mapItems):
+                    for map in mapItems {
+                        let annotation = MKPointAnnotation()
+                        annotation.coordinate = map.placemark.coordinate
+                        annotation.title = map.name ?? "名前がありません"
+                        MapView?.addAnnotation(annotation)
+                    }
+                    
+                    let point = MKCoordinateRegion(center: (mapItems.first?.placemark.coordinate)!,
+                    span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
+                    MapView?.setRegion(point,animated:true)
+                case .failure(let error):
+                    print("error \(error.localizedDescription)")
+                }
+            }
+        }
+        //検索バーを空欄にする
+        self.searchBar.text = ""
+    }
+    
+    func findArea() {
+        
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar){
@@ -242,5 +254,34 @@ UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource {
     }
     @objc func menuTaped(_ sender : UITapGestureRecognizer) {
         performSegue(withIdentifier: "topToMenuSegue", sender: self)
+    }
+}
+extension MKPlacemark {
+    var address: String {
+        let components = [self.administrativeArea, self.locality, self.thoroughfare, self.subThoroughfare]
+        return components.compactMap { $0 }.joined(separator: "")
+    }
+}
+struct Map {
+    enum Result<T> {
+        case success(T)
+        case failure(Error)
+    }
+
+    static func search(query: String, region: MKCoordinateRegion? = nil, completionHandler: @escaping (Result<[MKMapItem]>) -> Void) {
+        let request = MKLocalSearch.Request()
+        request.naturalLanguageQuery = query
+
+        if let region = region {
+            request.region = region
+        }
+
+        MKLocalSearch(request: request).start { (response, error) in
+            if let error = error {
+                completionHandler(.failure(error))
+                return
+            }
+            completionHandler(.success(response?.mapItems ?? []))
+        }
     }
 }

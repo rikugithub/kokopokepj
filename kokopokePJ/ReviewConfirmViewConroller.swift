@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ReviewConfirmViewConroller: UIViewController {
+class ReviewConfirmViewConroller: UITableViewController {
 
 
     override func viewDidLoad() {

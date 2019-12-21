@@ -107,27 +107,40 @@
                                     <outletCollection property="gestureRecognizers" destination="6b2-0M-MQ5" appends="YES" id="XME-C2-k6u"/>
                                 </connections>
                             </mapView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ouz-s0-YGp">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ouz-s0-YGp">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" fixedFrame="YES" text="" placeholder="場所または住所を入力" translatesAutoresizingMaskIntoConstraints="NO" id="vrm-mh-5H9">
-                                        <rect key="frame" x="47" y="0.0" width="328" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <searchBar contentMode="redraw" text="" placeholder="場所または住所を入力" translatesAutoresizingMaskIntoConstraints="NO" id="vrm-mh-5H9">
+                                        <rect key="frame" x="43" y="3" width="328" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="328" id="0rl-nq-ZdG"/>
+                                            <constraint firstAttribute="height" constant="45" id="DMg-B6-sfp"/>
+                                        </constraints>
                                         <color key="barTintColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <outlet property="delegate" destination="hcP-1s-UbB" id="Dnz-wx-Xjx"/>
                                         </connections>
                                     </searchBar>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="list.dash" catalog="system" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="udx-E0-2Po">
-                                        <rect key="frame" x="5" y="11" width="36" height="23"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="list.dash" catalog="system" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="udx-E0-2Po">
+                                        <rect key="frame" x="5" y="11" width="35" height="29"/>
                                         <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="35" id="AVI-Ga-rf1"/>
+                                            <constraint firstAttribute="height" constant="35" id="UmN-Ra-mxF"/>
+                                        </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="vrm-mh-5H9" firstAttribute="leading" secondItem="udx-E0-2Po" secondAttribute="trailing" constant="3" id="Ez6-3T-ETn"/>
+                                    <constraint firstAttribute="bottom" secondItem="udx-E0-2Po" secondAttribute="bottom" constant="7" id="Lxt-2w-OsI"/>
+                                    <constraint firstItem="vrm-mh-5H9" firstAttribute="top" secondItem="ouz-s0-YGp" secondAttribute="top" constant="3" id="RcI-7b-WE8"/>
+                                    <constraint firstItem="udx-E0-2Po" firstAttribute="top" secondItem="ouz-s0-YGp" secondAttribute="top" constant="8" id="c43-hR-4QN"/>
+                                    <constraint firstAttribute="height" constant="50" id="k4p-Sy-dKH"/>
+                                    <constraint firstItem="udx-E0-2Po" firstAttribute="leading" secondItem="ouz-s0-YGp" secondAttribute="leading" constant="5" id="qnf-XR-005"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PXo-K0-ZqJ">
                                 <rect key="frame" x="0.0" y="517" width="375" height="150"/>
@@ -252,7 +265,10 @@
                             <constraint firstItem="PXo-K0-ZqJ" firstAttribute="trailing" secondItem="Rvr-S9-qNy" secondAttribute="trailing" id="4fA-R0-FgN"/>
                             <constraint firstItem="PXo-K0-ZqJ" firstAttribute="leading" secondItem="Rvr-S9-qNy" secondAttribute="leading" id="8GJ-Rp-loD"/>
                             <constraint firstItem="PXo-K0-ZqJ" firstAttribute="bottom" secondItem="Rvr-S9-qNy" secondAttribute="bottom" id="U0z-jg-pIn"/>
+                            <constraint firstItem="ouz-s0-YGp" firstAttribute="top" secondItem="Rvr-S9-qNy" secondAttribute="top" id="c12-tX-Mb8"/>
+                            <constraint firstItem="ouz-s0-YGp" firstAttribute="trailing" secondItem="Rvr-S9-qNy" secondAttribute="trailing" id="cwU-bu-1DO"/>
                             <constraint firstItem="88i-bL-pHK" firstAttribute="leading" secondItem="Rvr-S9-qNy" secondAttribute="leading" id="f1z-H7-n5E"/>
+                            <constraint firstItem="ouz-s0-YGp" firstAttribute="leading" secondItem="Rvr-S9-qNy" secondAttribute="leading" id="lqd-pV-A4c"/>
                             <constraint firstAttribute="trailingMargin" secondItem="88i-bL-pHK" secondAttribute="trailing" constant="-16" id="t8r-Uy-miH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Rvr-S9-qNy"/>
@@ -264,6 +280,7 @@
                         <outlet property="MapView" destination="88i-bL-pHK" id="zt6-fk-yH1"/>
                         <outlet property="menuButton" destination="udx-E0-2Po" id="tNr-3n-Ua8"/>
                         <outlet property="searchBar" destination="vrm-mh-5H9" id="t23-JC-27L"/>
+                        <outlet property="searchView" destination="ouz-s0-YGp" id="guh-rK-oGE"/>
                         <outlet property="searchedView" destination="PXo-K0-ZqJ" id="CO0-6E-MdZ"/>
                         <segue destination="3nF-br-dDv" kind="show" identifier="topToMenuSegue" id="2Dc-Cq-aGK"/>
                         <segue destination="7rV-kb-gj0" kind="show" identifier="topToDetailsSegue" id="Jbl-Ef-U8y"/>

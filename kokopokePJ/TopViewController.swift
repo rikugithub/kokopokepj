@@ -18,6 +18,7 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
     @IBOutlet weak var menuButton: UIImageView!
     @IBOutlet weak var searchedView: UIView!
     @IBOutlet weak var searchBar:UISearchBar!
+    @IBOutlet weak var searchView: UIView!
     
     public let userDefaults = UserDefaults.standard
     var locManager: CLLocationManager!
@@ -35,6 +36,11 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //ステータスバーのデザイン設定
+        let statusBar = UIView(frame:CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.size.width, height: 20.0))
+        statusBar.backgroundColor = UIColor.init(red:45/255,green:61/255, blue: 255/255, alpha: 90/100)
+        view.addSubview(statusBar)
         
         userDefaults.register(defaults: ["wannaGoPlaces": [wannaGoPlaces]])
         
@@ -70,9 +76,13 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
                 break
             }
         }
+        //tableviewの位置を自動調整
+        let statusBarHeight: CGFloat = UIApplication.shared.statusBarFrame.height
+        let searchHeight = searchView.bounds.height
+        let y = statusBarHeight + searchHeight
         
         self.tableView = {
-                 let tableView = UITableView(frame: CGRect(x: 0, y: 44, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2), style: .plain)
+                 let tableView = UITableView(frame: CGRect(x: 0, y: y, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2), style: .plain)
                  tableView.autoresizingMask = [
                      .flexibleWidth,
                      .flexibleHeight

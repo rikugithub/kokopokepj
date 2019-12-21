@@ -20,7 +20,7 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
     
     var pointAno: MKPointAnnotation = MKPointAnnotation()
     @IBOutlet weak var menuButton: UIImageView!
-    
+    @IBOutlet weak var searchedView: UIView!
     @IBOutlet weak var searchBar:UISearchBar!
     
     //履歴テストデータ
@@ -81,6 +81,13 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
              }()
         self.view.sendSubviewToBack(self.tableView!)
         self.view.addGestureRecognizer(singleTapGesture)
+        
+        //検索時メニューバーの設定
+        let height = self.view.bounds.height/4
+        let width = self.view.bounds.width
+        searchedView.frame = CGRect(x: 0, y: self.view.bounds.height - height, width: width, height: height)
+        searchedView.backgroundColor = UIColor.white
+        self.searchedView.isHidden = true
     }
     
     //シングルタップによる入力解除の処理
@@ -115,9 +122,11 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
         
      
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.searchedView.isHidden = true
         //TODO:履歴を検索する
         searchBar.showsCancelButton = true
         self.view.bringSubviewToFront(self.tableView!)
+
         print("入力ボタンがタップ")
     }
     
@@ -156,6 +165,7 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
                     let point = MKCoordinateRegion(center: (mapItems.first?.placemark.coordinate)!,
                     span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
                     MapView?.setRegion(point,animated:true)
+                    self.searchedView.isHidden = false
                 case .failure(let error):
                     print("error \(error.localizedDescription)")
                 }
@@ -163,10 +173,6 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
         }
         //検索バーを空欄にする
         self.searchBar.text = ""
-    }
-    
-    func findArea() {
-        
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar){

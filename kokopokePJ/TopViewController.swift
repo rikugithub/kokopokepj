@@ -32,6 +32,7 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
 
     override func viewDidAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: true)
+        self.searchedView.isHidden = true
     }
     
     override func viewDidLoad() {
@@ -135,7 +136,6 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
         
      
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        self.searchedView.isHidden = true
         //TODO:履歴を検索する
         searchBar.showsCancelButton = true
         self.view.bringSubviewToFront(self.tableView!)

@@ -165,6 +165,9 @@
                                             <constraint firstAttribute="height" constant="30" id="fhD-3j-b3z"/>
                                         </constraints>
                                         <state key="normal" title="追加"/>
+                                        <connections>
+                                            <action selector="wannaGoPlaceButtonTapped:" destination="hcP-1s-UbB" eventType="touchUpInside" id="Tir-7A-HJB"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="この場所の情報を見る" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9iT-bu-0cg">
                                         <rect key="frame" x="41" y="110" width="278" height="21"/>
@@ -264,6 +267,7 @@
                         <outlet property="searchedView" destination="PXo-K0-ZqJ" id="CO0-6E-MdZ"/>
                         <segue destination="3nF-br-dDv" kind="show" identifier="topToMenuSegue" id="2Dc-Cq-aGK"/>
                         <segue destination="7rV-kb-gj0" kind="show" identifier="topToDetailsSegue" id="Jbl-Ef-U8y"/>
+                        <segue destination="h4w-6I-Rg2" kind="show" identifier="topToWantSegue" id="UsO-og-jzP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G2u-qF-vEU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1278,4 +1282,7 @@
         <image name="paperclip" catalog="system" width="64" height="64"/>
         <image name="whiteLogo.png" width="2000" height="889"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="UsO-og-jzP"/>
+    </inferredMetricsTieBreakers>
 </document>

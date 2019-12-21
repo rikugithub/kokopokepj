@@ -9,30 +9,47 @@
 import Foundation
 
 //訪れた場所モデル
-class VisitedPlace {
+class VisitedPlace : NSObject, NSCoding{
+    
+    
     //訪れた場所
     private var name:String
     //訪問日時
-    private var timstamp:Date
+    private var timestamp:Date
     //緯度
-    private var latitude:String
+    private var latitude:Double
     //経度
-    private var longitude:String
+    private var longitude:Double
     //ジャンル
     private var genre:Int
     
+    required init?(coder aDecoder: NSCoder) {
+        self.name = aDecoder.decodeObject(forKey: "name") as! String
+        self.timestamp = aDecoder.decodeObject(forKey: "timestamp") as! Date
+        self.latitude = aDecoder.decodeDouble(forKey: "latitude")
+        self.longitude = aDecoder.decodeDouble(forKey: "longitude")
+        self.genre = aDecoder.decodeInteger(forKey: "genre") as! Int
+    }
+    
+    func encode(with coder: NSCoder) {
+        coder.encode(name, forKey: "name")
+        coder.encode(timestamp, forKey: "timestamp")
+        coder.encode(latitude, forKey: "latitude")
+        coder.encode(longitude, forKey: "longitude")
+        coder.encode(genre, forKey: "genre")
+    }
     //DBからモデル生成
     init(dic:[String:Any]) {
         let name = dic["name"] as? String
         self.name = name!
         
-        let timstamp = dic["timstamp"] as? Date
-        self.timstamp = timstamp!
+        let timestamp = dic["timestamp"] as? Date
+        self.timestamp = timestamp!
         
-        let latitude = dic["latitude"] as? String
+        let latitude = dic["latitude"] as? Double
         self.latitude = latitude!
         
-        let longitude = dic["longitude"] as? String
+        let longitude = dic["longitude"] as? Double
         self.longitude = longitude!
         
         let genre = dic["genre"] as? Int
@@ -40,9 +57,9 @@ class VisitedPlace {
     }
     
     //Viewからモデル生成
-    init(n:String, t:Date, la:String, lo:String, g:Int) {
+    init(n:String, t:Date, la:Double, lo:Double, g:Int) {
         self.name = n
-        self.timstamp = t
+        self.timestamp = t
         self.latitude = la
         self.longitude = lo
         self.genre = g
@@ -53,14 +70,14 @@ class VisitedPlace {
     }
     
     public func getTimestamp() -> Date {
-        return self.timstamp
+        return self.timestamp
     }
     
-    public func getLatitude() -> String {
+    public func getLatitude() -> Double {
         return self.latitude
     }
     
-    public func getLongitude() -> String {
+    public func getLongitude() -> Double {
         return self.longitude
     }
     

@@ -14,19 +14,20 @@ import CoreLocation
 class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerDelegate,UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var MapView: MKMapView!
-    var locManager: CLLocationManager!
-    
     @IBOutlet var LongPressGesRec: UILongPressGestureRecognizer!
-    
-    var pointAno: MKPointAnnotation = MKPointAnnotation()
     @IBOutlet weak var menuButton: UIImageView!
     @IBOutlet weak var searchedView: UIView!
     @IBOutlet weak var searchBar:UISearchBar!
     
-    //履歴テストデータ
+    public let userDefaults = UserDefaults.standard
+    var locManager: CLLocationManager!
+    var pointAno: MKPointAnnotation = MKPointAnnotation()
     var tableView: UITableView?
+    //履歴テストデータ
     let history = ["test","test2","test3"]
     let sectionTitle = ["今日","昨日","今週","先週"]
+    var searchedPlace:VisitedPlace?
+    var wannaGoPlaces:[VisitedPlace] = []
 
     override func viewDidAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: true)
@@ -34,6 +35,8 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        userDefaults.register(defaults: ["wannaGoPlaces": [wannaGoPlaces]])
         
         //serchBar入力状態でマップをシングルタップして入力解除するための処理
         let singleTapGesture = UITapGestureRecognizer(target: self, action: #selector(singleTap(_:)))
@@ -166,6 +169,14 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
                     span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
                     MapView?.setRegion(point,animated:true)
                     self.searchedView.isHidden = false
+                    
+                    let name = mapItems.first?.placemark.name
+                    let time = Date()
+                    let latitude = mapItems.first?.placemark.coordinate.latitude
+                    let longitude = mapItems.first?.placemark.coordinate.longitude
+                    let genre = 0
+                    
+                    self.searchedPlace = VisitedPlace(n: name!, t: time, la: latitude!, lo: longitude!, g: genre)
                 case .failure(let error):
                     print("error \(error.localizedDescription)")
                 }
@@ -208,6 +219,12 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
         }
     }
     
+    @IBAction func wannaGoPlaceButtonTapped(_ sender: Any) {
+        wannaGoPlaces.append(searchedPlace!)
+        userDefaults.set(NSKeyedArchiver.archivedData(withRootObject: wannaGoPlaces), forKey: "wannaGoPlaces")
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        performSegue(withIdentifier: "topToWantSegue", sender: self)
+    }
     
     func initMap() {
         // 縮尺を設定
@@ -260,6 +277,13 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
     }
     @objc func menuTaped(_ sender : UITapGestureRecognizer) {
         performSegue(withIdentifier: "topToMenuSegue", sender: self)
+    }
+    
+    func getTimeNow() -> String {
+        let f = DateFormatter()
+        f.dateFormat = "yyyy/MM/dd HH:mm:ss"
+        let now = Date()
+        return f.string(from: now)
     }
 }
 extension MKPlacemark {

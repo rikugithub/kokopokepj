@@ -62,4 +62,7 @@ class ReviewPostFormViewController: UIViewController , UIPickerViewDelegate, UIP
         
     }
     
+    @IBAction func postButtonTapped(_ sender: Any) {
+        performSegue(withIdentifier: "postToConfirmSegue", sender: self)
+    }
 }

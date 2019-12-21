@@ -1220,7 +1220,6 @@
                         <outlet property="evaluationThree" destination="YzP-wc-JFV" id="g8z-Wi-af1"/>
                         <outlet property="evaluationTwo" destination="YCZ-1V-t8C" id="P7c-bu-a59"/>
                         <outlet property="pickerView" destination="6Wb-EZ-6Ez" id="KFO-hm-P31"/>
-                        <outlet property="s" destination="KWV-5L-Lg5" id="6fg-1W-c3Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dM4-lW-0Ly" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

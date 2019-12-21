@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import MapKit
 import CoreLocation
+import Firebase
 
 class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerDelegate,UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource {
     
@@ -19,6 +20,8 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
     @IBOutlet weak var searchedView: UIView!
     @IBOutlet weak var searchBar:UISearchBar!
     @IBOutlet weak var searchView: UIView!
+    
+    public var ref:DatabaseReference!
     
     public let userDefaults = UserDefaults.standard
     var locManager: CLLocationManager!
@@ -187,6 +190,9 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
                     let genre = 0
                     
                     self.searchedPlace = VisitedPlace(n: name!, t: time, la: latitude!, lo: longitude!, g: genre)
+                    
+                    
+//                    self.addDB(vPN: name!, pUN: "ごんちゃん", pUA: "24", pUG: false, vT: time, pT: time, vPG: 1, wW: 1, wWE: "", iURL: "https://www.newsweekjapan.jp/stories/assets_c/2017/04/iStock-501152239b-thumb-720xauto-110669.jpg", rC: "北海道の道都、札幌駅。今の駅になってから20年くらい？今は地下鉄札幌駅からススキノ駅まで地下道が繋がっているので便利です？札幌駅が新しくなる前からあ？ESTAビル、JRタワー、ステラプレイス、大丸とあります。JRタワーは展望台もあり札幌夜景を360度楽しめます。", memo: "")
                 case .failure(let error):
                     print("error \(error.localizedDescription)")
                 }
@@ -230,6 +236,8 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
     }
     
     @IBAction func wannaGoPlaceButtonTapped(_ sender: Any) {
+
+        
         wannaGoPlaces.append(searchedPlace!)
         userDefaults.set(NSKeyedArchiver.archivedData(withRootObject: wannaGoPlaces), forKey: "wannaGoPlaces")
         navigationController?.setNavigationBarHidden(false, animated: true)
@@ -288,13 +296,13 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
     @objc func menuTaped(_ sender : UITapGestureRecognizer) {
         performSegue(withIdentifier: "topToMenuSegue", sender: self)
     }
-    
-    func getTimeNow() -> String {
-        let f = DateFormatter()
-        f.dateFormat = "yyyy/MM/dd HH:mm:ss"
-        let now = Date()
-        return f.string(from: now)
-    }
+        
+//    func addDB(vPN:String,pUN:String,pUA:String,pUG:Bool,vT:Date,pT:Date,vPG:Int,wW:Int,wWE:String,iURL:String,rC:String,memo:String) {
+//        ref = Database.database().reference();
+//        let review = Review(vPN: vPN, pUN: pUN, pUA: pUA, pUG: pUG, vT: vT, pT: pT, vPG: vPG, wW: wW, wWE: wWE, iURL: iURL, rC: rC, memo: memo)
+//        let newRf = ref.child("reviews").child(vPN).childByAutoId()
+//        newRf.setValue(review.toDictionary())
+//    }
 }
 extension MKPlacemark {
     var address: String {

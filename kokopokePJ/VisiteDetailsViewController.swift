@@ -13,8 +13,11 @@ import UIKit
 class VisiteDetailsViewController: UIViewController{
     
     
+    
     @IBOutlet weak var seeReviewButton: UIButton!
     @IBOutlet weak var PostOrSaveButton: UIButton!
+    
+    public var visitedPlace:VisitedPlace!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,5 +30,12 @@ class VisiteDetailsViewController: UIViewController{
     
     @IBAction func PostOrSaveButtonTapped(_ sender: Any) {
         performSegue(withIdentifier: "detailToPostSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailToReviewSegue" {
+            let nextVC = segue.destination as! ReviewListViewConroller
+            nextVC.areaName = visitedPlace.getName()
+        }
     }
 }

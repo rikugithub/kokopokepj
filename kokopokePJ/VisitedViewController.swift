@@ -13,32 +13,25 @@ import UIKit
 class VistedViewController: UIViewController, UITableViewDataSource ,UITableViewDelegate{
     
     var selectedText : String?
+    let list = ["テスト1","テスト2","テスト3","テスト4"]
     
     @IBOutlet weak var tableView:UITableView!
-    
-    var wannaGoPlacesTitle:[String] = []
-    var wannaGoPlaces:[VisitedPlace] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
-        
-        wannaGoPlaces = loadVisitedPlace()!
-        wannaGoPlaces.forEach { e in
-            wannaGoPlacesTitle.append(e.getName())
-        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return wannaGoPlacesTitle.count
+        return list.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         // セルに表示する値を設定する
-        cell.textLabel!.text = wannaGoPlacesTitle[indexPath.row]
+        cell.textLabel!.text = list[indexPath.row]
         return cell
     }
     
@@ -46,14 +39,5 @@ class VistedViewController: UIViewController, UITableViewDataSource ,UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         performSegue(withIdentifier: "visitedToDetailSegue", sender: self)
-    }
-    
-    func loadVisitedPlace() -> [VisitedPlace]?{
-            if let loadedData = UserDefaults().data(forKey: "wannaGoPlaces") {
-                let wannaGoPlace = NSKeyedUnarchiver.unarchiveObject(with: loadedData) as! [VisitedPlace]
-                return wannaGoPlace
-            }else {
-                return nil
-            }
     }
 }

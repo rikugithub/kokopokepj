@@ -19,9 +19,9 @@ class Review {
     //性別
     private var postUserGender:Bool
     //訪問日時
-    private var visitedTimestamp:Date
+    private var visitedTimestamp:String
     //投稿日時
-    private var postTimestamp:Date
+    private var postTimestamp:String
     //ジャンル
     private var visitedPlaceGenre:Int
     //誰と一緒に
@@ -46,13 +46,13 @@ class Review {
         let postUserAge = dic["postUserAge"] as? String
         self.postUserAge = postUserAge!
         
-        let postUserGender = dic["postuserGender"] as? Bool
+        let postUserGender = dic["postUserGender"] as? Bool
         self.postUserGender = postUserGender!
         
-        let visitedTimestamp = dic["visitedTimestamp"] as? Date
+        let visitedTimestamp = dic["visitedTimestamp"] as? String
         self.visitedTimestamp = visitedTimestamp!
         
-        let postTimestamp = dic["postTimestamp"] as? Date
+        let postTimestamp = dic["postTimestamp"] as? String
         self.postTimestamp = postTimestamp!
         
         let visitedPlaceGenre = dic["visitedPlaceGenre"] as? Int
@@ -75,7 +75,7 @@ class Review {
     }
     
     //Viewからモデル生成
-    init(vPN:String,pUN:String,pUA:String,pUG:Bool,vT:Date,pT:Date,vPG:Int,wW:Int,wWE:String,iURL:String,rC:String,memo:String) {
+    init(vPN:String,pUN:String,pUA:String,pUG:Bool,vT:String,pT:String,vPG:Int,wW:Int,wWE:String,iURL:String,rC:String,memo:String) {
         self.visitedPlaceName = vPN
         self.postUserName = pUN
         self.postUserAge = pUA
@@ -106,11 +106,11 @@ class Review {
         return self.postUserGender
     }
     
-    public func getVisitedTimestamp() -> Date {
+    public func getVisitedTimestamp() -> String {
         return self.visitedTimestamp
     }
     
-    public func getPostTimestamp() -> Date {
+    public func getPostTimestamp() -> String {
         return self.postTimestamp
     }
     
@@ -138,4 +138,21 @@ class Review {
         return self.memo
     }
     
+    //辞書型変換(DB格納時用)
+    func toDictionary() -> [String:Any] {
+        return [
+            "visitedPlaceName":visitedPlaceName,
+            "postUserName":postUserName,
+            "postUserAge":postUserAge,
+            "postUserGender":postUserGender,
+            "visitedTimestamp":visitedTimestamp,
+            "postTimestamp":postTimestamp,
+            "visitedPlaceGenre":visitedPlaceGenre,
+            "withWho":withWho,
+            "withWhoElse":withWhoElse,
+            "imgURL":imgURL,
+            "reviewContent":reviewContent,
+            "memo":memo
+        ]
+    }
 }

@@ -19,6 +19,8 @@
 		24741E6123A31E5D00B41FE1 /* VisiteDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24741E6023A31E5D00B41FE1 /* VisiteDetailsViewController.swift */; };
 		24741E6323A31EEE00B41FE1 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24741E6223A31EEE00B41FE1 /* SettingViewController.swift */; };
 		24741E6523A3316B00B41FE1 /* WantToGoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24741E6423A3316A00B41FE1 /* WantToGoViewController.swift */; };
+		24CAC74C23ADD45800D5CE94 /* VisitedPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CAC74B23ADD45800D5CE94 /* VisitedPlace.swift */; };
+		24CAC74E23ADD46500D5CE94 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CAC74D23ADD46500D5CE94 /* Review.swift */; };
 		32D74D26239DE4B300CA2BBE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32D74D25239DE4B300CA2BBE /* GoogleService-Info.plist */; };
 		4412846A23974CAC0025E051 /* whiteLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4412846923974CAC0025E051 /* whiteLogo.png */; };
 		4412846C23977CBC0025E051 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4412846B23977CBC0025E051 /* logo.png */; };
@@ -55,6 +57,8 @@
 		24741E6023A31E5D00B41FE1 /* VisiteDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisiteDetailsViewController.swift; sourceTree = "<group>"; };
 		24741E6223A31EEE00B41FE1 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		24741E6423A3316A00B41FE1 /* WantToGoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WantToGoViewController.swift; sourceTree = "<group>"; };
+		24CAC74B23ADD45800D5CE94 /* VisitedPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedPlace.swift; sourceTree = "<group>"; };
+		24CAC74D23ADD46500D5CE94 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		32D74D25239DE4B300CA2BBE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3D174E553BD93697ABB53BDD /* Pods-kokopokePJ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kokopokePJ.release.xcconfig"; path = "Target Support Files/Pods-kokopokePJ/Pods-kokopokePJ.release.xcconfig"; sourceTree = "<group>"; };
 		4412846923974CAC0025E051 /* whiteLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteLogo.png; sourceTree = "<group>"; };
@@ -145,6 +149,8 @@
 				24741E6023A31E5D00B41FE1 /* VisiteDetailsViewController.swift */,
 				24741E6223A31EEE00B41FE1 /* SettingViewController.swift */,
 				A9FD560523AC5163006CBE77 /* ReviewPostFormViewController.swift */,
+				24CAC74B23ADD45800D5CE94 /* VisitedPlace.swift */,
+				24CAC74D23ADD46500D5CE94 /* Review.swift */,
 			);
 			path = kokopokePJ;
 			sourceTree = "<group>";
@@ -298,12 +304,14 @@
 				24741E5B23A31DC400B41FE1 /* TopViewController.swift in Sources */,
 				2459DECC23A75E24006027A1 /* ReviewConfirmViewConroller.swift in Sources */,
 				24741E5D23A31E0600B41FE1 /* VisitedViewController.swift in Sources */,
+				24CAC74E23ADD46500D5CE94 /* Review.swift in Sources */,
 				A9FD560323AC50AE006CBE77 /* VisitedDetailViewConroller.swift in Sources */,
 				2459DED023A75E24006027A1 /* ReviewCompleteViewConroller.swift in Sources */,
 				24741E6323A31EEE00B41FE1 /* SettingViewController.swift in Sources */,
 				2459DECE23A75E24006027A1 /* ReviewPostViewConroller.swift in Sources */,
 				44263F6C2394B750008D0BA3 /* AppDelegate.swift in Sources */,
 				44263F6E2394B750008D0BA3 /* SceneDelegate.swift in Sources */,
+				24CAC74C23ADD45800D5CE94 /* VisitedPlace.swift in Sources */,
 				2459DECF23A75E24006027A1 /* ReviewDetailViewConroller.swift in Sources */,
 				24741E5F23A31E3B00B41FE1 /* ReviewViewController.swift in Sources */,
 				24741E6123A31E5D00B41FE1 /* VisiteDetailsViewController.swift in Sources */,

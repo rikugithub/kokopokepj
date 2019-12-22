@@ -50,6 +50,7 @@ class WantToGoViewController: UIViewController,UITableViewDataSource ,UITableVie
         performSegue(withIdentifier: "WantToDetailsSegue", sender: self)
     }
     
+    //segueで遷移直前に処理されるメソッド
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "WantToDetailsSegue" {
             let nextVC = segue.destination as! WantToGoDetailViewController

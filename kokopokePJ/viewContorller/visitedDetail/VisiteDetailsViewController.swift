@@ -12,8 +12,6 @@ import UIKit
 //訪れた場所の詳しい情報
 class VisiteDetailsViewController: UIViewController{
     
-    
-    
     @IBOutlet weak var seeReviewButton: UIButton!
     @IBOutlet weak var PostOrSaveButton: UIButton!
     
@@ -32,6 +30,7 @@ class VisiteDetailsViewController: UIViewController{
         performSegue(withIdentifier: "detailToPostSegue", sender: self)
     }
     
+    //segue遷移直前に実行される処理
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detailToReviewSegue" {
             let nextVC = segue.destination as! ReviewListViewConroller

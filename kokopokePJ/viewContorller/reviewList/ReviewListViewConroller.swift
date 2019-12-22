@@ -63,6 +63,7 @@ class ReviewListViewConroller: UIViewController, UITableViewDataSource ,UITableV
         performSegue(withIdentifier: "reviewToDetailSegue", sender: self)
     }
     
+    //segue遷移直前に実行される処理
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "reviewToDetailSegue" {
             let nextVC = segue.destination as! ReviewDetailViewConroller

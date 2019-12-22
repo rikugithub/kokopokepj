@@ -37,7 +37,7 @@ class VistedViewController: UIViewController, UITableViewDataSource ,UITableView
     
     //cellが選択された時の処理
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         performSegue(withIdentifier: "visitedToDetailSegue", sender: self)
     }
+    
 }

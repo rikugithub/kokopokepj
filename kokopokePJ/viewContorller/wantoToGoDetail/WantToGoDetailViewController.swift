@@ -14,17 +14,14 @@ class WantToGoDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func checkReviewListButtonTapped(_ sender: Any) {
         performSegue(withIdentifier: "wantDetailToReviewSegue", sender: self)
     }
     
-    
     @IBAction func startNaviButtonTapped(_ sender: Any) {
-        
+            //TODO: ナビゲーション機能の実装
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

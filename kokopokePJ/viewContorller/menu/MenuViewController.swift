@@ -59,13 +59,4 @@ class MenuViewController: UIViewController, UITableViewDataSource ,UITableViewDe
             print("エラー")
         }
     }
-    
-    
-    @objc func backTaped(_ sender : UITapGestureRecognizer) {
-        let _: UIStoryboard = self.storyboard!
-        let top = storyboard?.instantiateViewController(identifier: "top")
-        self.present(top!,animated: true,completion: nil)
-    }
-    
-    
 }

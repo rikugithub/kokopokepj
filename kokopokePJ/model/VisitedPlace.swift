@@ -28,7 +28,7 @@ class VisitedPlace : NSObject, NSCoding{
         self.timestamp = aDecoder.decodeObject(forKey: "timestamp") as! Date
         self.latitude = aDecoder.decodeDouble(forKey: "latitude")
         self.longitude = aDecoder.decodeDouble(forKey: "longitude")
-        self.genre = aDecoder.decodeInteger(forKey: "genre") as! Int
+        self.genre = aDecoder.decodeInteger(forKey: "genre")
     }
     
     func encode(with coder: NSCoder) {

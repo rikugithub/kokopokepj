@@ -15,7 +15,6 @@
 		24741E5923A31D6000B41FE1 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24741E5823A31D6000B41FE1 /* MenuViewController.swift */; };
 		24741E5B23A31DC400B41FE1 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24741E5A23A31DC400B41FE1 /* TopViewController.swift */; };
 		24741E5D23A31E0600B41FE1 /* VisitedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24741E5C23A31E0600B41FE1 /* VisitedViewController.swift */; };
-		24741E5F23A31E3B00B41FE1 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24741E5E23A31E3B00B41FE1 /* ReviewViewController.swift */; };
 		24741E6123A31E5D00B41FE1 /* VisiteDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24741E6023A31E5D00B41FE1 /* VisiteDetailsViewController.swift */; };
 		24741E6323A31EEE00B41FE1 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24741E6223A31EEE00B41FE1 /* SettingViewController.swift */; };
 		24741E6523A3316B00B41FE1 /* WantToGoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24741E6423A3316A00B41FE1 /* WantToGoViewController.swift */; };
@@ -56,7 +55,6 @@
 		24741E5823A31D6000B41FE1 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		24741E5A23A31DC400B41FE1 /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		24741E5C23A31E0600B41FE1 /* VisitedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedViewController.swift; sourceTree = "<group>"; };
-		24741E5E23A31E3B00B41FE1 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		24741E6023A31E5D00B41FE1 /* VisiteDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisiteDetailsViewController.swift; sourceTree = "<group>"; };
 		24741E6223A31EEE00B41FE1 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		24741E6423A3316A00B41FE1 /* WantToGoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WantToGoViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +114,7 @@
 			children = (
 				247CD10323AF0DAD001B2768 /* splash */,
 				247CD10223AF0D8E001B2768 /* top */,
+				247CD10F23AF12F8001B2768 /* locationDetail */,
 				247CD10423AF0DBC001B2768 /* menu */,
 				247CD10523AF0DDB001B2768 /* wantToGoList */,
 				247CD10623AF0DF6001B2768 /* wantoToGoDetail */,
@@ -127,8 +126,6 @@
 				247CD10A23AF0F82001B2768 /* reviewPostConfirm */,
 				247CD10D23AF1073001B2768 /* reviewPostComplete */,
 				247CD10E23AF108A001B2768 /* settings */,
-				24741E6223A31EEE00B41FE1 /* SettingViewController.swift */,
-				A9FD560223AC50AE006CBE77 /* LocationIDetailsViewController.swift */,
 			);
 			path = viewContorller;
 			sourceTree = "<group>";
@@ -243,9 +240,17 @@
 		247CD10E23AF108A001B2768 /* settings */ = {
 			isa = PBXGroup;
 			children = (
-				24741E5E23A31E3B00B41FE1 /* ReviewViewController.swift */,
+				24741E6223A31EEE00B41FE1 /* SettingViewController.swift */,
 			);
 			path = settings;
+			sourceTree = "<group>";
+		};
+		247CD10F23AF12F8001B2768 /* locationDetail */ = {
+			isa = PBXGroup;
+			children = (
+				A9FD560223AC50AE006CBE77 /* LocationIDetailsViewController.swift */,
+			);
+			path = locationDetail;
 			sourceTree = "<group>";
 		};
 		44263F5F2394B750008D0BA3 = {
@@ -452,7 +457,6 @@
 				44263F6E2394B750008D0BA3 /* SceneDelegate.swift in Sources */,
 				24CAC74C23ADD45800D5CE94 /* VisitedPlace.swift in Sources */,
 				2459DECF23A75E24006027A1 /* ReviewDetailViewConroller.swift in Sources */,
-				24741E5F23A31E3B00B41FE1 /* ReviewViewController.swift in Sources */,
 				24741E6123A31E5D00B41FE1 /* VisiteDetailsViewController.swift in Sources */,
 				2459DECD23A75E24006027A1 /* ReviewListViewConroller.swift in Sources */,
 				247CD0FC23AE59F5001B2768 /* ReviewTableViewCell.swift in Sources */,

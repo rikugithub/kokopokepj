@@ -102,6 +102,152 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		247CD0FF23AF0CD8001B2768 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				24CAC74B23ADD45800D5CE94 /* VisitedPlace.swift */,
+				24CAC74D23ADD46500D5CE94 /* Review.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		247CD10023AF0CE5001B2768 /* viewContorller */ = {
+			isa = PBXGroup;
+			children = (
+				247CD10323AF0DAD001B2768 /* splash */,
+				247CD10223AF0D8E001B2768 /* top */,
+				247CD10423AF0DBC001B2768 /* menu */,
+				247CD10523AF0DDB001B2768 /* wantToGoList */,
+				247CD10623AF0DF6001B2768 /* wantoToGoDetail */,
+				247CD10723AF0E42001B2768 /* visitedList */,
+				247CD10823AF0E67001B2768 /* visitedDetail */,
+				247CD10B23AF0FC7001B2768 /* reviewList */,
+				247CD10C23AF103C001B2768 /* reviewDetail */,
+				247CD10923AF0F52001B2768 /* reviewPost */,
+				247CD10A23AF0F82001B2768 /* reviewPostConfirm */,
+				247CD10D23AF1073001B2768 /* reviewPostComplete */,
+				247CD10E23AF108A001B2768 /* settings */,
+				24741E6223A31EEE00B41FE1 /* SettingViewController.swift */,
+				A9FD560223AC50AE006CBE77 /* LocationIDetailsViewController.swift */,
+			);
+			path = viewContorller;
+			sourceTree = "<group>";
+		};
+		247CD10123AF0CF7001B2768 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				247CD0F923AE0F54001B2768 /* UIView+Border.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		247CD10223AF0D8E001B2768 /* top */ = {
+			isa = PBXGroup;
+			children = (
+				24741E5A23A31DC400B41FE1 /* TopViewController.swift */,
+			);
+			path = top;
+			sourceTree = "<group>";
+		};
+		247CD10323AF0DAD001B2768 /* splash */ = {
+			isa = PBXGroup;
+			children = (
+				44263F6F2394B750008D0BA3 /* ViewController.swift */,
+			);
+			path = splash;
+			sourceTree = "<group>";
+		};
+		247CD10423AF0DBC001B2768 /* menu */ = {
+			isa = PBXGroup;
+			children = (
+				24741E5823A31D6000B41FE1 /* MenuViewController.swift */,
+			);
+			path = menu;
+			sourceTree = "<group>";
+		};
+		247CD10523AF0DDB001B2768 /* wantToGoList */ = {
+			isa = PBXGroup;
+			children = (
+				24741E6423A3316A00B41FE1 /* WantToGoViewController.swift */,
+			);
+			path = wantToGoList;
+			sourceTree = "<group>";
+		};
+		247CD10623AF0DF6001B2768 /* wantoToGoDetail */ = {
+			isa = PBXGroup;
+			children = (
+				247CD0FD23AE6E15001B2768 /* WantToGoDetailViewController.swift */,
+			);
+			path = wantoToGoDetail;
+			sourceTree = "<group>";
+		};
+		247CD10723AF0E42001B2768 /* visitedList */ = {
+			isa = PBXGroup;
+			children = (
+				24741E5C23A31E0600B41FE1 /* VisitedViewController.swift */,
+			);
+			path = visitedList;
+			sourceTree = "<group>";
+		};
+		247CD10823AF0E67001B2768 /* visitedDetail */ = {
+			isa = PBXGroup;
+			children = (
+				24741E6023A31E5D00B41FE1 /* VisiteDetailsViewController.swift */,
+				A9FD560123AC50AE006CBE77 /* VisitedDetailViewConroller.swift */,
+			);
+			path = visitedDetail;
+			sourceTree = "<group>";
+		};
+		247CD10923AF0F52001B2768 /* reviewPost */ = {
+			isa = PBXGroup;
+			children = (
+				2459DEC923A75E24006027A1 /* ReviewPostViewConroller.swift */,
+				A9FD560523AC5163006CBE77 /* ReviewPostFormViewController.swift */,
+			);
+			path = reviewPost;
+			sourceTree = "<group>";
+		};
+		247CD10A23AF0F82001B2768 /* reviewPostConfirm */ = {
+			isa = PBXGroup;
+			children = (
+				247CD0FB23AE59F5001B2768 /* ReviewTableViewCell.swift */,
+				2459DEC723A75E24006027A1 /* ReviewConfirmViewConroller.swift */,
+			);
+			path = reviewPostConfirm;
+			sourceTree = "<group>";
+		};
+		247CD10B23AF0FC7001B2768 /* reviewList */ = {
+			isa = PBXGroup;
+			children = (
+				2459DEC823A75E24006027A1 /* ReviewListViewConroller.swift */,
+			);
+			path = reviewList;
+			sourceTree = "<group>";
+		};
+		247CD10C23AF103C001B2768 /* reviewDetail */ = {
+			isa = PBXGroup;
+			children = (
+				2459DECA23A75E24006027A1 /* ReviewDetailViewConroller.swift */,
+			);
+			path = reviewDetail;
+			sourceTree = "<group>";
+		};
+		247CD10D23AF1073001B2768 /* reviewPostComplete */ = {
+			isa = PBXGroup;
+			children = (
+				2459DECB23A75E24006027A1 /* ReviewCompleteViewConroller.swift */,
+			);
+			path = reviewPostComplete;
+			sourceTree = "<group>";
+		};
+		247CD10E23AF108A001B2768 /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				24741E5E23A31E3B00B41FE1 /* ReviewViewController.swift */,
+			);
+			path = settings;
+			sourceTree = "<group>";
+		};
 		44263F5F2394B750008D0BA3 = {
 			isa = PBXGroup;
 			children = (
@@ -123,16 +269,14 @@
 		44263F6A2394B750008D0BA3 /* kokopokePJ */ = {
 			isa = PBXGroup;
 			children = (
-				A9FD560223AC50AE006CBE77 /* LocationIDetailsViewController.swift */,
-				A9FD560123AC50AE006CBE77 /* VisitedDetailViewConroller.swift */,
+				247CD10123AF0CF7001B2768 /* utils */,
+				247CD10023AF0CE5001B2768 /* viewContorller */,
+				247CD0FF23AF0CD8001B2768 /* model */,
 				44263F6B2394B750008D0BA3 /* AppDelegate.swift */,
 				44263F6D2394B750008D0BA3 /* SceneDelegate.swift */,
-				44263F6F2394B750008D0BA3 /* ViewController.swift */,
 				44263F712394B750008D0BA3 /* Main.storyboard */,
-				247CD0FB23AE59F5001B2768 /* ReviewTableViewCell.swift */,
 				44263F772394B751008D0BA3 /* Assets.xcassets */,
 				44263F792394B751008D0BA3 /* LaunchScreen.storyboard */,
-				247CD0FD23AE6E15001B2768 /* WantToGoDetailViewController.swift */,
 				44263F7C2394B751008D0BA3 /* Info.plist */,
 				44263F742394B750008D0BA3 /* kokopokePJ.xcdatamodeld */,
 				4412846923974CAC0025E051 /* whiteLogo.png */,
@@ -143,23 +287,7 @@
 				A9FD55C823AB2017006CBE77 /* 3.png */,
 				A9FD55BE23AB1FE5006CBE77 /* 4.png */,
 				A9FD55CB23AB2017006CBE77 /* 5.png */,
-				24741E6423A3316A00B41FE1 /* WantToGoViewController.swift */,
 				32D74D25239DE4B300CA2BBE /* GoogleService-Info.plist */,
-				24741E5823A31D6000B41FE1 /* MenuViewController.swift */,
-				24741E5A23A31DC400B41FE1 /* TopViewController.swift */,
-				247CD0F923AE0F54001B2768 /* UIView+Border.swift */,
-				24741E5C23A31E0600B41FE1 /* VisitedViewController.swift */,
-				24741E5E23A31E3B00B41FE1 /* ReviewViewController.swift */,
-				2459DECB23A75E24006027A1 /* ReviewCompleteViewConroller.swift */,
-				2459DEC723A75E24006027A1 /* ReviewConfirmViewConroller.swift */,
-				2459DECA23A75E24006027A1 /* ReviewDetailViewConroller.swift */,
-				2459DEC823A75E24006027A1 /* ReviewListViewConroller.swift */,
-				2459DEC923A75E24006027A1 /* ReviewPostViewConroller.swift */,
-				24741E6023A31E5D00B41FE1 /* VisiteDetailsViewController.swift */,
-				24741E6223A31EEE00B41FE1 /* SettingViewController.swift */,
-				A9FD560523AC5163006CBE77 /* ReviewPostFormViewController.swift */,
-				24CAC74B23ADD45800D5CE94 /* VisitedPlace.swift */,
-				24CAC74D23ADD46500D5CE94 /* Review.swift */,
 			);
 			path = kokopokePJ;
 			sourceTree = "<group>";

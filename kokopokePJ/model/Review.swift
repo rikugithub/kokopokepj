@@ -22,6 +22,8 @@ class Review {
     private var visitedTimestamp:String
     //投稿日時
     private var postTimestamp:String
+    //評価
+    private var rating:Int
     //ジャンル
     private var visitedPlaceGenre:Int
     //誰と一緒に
@@ -55,6 +57,9 @@ class Review {
         let postTimestamp = dic["postTimestamp"] as? String
         self.postTimestamp = postTimestamp!
         
+        let rating = dic["rating"] as? Int
+        self.rating = rating!
+        
         let visitedPlaceGenre = dic["visitedPlaceGenre"] as? Int
         self.visitedPlaceGenre = visitedPlaceGenre!
         
@@ -75,13 +80,14 @@ class Review {
     }
     
     //Viewからモデル生成
-    init(vPN:String,pUN:String,pUA:String,pUG:Bool,vT:String,pT:String,vPG:Int,wW:Int,wWE:String,iURL:String,rC:String,memo:String) {
+    init(vPN:String,pUN:String,pUA:String,pUG:Bool,vT:String,pT:String,rt:Int,vPG:Int,wW:Int,wWE:String,iURL:String,rC:String,memo:String) {
         self.visitedPlaceName = vPN
         self.postUserName = pUN
         self.postUserAge = pUA
         self.postUserGender = pUG
         self.visitedTimestamp = vT
         self.postTimestamp = pT
+        self.rating = rt
         self.visitedPlaceGenre = vPG
         self.withWho = wW
         self.withWhoElse = wWE
@@ -112,6 +118,10 @@ class Review {
     
     public func getPostTimestamp() -> String {
         return self.postTimestamp
+    }
+    
+    public func getRating() -> Int {
+        return self.rating
     }
     
     public func getVisitedPlaceGenre() -> Int {
@@ -147,6 +157,7 @@ class Review {
             "postUserGender":postUserGender,
             "visitedTimestamp":visitedTimestamp,
             "postTimestamp":postTimestamp,
+            "rating":rating,
             "visitedPlaceGenre":visitedPlaceGenre,
             "withWho":withWho,
             "withWhoElse":withWhoElse,

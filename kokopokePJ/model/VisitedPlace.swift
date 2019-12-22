@@ -11,7 +11,7 @@ import Foundation
 //訪れた場所モデル
 class VisitedPlace : NSObject, NSCoding{
     
-    
+
     //訪れた場所
     private var name:String
     //訪問日時

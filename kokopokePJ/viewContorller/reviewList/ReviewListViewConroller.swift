@@ -13,9 +13,13 @@ class ReviewListViewConroller: UIViewController, UITableViewDataSource ,UITableV
     
     @IBOutlet weak var tableView:UITableView!
     
+    //DB検索名
     public var areaName:String = ""
+    //DBコネクション
     var ref: DatabaseReference!
+    //DBから取得した口コミモデル
     var reviews:[Review] = []
+    //詳細画面に渡すパラメータ
     var target:Review?
     
     override func viewDidLoad() {
@@ -25,7 +29,6 @@ class ReviewListViewConroller: UIViewController, UITableViewDataSource ,UITableV
         tableView.dataSource = self
         
         ref = Database.database().reference().child("reviews").child(areaName)
-        
         ref.observe(.value, with: { snapshot in
             if let values = snapshot.value as? [String:[String:Any]] {
                 for value in values {
@@ -53,7 +56,7 @@ class ReviewListViewConroller: UIViewController, UITableViewDataSource ,UITableV
         // セルに表示する値を設定する
         cell.postUserName.text = reviews[indexPath.row].getPostUserName()
         cell.postDateLabel.text = reviews[indexPath.row].getPostTimestamp()
-        cell.rating.text = reviews[indexPath.row].getWithWho().description
+        cell.rating.text = convertRating(i:reviews[indexPath.row].getRating())
         cell.postContent.text = reviews[indexPath.row].getReviewContent()
         return cell
     }
@@ -71,9 +74,31 @@ class ReviewListViewConroller: UIViewController, UITableViewDataSource ,UITableV
         }
     }
     
+    //日付型および形式を変換
     private func convertDateToString(d:Date) -> String {
         let f = DateFormatter()
         f.dateFormat = "yyyy/MM/dd HH:mm:ss"
         return f.string(from: d)
+    }
+    
+    //数値を評価に変換
+    private func convertRating(i:Int) -> String {
+        switch i {
+        case 0:
+            return "☆☆☆☆☆"
+        case 1:
+            return "★☆☆☆☆"
+        case 2:
+            return "★★☆☆☆"
+        case 3:
+            return "★★★☆☆"
+        case 4:
+            return "★★★★☆"
+        case 5:
+            return "★★★★★"
+        default:
+            //ここに来ることはない
+            return "評価なし"
+        }
     }
 }

@@ -21,18 +21,25 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
     @IBOutlet weak var searchBar:UISearchBar!
     @IBOutlet weak var searchView: UIView!
     
+    //DBコネクション
     public var ref:DatabaseReference!
-    
+    //ローカルストレージ
     public let userDefaults = UserDefaults.standard
+    //位置情報コントローラー
     var locManager: CLLocationManager!
+    //ピン
     var pointAno: MKPointAnnotation = MKPointAnnotation()
+    //検索履歴テーブルビュー
     var tableView: UITableView?
-    //履歴テストデータ
+    //検索履歴テストデータ のち削除
     let history = ["test","test2","test3"]
+    //履歴セクション名
     let sectionTitle = ["今日","昨日","今週","先週"]
+    //検索後ナビゲーションビュー
     var searchedPlace:VisitedPlace?
+    //ローカルストレージ保存用の行きたい場所モデル
     var wannaGoPlaces:[VisitedPlace] = []
-
+    
     override func viewDidAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: true)
         self.searchedView.isHidden = true
@@ -46,6 +53,7 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
         statusBar.backgroundColor = UIColor.init(red:45/255,green:61/255, blue: 255/255, alpha: 90/100)
         view.addSubview(statusBar)
         
+        //ローカルストレージに保存
         userDefaults.register(defaults: ["wannaGoPlaces": [wannaGoPlaces]])
         
         //serchBar入力状態でマップをシングルタップして入力解除するための処理
@@ -64,7 +72,6 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
         
         //位置情報を初期化
         initMap()
-        
         locManager = CLLocationManager()
         locManager.delegate = self
         
@@ -86,16 +93,16 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
         let y = statusBarHeight + searchHeight
         
         self.tableView = {
-                 let tableView = UITableView(frame: CGRect(x: 0, y: y, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2), style: .plain)
-                 tableView.autoresizingMask = [
-                     .flexibleWidth,
-                     .flexibleHeight
-                 ]
-                 tableView.delegate = self
-                 tableView.dataSource = self
-                 self.view.addSubview(tableView)
-                 return tableView
-             }()
+            let tableView = UITableView(frame: CGRect(x: 0, y: y, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2), style: .plain)
+            tableView.autoresizingMask = [
+                .flexibleWidth,
+                .flexibleHeight
+            ]
+            tableView.delegate = self
+            tableView.dataSource = self
+            self.view.addSubview(tableView)
+            return tableView
+        }()
         self.view.sendSubviewToBack(self.tableView!)
         self.view.addGestureRecognizer(singleTapGesture)
         
@@ -109,41 +116,38 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
     
     //シングルタップによる入力解除の処理
     @objc func singleTap(_ gesture: UITapGestureRecognizer) {
-         searchBar.endEditing(true)
+        searchBar.endEditing(true)
         self.searchBarTextDidEndEditing(_ : searchBar)
     }
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-             return 4
-           }
+        return 4
+    }
     
     //1セクションごとに表示する行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-             return 3
+        return 3
     }
     
     //セルの中身設定
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
-      ?? UITableViewCell(style: .default, reuseIdentifier: "Cell")
-
-      cell.textLabel?.text = self.history[indexPath.row]
-
-      return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
+            ?? UITableViewCell(style: .default, reuseIdentifier: "Cell")
+        
+        cell.textLabel?.text = self.history[indexPath.row]
+        
+        return cell
     }
     
     //セクションタイトルを返す
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sectionTitle[section]
     }
-        
-     
+    
+    //検索ボタンタップ時の処理
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        //TODO:履歴を検索する
         searchBar.showsCancelButton = true
         self.view.bringSubviewToFront(self.tableView!)
-
-        print("入力ボタンがタップ")
     }
     
     
@@ -154,12 +158,12 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
         self.view.endEditing(true)
         // 現在表示中のピンをすべて消す
         self.MapView.removeAnnotations(MapView.annotations)
-
+        
         // 未入力の場合は終了
         guard let address = searchBar.text else {
             return
         }
-
+        //TODO:もし海外エリアとかを検索したい場合は考えないとなぁ...
         CLGeocoder().geocodeAddressString("札幌") { [weak MapView] placemarks, error in
             guard let loc = placemarks?.first?.location?.coordinate else {
                 return
@@ -167,7 +171,7 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
             // 縮尺を設定
             let region = MKCoordinateRegion(center: loc,
                                             span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
-
+            
             Map.search(query: address, region: region) { (result) in
                 switch result {
                 case .success(let mapItems):
@@ -179,7 +183,7 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
                     }
                     
                     let point = MKCoordinateRegion(center: (mapItems.first?.placemark.coordinate)!,
-                    span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
+                                                   span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
                     MapView?.setRegion(point,animated:true)
                     self.searchedView.isHidden = false
                     
@@ -190,9 +194,6 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
                     let genre = 0
                     
                     self.searchedPlace = VisitedPlace(n: name!, t: time, la: latitude!, lo: longitude!, g: genre)
-                    
-                    
-//                    self.addDB(vPN: name!, pUN: "ごんちゃん", pUA: "24", pUG: false, vT: time, pT: time, vPG: 1, wW: 1, wWE: "", iURL: "https://www.newsweekjapan.jp/stories/assets_c/2017/04/iStock-501152239b-thumb-720xauto-110669.jpg", rC: "北海道の道都、札幌駅。今の駅になってから20年くらい？今は地下鉄札幌駅からススキノ駅まで地下道が繋がっているので便利です？札幌駅が新しくなる前からあ？ESTAビル、JRタワー、ステラプレイス、大丸とあります。JRタワーは展望台もあり札幌夜景を360度楽しめます。", memo: "")
                 case .failure(let error):
                     print("error \(error.localizedDescription)")
                 }
@@ -208,7 +209,7 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-         searchBar.endEditing(true)
+        searchBar.endEditing(true)
         self.searchBarTextDidEndEditing(_ : searchBar)
         print("キャンセルボタンがタップ")
     }
@@ -235,9 +236,8 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
         }
     }
     
+    //行きたい場所リスト追加ボタンタップ時の処理
     @IBAction func wannaGoPlaceButtonTapped(_ sender: Any) {
-
-        
         wannaGoPlaces.append(searchedPlace!)
         userDefaults.set(NSKeyedArchiver.archivedData(withRootObject: wannaGoPlaces), forKey: "wannaGoPlaces")
         navigationController?.setNavigationBarHidden(false, animated: true)
@@ -296,14 +296,8 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
     @objc func menuTaped(_ sender : UITapGestureRecognizer) {
         performSegue(withIdentifier: "topToMenuSegue", sender: self)
     }
-        
-//    func addDB(vPN:String,pUN:String,pUA:String,pUG:Bool,vT:Date,pT:Date,vPG:Int,wW:Int,wWE:String,iURL:String,rC:String,memo:String) {
-//        ref = Database.database().reference();
-//        let review = Review(vPN: vPN, pUN: pUN, pUA: pUA, pUG: pUG, vT: vT, pT: pT, vPG: vPG, wW: wW, wWE: wWE, iURL: iURL, rC: rC, memo: memo)
-//        let newRf = ref.child("reviews").child(vPN).childByAutoId()
-//        newRf.setValue(review.toDictionary())
-//    }
 }
+//マップローカル検索用の拡張クラス
 extension MKPlacemark {
     var address: String {
         let components = [self.administrativeArea, self.locality, self.thoroughfare, self.subThoroughfare]
@@ -315,15 +309,15 @@ struct Map {
         case success(T)
         case failure(Error)
     }
-
+    
     static func search(query: String, region: MKCoordinateRegion? = nil, completionHandler: @escaping (Result<[MKMapItem]>) -> Void) {
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = query
-
+        
         if let region = region {
             request.region = region
         }
-
+        
         MKLocalSearch(request: request).start { (response, error) in
             if let error = error {
                 completionHandler(.failure(error))

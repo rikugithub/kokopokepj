@@ -13,9 +13,10 @@ class ReviewListViewConroller: UIViewController, UITableViewDataSource ,UITableV
     
     @IBOutlet weak var tableView:UITableView!
     
+    public var areaName:String = ""
     var ref: DatabaseReference!
     var reviews:[Review] = []
-    var areaName:String = ""
+    var target:Review?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,7 @@ class ReviewListViewConroller: UIViewController, UITableViewDataSource ,UITableV
                     let review = Review(dic: val)
                     self.reviews.append(review)
                 }
+                //API通信が完了時にテーブルをリロード
                 self.tableView.reloadData()
             }
         })
@@ -41,6 +43,7 @@ class ReviewListViewConroller: UIViewController, UITableViewDataSource ,UITableV
         return reviews.count
     }
     
+    //cellの高さを指定
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
@@ -56,11 +59,18 @@ class ReviewListViewConroller: UIViewController, UITableViewDataSource ,UITableV
     }
     //cellが選択された時の処理
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        target = reviews[indexPath.row]
         performSegue(withIdentifier: "reviewToDetailSegue", sender: self)
     }
     
-    func convertDateToString(d:Date) -> String {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "reviewToDetailSegue" {
+            let nextVC = segue.destination as! ReviewDetailViewConroller
+            nextVC.review = target
+        }
+    }
+    
+    private func convertDateToString(d:Date) -> String {
         let f = DateFormatter()
         f.dateFormat = "yyyy/MM/dd HH:mm:ss"
         return f.string(from: d)

@@ -19,6 +19,13 @@ class ReviewPostFormViewController: UIViewController , UIPickerViewDelegate, UIP
     @IBOutlet weak var evaluationDisplay: UIImageView!
     @IBOutlet weak var pickerView: UIPickerView!
     
+    //　画像を定義
+    var img1 = UIImage(named:"1")!
+    var img2 = UIImage(named:"2")!
+    var img3 = UIImage(named:"3")!
+    var img4 = UIImage(named:"4")!
+    var img5 = UIImage(named:"5")!
+    
     // ジャンル内容
     let dataList = [
         "飲食","娯楽","ショッピング","交通",
@@ -60,6 +67,24 @@ class ReviewPostFormViewController: UIViewController , UIPickerViewDelegate, UIP
                     didSelectRow row: Int,
                     inComponent component: Int) {
         
+    }
+    
+    // 評価を表示
+    @IBAction func evaluationOne(_ sender: UIButton) {
+        evaluationDisplay.image = img1
+    }
+    @IBAction func evaluationTwo(_ sender: UIButton) {
+        evaluationDisplay.image = img2
+    }
+    @IBAction func evaluationThree(_ sender: UIButton) {
+        evaluationDisplay.image = img3
+    }
+    
+    @IBAction func evaluationFour(_ sender: UIButton) {
+        evaluationDisplay.image = img4
+    }
+    @IBAction func evaluationFive(_ sender: UIButton) {
+        evaluationDisplay.image = img5
     }
     
     @IBAction func postButtonTapped(_ sender: Any) {

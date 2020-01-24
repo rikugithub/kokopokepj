@@ -21,10 +21,18 @@ class ViewController: UIViewController {
         //起動画面の表示タイマーを2秒に設定
         let _ : Timer = Timer.scheduledTimer(timeInterval:2, target: self, selector: #selector(pageTransition), userInfo: nil, repeats: false)
         
+        
+        initLoaclStrage()
     }
     //top画面へ遷移
     @objc func pageTransition(timer : Timer) {
         performSegue(withIdentifier: "splashToTopSegue", sender: self)
+    }
+    
+    //ローカルストレージを初期化
+    private func initLoaclStrage() {
+      let appDomain = Bundle.main.bundleIdentifier
+      UserDefaults.standard.removePersistentDomain(forName: appDomain!)
     }
 }
 

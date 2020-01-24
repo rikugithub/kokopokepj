@@ -20,30 +20,41 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
     @IBOutlet weak var searchedView: UIView!
     @IBOutlet weak var searchBar:UISearchBar!
     @IBOutlet weak var searchView: UIView!
-    
     //DBコネクション
     public var ref:DatabaseReference!
+    
     //ローカルストレージ
     public let userDefaults = UserDefaults.standard
+    
     //位置情報コントローラー
     var locManager: CLLocationManager!
+    
     //ピン
     var pointAno: MKPointAnnotation = MKPointAnnotation()
+    
     //検索履歴テーブルビュー
     var tableView: UITableView?
-    //検索履歴テストデータ のち削除
-    let history = ["test","test2","test3"]
+    
     //履歴セクション名
-    let sectionTitle = ["今日","昨日","今週","先週"]
+    let sectionTitle = ["今日","昨日","今週"]
+    
     //検索後ナビゲーションビュー
     var searchedPlace:VisitedPlace?
-    //ローカルストレージ保存用の行きたい場所モデル
+    
+    //ストレージ保存用の行きたい場所モデル
     var wannaGoPlaces:[VisitedPlace] = []
+    
+    //検索履歴モデル
+    var history:History!
+    
+    var a: String?
+    
     
     override func viewDidAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: true)
         self.searchedView.isHidden = true
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,16 +64,13 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
         statusBar.backgroundColor = UIColor.init(red:45/255,green:61/255, blue: 255/255, alpha: 90/100)
         view.addSubview(statusBar)
         
-        //ローカルストレージに保存
+        //ストレージに保存
         userDefaults.register(defaults: ["wannaGoPlaces": [wannaGoPlaces]])
-        
-        //serchBar入力状態でマップをシングルタップして入力解除するための処理
-        let singleTapGesture = UITapGestureRecognizer(target: self, action: #selector(singleTap(_:)))
-        singleTapGesture.numberOfTapsRequired = 1
-        
+
         //ナビゲーションバーの非表示
         navigationController?.setNavigationBarHidden(true, animated: true)
         menuButton.isUserInteractionEnabled = true
+        
         //menuButtonがタップされたら呼ばれる
         menuButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.menuTaped(_:))))
         
@@ -87,6 +95,7 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
                 break
             }
         }
+        
         //tableviewの位置を自動調整
         let statusBarHeight: CGFloat = UIApplication.shared.statusBarFrame.height
         let searchHeight = searchView.bounds.height
@@ -100,11 +109,12 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
             ]
             tableView.delegate = self
             tableView.dataSource = self
+            tableView.register(HistoryTableViewCell.self, forCellReuseIdentifier: "history")
             self.view.addSubview(tableView)
             return tableView
         }()
+        
         self.view.sendSubviewToBack(self.tableView!)
-        self.view.addGestureRecognizer(singleTapGesture)
         
         //検索時メニューバーの設定
         let height = self.view.bounds.height/4
@@ -112,48 +122,89 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
         searchedView.frame = CGRect(x: 0, y: self.view.bounds.height - height, width: width, height: height)
         searchedView.backgroundColor = UIColor.white
         self.searchedView.isHidden = true
+        
+        history = loadHistory()
     }
-    
+
     //シングルタップによる入力解除の処理
-    @objc func singleTap(_ gesture: UITapGestureRecognizer) {
+    @objc func singleTap() {
         searchBar.endEditing(true)
         self.searchBarTextDidEndEditing(_ : searchBar)
+        self.view.sendSubviewToBack(self.tableView!)
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 3
     }
-    
+
     //1セクションごとに表示する行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        //TODO:表示件数の制限
+        switch section {
+        case 0:
+            return history.getTodayHistoryWord().count
+        case 1:
+            return history.getYesHistoryWord().count
+        case 2:
+            return history.getLastWeekHistoryWord().count
+        default:
+            return 0
+        }
     }
     
     //セルの中身設定
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
-            ?? UITableViewCell(style: .default, reuseIdentifier: "Cell")
-        
-        cell.textLabel?.text = self.history[indexPath.row]
-        
+        let cell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "history", for: indexPath)
+        cell.textLabel!.text = sortHistoryWord(indexPath: indexPath)
         return cell
     }
     
-    //セクションタイトルを返す
+    //セクションタイトルを返す。履歴がなかったら何も表示しない
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sectionTitle[section]
     }
     
     //検索ボタンタップ時の処理
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = true
         self.view.bringSubviewToFront(self.tableView!)
+        searchBar.showsCancelButton = true
+    }
+
+    //cellが選択された時の処理
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        singleTap()
+        let word = sortHistoryWord(indexPath: indexPath)
+        mapSearch(address: word)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    func sortHistoryWord(indexPath:IndexPath) -> String {
+        switch indexPath.section {
+        case 0:
+            //今日
+            let model = history.getTodayHistoryWord()[indexPath.row]
+            return model.getWord()
+        case 1:
+            //昨日
+            let model = history.getYesHistoryWord()[indexPath.row]
+            return model.getWord()
+        case 2:
+            //一週間前
+            let model = history.getLastWeekHistoryWord()[indexPath.row]
+            return model.getWord()
+        default:
+            //FIXME: 暫定
+            return "none"
+        }
+    }
     
+    //検索ボタン押下時の処理
     func searchBarSearchButtonClicked(_ searchBar:UISearchBar) {
         
+        //履歴表示を消す
         self.view.sendSubviewToBack(self.tableView!)
+        
         // キーボードを閉じる
         self.view.endEditing(true)
         // 現在表示中のピンをすべて消す
@@ -163,6 +214,23 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
         guard let address = searchBar.text else {
             return
         }
+        
+        a = searchBar.text
+        //検索ワードをローカルストレージへ登録
+        let word = searchWord(word: address, timestamp: Date())
+        history.append(searchWord: word)
+        userDefaults.set(NSKeyedArchiver.archivedData(withRootObject: history), forKey: "history")
+        
+        mapSearch(address: address)
+        
+        self.searchBar.text = ""
+        history = loadHistory()
+        tableView?.reloadData()
+    }
+
+        
+        
+    func mapSearch(address:String){
         //TODO:もし海外エリアとかを検索したい場合は考えないとなぁ...
         CLGeocoder().geocodeAddressString("札幌") { [weak MapView] placemarks, error in
             guard let loc = placemarks?.first?.location?.coordinate else {
@@ -199,8 +267,6 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
                 }
             }
         }
-        //検索バーを空欄にする
-        self.searchBar.text = ""
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar){
@@ -209,9 +275,17 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
         searchBar.endEditing(true)
         self.searchBarTextDidEndEditing(_ : searchBar)
+        self.view.sendSubviewToBack(self.searchedView!)
         print("キャンセルボタンがタップ")
+    }
+    
+    //検索ワードの初期化
+    func clearCache() {
+        history.clear()
+        userDefaults.set(NSKeyedArchiver.archivedData(withRootObject: history),forKey: "history")
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations:[CLLocation]) {
@@ -243,6 +317,21 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
         navigationController?.setNavigationBarHidden(false, animated: true)
         performSegue(withIdentifier: "topToWantSegue", sender: self)
     }
+    
+    //確認ボタンタップ時の処理
+    @IBAction func mapCheckButtonTapped(_ sender: Any) {
+        performSegue(withIdentifier: "topToDetailsSegue",sender: self)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if segue.identifier == "topToDetailsSegue" {
+                //遷移先ViewCntrollerの取得
+                let nextView = segue.destination as! LocationDetailsViewController
+                //値の設定
+                //searchBarの値がここが呼ばれる前に初期化されてるので、何かで値をもらいたい！
+                nextView.address = a!
+            }
+        }
     
     func initMap() {
         // 縮尺を設定
@@ -296,6 +385,17 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
     @objc func menuTaped(_ sender : UITapGestureRecognizer) {
         performSegue(withIdentifier: "topToMenuSegue", sender: self)
     }
+
+    
+    //ローカルストレージから読み込み。
+    func loadHistory() -> History {
+        if let loadedData = UserDefaults().data(forKey: "history") {
+            let history = NSKeyedUnarchiver.unarchiveObject(with: loadedData) as! History
+            return history
+        } else {
+            return History()
+        }
+    }
 }
 //マップローカル検索用の拡張クラス
 extension MKPlacemark {
@@ -304,6 +404,7 @@ extension MKPlacemark {
         return components.compactMap { $0 }.joined(separator: "")
     }
 }
+
 struct Map {
     enum Result<T> {
         case success(T)

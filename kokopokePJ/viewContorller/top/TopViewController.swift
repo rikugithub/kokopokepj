@@ -312,8 +312,63 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
     
     //ナビ開始ボタンタップ時の処理
     @IBAction func naviStartButtonTapped(_ sender: Any) {
-        
-    }
+         //座標の配列
+            let coordinatesArray = [
+                ["name":"開始位置",    "lat":35.68124,  "lon": 139.76672],
+                ["name":"目的地",   "lat":35.68026,  "lon": 139.75801]
+            ]
+         
+        func viewDidLoad() {
+                super.viewDidLoad()
+            self.MapView.delegate = self as? MKMapViewDelegate
+                makeMap()
+            }
+            
+            func makeMap(){
+                //マップの表示域を設定
+                let coordinate = CLLocationCoordinate2DMake(coordinatesArray[0]["lat"] as! CLLocationDegrees, coordinatesArray[0]["lon"] as! CLLocationDegrees)
+                let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+                let region = MKCoordinateRegion(center: coordinate, span: span)
+                self.MapView.setRegion(region, animated: true)
+                
+                
+                var routeCoordinates: [CLLocationCoordinate2D] = []
+                for i in 0..<coordinatesArray.count {
+                    let annotation = MKPointAnnotation()
+                    let annotationCoordinate = CLLocationCoordinate2DMake(coordinatesArray[i]["lat"] as! CLLocationDegrees, coordinatesArray[i]["lon"] as! CLLocationDegrees)
+                    annotation.coordinate = annotationCoordinate
+                    routeCoordinates.append(annotationCoordinate)
+                    self.MapView.addAnnotation(annotation)
+                }
+                var myRoute: MKRoute!
+                let directionsRequest = MKDirections.Request()
+                var placemarks = [MKMapItem]()
+                //routeCoordinatesの配列からMKMapItemの配列にに変換
+                for item in routeCoordinates{
+                    let placemark = MKPlacemark(coordinate: item, addressDictionary: nil)
+                    placemarks.append(MKMapItem(placemark: placemark))
+                }
+                directionsRequest.transportType = .walking //移動手段は徒歩
+                for (k, item) in placemarks.enumerated(){
+                    if k < (placemarks.count - 1){
+                        directionsRequest.source = item //スタート地点
+                        directionsRequest.destination = placemarks[k + 1] //目標地点
+                        let direction = MKDirections(request: directionsRequest)
+                        direction.calculate(completionHandler: {(response, error) in
+                            if error == nil {
+                                myRoute = response?.routes[0]
+                                self.MapView.addOverlay(myRoute.polyline, level: .aboveRoads) //mapViewに絵画
+                            }
+                        })
+                    }
+                }
+                //ルートがマップに収まるように
+                if let firstOverlay = self.MapView.overlays.first{
+                    let rect = self.MapView.overlays.reduce(firstOverlay.boundingMapRect, {$0.union($1.boundingMapRect)})
+                    self.MapView.setVisibleMapRect(rect, edgePadding: UIEdgeInsets(top: 35, left: 35, bottom: 35, right: 35), animated: true)
+                }
+            }
+        }
     
     //行きたい場所リスト追加ボタンタップ時の処理
     @IBAction func wannaGoPlaceButtonTapped(_ sender: Any) {
@@ -422,4 +477,16 @@ struct Map {
             completionHandler(.success(response?.mapItems ?? []))
         }
     }
+}
+
+extension ViewController:MKMapViewDelegate {
+        
+        //ピンを繋げている線の幅や色を調整
+        func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+            let route: MKPolyline = overlay as! MKPolyline
+            let routeRenderer = MKPolylineRenderer(polyline: route)
+            routeRenderer.strokeColor = UIColor(red:1.00, green:0.35, blue:0.30, alpha:1.0)
+            routeRenderer.lineWidth = 3.0
+            return routeRenderer
+        }
 }

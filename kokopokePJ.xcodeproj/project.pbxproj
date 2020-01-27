@@ -24,6 +24,8 @@
 		24CAC74C23ADD45800D5CE94 /* VisitedPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CAC74B23ADD45800D5CE94 /* VisitedPlace.swift */; };
 		24CAC74E23ADD46500D5CE94 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CAC74D23ADD46500D5CE94 /* Review.swift */; };
 		32D74D26239DE4B300CA2BBE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32D74D25239DE4B300CA2BBE /* GoogleService-Info.plist */; };
+		32FDBAA123DE71D3003411B1 /* PhotoReviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FDBAA023DE71D3003411B1 /* PhotoReviewController.swift */; };
+		32FDBAA323DE7470003411B1 /* ProfanityFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FDBAA223DE7470003411B1 /* ProfanityFilter.swift */; };
 		440BF85423D6DA1C008FB96B /* sarchWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440BF85323D6DA1C008FB96B /* sarchWord.swift */; };
 		440BF85623D97F71008FB96B /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440BF85523D97F71008FB96B /* HistoryTableViewCell.swift */; };
 		4412846A23974CAC0025E051 /* whiteLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4412846923974CAC0025E051 /* whiteLogo.png */; };
@@ -66,6 +68,8 @@
 		24CAC74B23ADD45800D5CE94 /* VisitedPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedPlace.swift; sourceTree = "<group>"; };
 		24CAC74D23ADD46500D5CE94 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		32D74D25239DE4B300CA2BBE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		32FDBAA023DE71D3003411B1 /* PhotoReviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoReviewController.swift; sourceTree = "<group>"; };
+		32FDBAA223DE7470003411B1 /* ProfanityFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfanityFilter.swift; sourceTree = "<group>"; };
 		3D174E553BD93697ABB53BDD /* Pods-kokopokePJ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kokopokePJ.release.xcconfig"; path = "Target Support Files/Pods-kokopokePJ/Pods-kokopokePJ.release.xcconfig"; sourceTree = "<group>"; };
 		440BF85323D6DA1C008FB96B /* sarchWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sarchWord.swift; sourceTree = "<group>"; };
 		440BF85523D97F71008FB96B /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -118,6 +122,8 @@
 		247CD10023AF0CE5001B2768 /* viewContorller */ = {
 			isa = PBXGroup;
 			children = (
+				32FDBAA223DE7470003411B1 /* ProfanityFilter.swift */,
+				32FDBA9F23DE71D3003411B1 /* Photo */,
 				247CD10323AF0DAD001B2768 /* splash */,
 				247CD10223AF0D8E001B2768 /* top */,
 				247CD10F23AF12F8001B2768 /* locationDetail */,
@@ -257,6 +263,14 @@
 				A9FD560223AC50AE006CBE77 /* LocationIDetailsViewController.swift */,
 			);
 			path = locationDetail;
+			sourceTree = "<group>";
+		};
+		32FDBA9F23DE71D3003411B1 /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				32FDBAA023DE71D3003411B1 /* PhotoReviewController.swift */,
+			);
+			path = Photo;
 			sourceTree = "<group>";
 		};
 		44263F5F2394B750008D0BA3 = {
@@ -460,10 +474,12 @@
 				24741E6323A31EEE00B41FE1 /* SettingViewController.swift in Sources */,
 				44913CEC23B08A02003CA29E /* History.swift in Sources */,
 				2459DECE23A75E24006027A1 /* ReviewPostViewConroller.swift in Sources */,
+				32FDBAA323DE7470003411B1 /* ProfanityFilter.swift in Sources */,
 				44263F6C2394B750008D0BA3 /* AppDelegate.swift in Sources */,
 				44263F6E2394B750008D0BA3 /* SceneDelegate.swift in Sources */,
 				24CAC74C23ADD45800D5CE94 /* VisitedPlace.swift in Sources */,
 				2459DECF23A75E24006027A1 /* ReviewDetailViewConroller.swift in Sources */,
+				32FDBAA123DE71D3003411B1 /* PhotoReviewController.swift in Sources */,
 				24741E6123A31E5D00B41FE1 /* VisiteDetailsViewController.swift in Sources */,
 				2459DECD23A75E24006027A1 /* ReviewListViewConroller.swift in Sources */,
 				440BF85423D6DA1C008FB96B /* sarchWord.swift in Sources */,

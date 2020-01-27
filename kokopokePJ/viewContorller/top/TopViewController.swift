@@ -310,6 +310,11 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
         }
     }
     
+    //ナビ開始ボタンタップ時の処理
+    @IBAction func naviStartButtonTapped(_ sender: Any) {
+        
+    }
+    
     //行きたい場所リスト追加ボタンタップ時の処理
     @IBAction func wannaGoPlaceButtonTapped(_ sender: Any) {
         wannaGoPlaces.append(searchedPlace!)
@@ -367,15 +372,6 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
             let tapPoint = sender.location(in: view)
             let center = MapView.convert(tapPoint, toCoordinateFrom: MapView)
             
-            let lonStr = center.longitude.description
-            let latStr = center.latitude.description
-            print("lon : " + lonStr)
-            print("lat : " + latStr)
-            
-            // 現在位置とタッウプした位置の距離(m)を算出する
-            let distance = calcDistance(MapView.userLocation.coordinate, center)
-            print("distance : " + distance.description)
-            
             // ロングタップを検出した位置にピンを立てる
             pointAno.coordinate = center
             MapView.addAnnotation(pointAno)
@@ -386,7 +382,6 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
         performSegue(withIdentifier: "topToMenuSegue", sender: self)
     }
 
-    
     //ローカルストレージから読み込み。
     func loadHistory() -> History {
         if let loadedData = UserDefaults().data(forKey: "history") {

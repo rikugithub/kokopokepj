@@ -599,7 +599,7 @@
             <objects>
                 <viewController storyboardIdentifier="reviewComplete" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wiO-pI-efJ" customClass="ReviewCompleteViewConroller" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QYy-UE-UHS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="arrow.left.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="TOV-Ee-cbb">
@@ -635,6 +635,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6x7-e1-w5a"/>
                     </view>
+                    <navigationItem key="navigationItem" id="OAO-eE-F7v"/>
                     <connections>
                         <outlet property="backToReviewCompleteFromReviewPost" destination="TOV-Ee-cbb" id="xXh-g5-JuN"/>
                     </connections>
@@ -1849,6 +1850,10 @@
                                                     <rect key="frame" x="172" y="6" width="31" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="投稿"/>
+                                                    <connections>
+                                                        <action selector="touch:" destination="ovv-Gx-5pI" eventType="touchUpInside" id="uEl-fT-mj1"/>
+                                                        <segue destination="wiO-pI-efJ" kind="presentation" id="FyY-H0-yNc"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>

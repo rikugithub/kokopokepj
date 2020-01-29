@@ -7,23 +7,19 @@
 //
 
 import UIKit
+import Firebase
 
 class ReviewConfirmViewConroller: UITableViewController {
-
     
     @IBOutlet weak var postHostLabel: UILabel!
-    
     @IBOutlet weak var visitedDay: UILabel!
-    
     @IBOutlet weak var evaluationLabel: UILabel!
-    
     @IBOutlet weak var genreLabel: UILabel!
-    
     @IBOutlet weak var withHuman: UILabel!
-    
     @IBOutlet weak var imageViewTwo: UIImageView!
-    
     @IBOutlet weak var reviewLabel: UILabel!
+    
+    var ref = Database.database().reference();
     
     var postHostText:String?
     var visitedDayText:String?
@@ -32,7 +28,6 @@ class ReviewConfirmViewConroller: UITableViewController {
     var withHumanText:String?
     var imageViewImg:UIImage?
     var reviewText:String?
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,8 +39,15 @@ class ReviewConfirmViewConroller: UITableViewController {
         withHuman.text = withHumanText
         imageViewTwo.image = imageViewImg
         reviewLabel.text = reviewText
-       
+        
     }
     
+    @IBAction func postTouch(_ sender: Any) {
+        func addDB(vPN:String,pUN:String,pUA:String,pUG:Bool,vT:String,pT:String,vPG:Int,wW:Int,wWE:String,iURL:String,rC:String,memo:String) {
+            let review = Review(vPN: vPN, pUN: pUN, pUA: pUA, pUG: pUG, vT: vT, pT: pT,rt: 1, vPG: vPG, wW: wW, wWE: wWE, iURL: iURL, rC: rC, memo: memo)
+            let newRf = ref.child("reviews").child(vPN).childByAutoId()
+            newRf.setValue(review.toDictionary())
+        }
+    }
 }
 

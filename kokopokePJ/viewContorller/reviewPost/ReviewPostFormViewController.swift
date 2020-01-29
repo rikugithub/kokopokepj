@@ -8,9 +8,9 @@
 
 import UIKit
 import Firebase
- 
+
 class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource ,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-  
+    
     @IBOutlet weak var reviewShareSwitch: UISwitch!
     @IBOutlet weak var authorSettingSwitch: UISwitch!
     @IBOutlet weak var postHostName: UITextField!
@@ -46,7 +46,7 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
     let genreList = [
         " ","飲食","娯楽","ショッピング","交通",
         "生活","ゲーム","その他"
-
+        
     ]
     
     let withList = [
@@ -72,7 +72,7 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
         // インプットビュー設定(紐づいているUITextfieldへ代入)
         visitedDateInputFiled.inputView = datePicker
         visitedDateInputFiled.inputAccessoryView = startToolbar
-         
+        
         
         //ジャンルピッカーの設定
         genrePicker.delegate = self
@@ -101,41 +101,40 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
         imageClipButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.addImageButtonTapped(_:))))
     }
     
-      
-        
-//       if let remoteUrl = params.photoURL {
-//         do {
-//           let url = URL(string: remoteUrl.absoluteString)
-//           let data = try Data(contentsOf: url!)
-//           self.myProfileImg.image = UIImage(data: data)
-//         } catch {
-//           print(error)
-//         }
-//       }
     
-     @objc func addImageButtonTapped(_ sender : UITapGestureRecognizer) {
-       imagePicker.allowsEditing = true //画像の切り抜きが出来るようになります。
-       imagePicker.sourceType = .photoLibrary //画像ライブラリを呼び出します
-       present(imagePicker, animated: true, completion: nil)
-     }
-      
-     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-       if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-         visitedImageView.contentMode = .scaleAspectFit
-         visitedImageView.image = pickedImage
-       }
-       dismiss(animated: true, completion: nil)
-     }
-      
-     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-       dismiss(animated: true, completion: nil)
-     }
+    //       if let remoteUrl = params.photoURL {
+    //         do {
+    //           let url = URL(string: remoteUrl.absoluteString)
+    //           let data = try Data(contentsOf: url!)
+    //           self.myProfileImg.image = UIImage(data: data)
+    //         } catch {
+    //           print(error)
+    //         }
+    //       }
+    
+    @objc func addImageButtonTapped(_ sender : UITapGestureRecognizer) {
+        imagePicker.allowsEditing = true //画像の切り抜きが出来るようになります。
+        imagePicker.sourceType = .photoLibrary //画像ライブラリを呼び出します
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            visitedImageView.contentMode = .scaleAspectFit
+            visitedImageView.image = pickedImage
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
     
     @objc func genreCancel() {
         self.genreInputFiled.text = ""
         self.genreInputFiled.endEditing(true)
     }
-
+    
     @objc func genreDone() {
         self.genreInputFiled.endEditing(true)
     }
@@ -144,21 +143,21 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
         self.whoWithInputFiled.text = ""
         self.whoWithInputFiled.endEditing(true)
     }
-
+    
     @objc func whoWithDone() {
         self.whoWithInputFiled.endEditing(true)
     }
     
     @objc func start() {
-      visitedDateInputFiled.endEditing(true)
-      let startDate = dateFormat()
-      visitedDateInputFiled.text = startDate
+        visitedDateInputFiled.endEditing(true)
+        let startDate = dateFormat()
+        visitedDateInputFiled.text = startDate
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView.tag == 1 {
             return genreList.count
@@ -166,7 +165,7 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
             return withList.count
         }
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView.tag == 1 {
             return genreList[row]
@@ -174,7 +173,7 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
             return withList[row]
         }
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView.tag == 1 {
             self.genreInputFiled.text = genreList[row]
@@ -184,21 +183,15 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
     }
     
     private func dateFormat() -> String {
-      // 日付のフォーマット
-      let formatter = DateFormatter()
-      //“yyyy年MM月dd日“を”yyyy/MM/dd”したりして出力の仕方を好きに変更できるよ
-      formatter.dateFormat = "yyyy年MM月dd日"
-      //(from: datePicker.date))を指定してあげることで
-      //datePickerで指定した日付が表示される
-      return formatter.string(from: datePicker.date)
+        // 日付のフォーマット
+        let formatter = DateFormatter()
+        //“yyyy年MM月dd日“を”yyyy/MM/dd”したりして出力の仕方を好きに変更できるよ
+        formatter.dateFormat = "yyyy年MM月dd日"
+        //(from: datePicker.date))を指定してあげることで
+        //datePickerで指定した日付が表示される
+        return formatter.string(from: datePicker.date)
     }
     
-    @IBAction func tappedPostButton(_ sender: Any) {
-        let text = reviewText.text!
-        let result = ProfanityFilter.cleanUp(text)
-        print(result)
-        
-    }
     // 評価を表示
     @IBAction func evaluationOne(_ sender: UIButton) {
         evaluationDisplay.image = img1
@@ -222,6 +215,9 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
     
     @IBAction func postButtonTapped(_ sender: Any) {
         performSegue(withIdentifier: "postToConfirmSegue", sender: self)
+        let text = reviewText.text!
+        let result = ProfanityFilter.cleanUp(text)
+        print(result)
     }
     
     private func checkEvalution() {
@@ -271,8 +267,6 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
                 nextVC.reviewText = reviewText
                 
             }
-            
-            
         }
     }
 }

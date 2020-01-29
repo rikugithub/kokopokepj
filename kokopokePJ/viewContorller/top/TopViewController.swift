@@ -11,6 +11,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import Firebase
+import Photos
 
 class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerDelegate,UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource {
     
@@ -20,6 +21,9 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
     @IBOutlet weak var searchedView: UIView!
     @IBOutlet weak var searchBar:UISearchBar!
     @IBOutlet weak var searchView: UIView!
+    
+    let storage = Storage.storage()
+    
     //DBコネクション
     public var ref:DatabaseReference!
     
@@ -66,7 +70,7 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
         
         //ストレージに保存
         userDefaults.register(defaults: ["wannaGoPlaces": [wannaGoPlaces]])
-
+        
         //ナビゲーションバーの非表示
         navigationController?.setNavigationBarHidden(true, animated: true)
         menuButton.isUserInteractionEnabled = true
@@ -125,7 +129,7 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
         
         history = loadHistory()
     }
-
+    
     //シングルタップによる入力解除の処理
     @objc func singleTap() {
         searchBar.endEditing(true)
@@ -137,7 +141,7 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
-
+    
     //1セクションごとに表示する行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //TODO:表示件数の制限
@@ -170,7 +174,7 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
         self.view.bringSubviewToFront(self.tableView!)
         searchBar.showsCancelButton = true
     }
-
+    
     //cellが選択された時の処理
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         singleTap()
@@ -227,9 +231,9 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
         history = loadHistory()
         tableView?.reloadData()
     }
-
-        
-        
+    
+    
+    
     func mapSearch(address:String){
         //TODO:もし海外エリアとかを検索したい場合は考えないとなぁ...
         CLGeocoder().geocodeAddressString("札幌") { [weak MapView] placemarks, error in
@@ -312,63 +316,63 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
     
     //ナビ開始ボタンタップ時の処理
     @IBAction func naviStartButtonTapped(_ sender: Any) {
-         //座標の配列
-            let coordinatesArray = [
-                ["name":"開始位置",    "lat":35.68124,  "lon": 139.76672],
-                ["name":"目的地",   "lat":35.68026,  "lon": 139.75801]
-            ]
-         
+        //座標の配列
+        let coordinatesArray = [
+            ["name":"開始位置",    "lat":35.68124,  "lon": 139.76672],
+            ["name":"目的地",   "lat":35.68026,  "lon": 139.75801]
+        ]
+        
         func viewDidLoad() {
-                super.viewDidLoad()
+            super.viewDidLoad()
             self.MapView.delegate = self as? MKMapViewDelegate
-                makeMap()
-            }
+            makeMap()
+        }
+        
+        func makeMap(){
+            //マップの表示域を設定
+            let coordinate = CLLocationCoordinate2DMake(coordinatesArray[0]["lat"] as! CLLocationDegrees, coordinatesArray[0]["lon"] as! CLLocationDegrees)
+            let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+            let region = MKCoordinateRegion(center: coordinate, span: span)
+            self.MapView.setRegion(region, animated: true)
             
-            func makeMap(){
-                //マップの表示域を設定
-                let coordinate = CLLocationCoordinate2DMake(coordinatesArray[0]["lat"] as! CLLocationDegrees, coordinatesArray[0]["lon"] as! CLLocationDegrees)
-                let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-                let region = MKCoordinateRegion(center: coordinate, span: span)
-                self.MapView.setRegion(region, animated: true)
-                
-                
-                var routeCoordinates: [CLLocationCoordinate2D] = []
-                for i in 0..<coordinatesArray.count {
-                    let annotation = MKPointAnnotation()
-                    let annotationCoordinate = CLLocationCoordinate2DMake(coordinatesArray[i]["lat"] as! CLLocationDegrees, coordinatesArray[i]["lon"] as! CLLocationDegrees)
-                    annotation.coordinate = annotationCoordinate
-                    routeCoordinates.append(annotationCoordinate)
-                    self.MapView.addAnnotation(annotation)
+            
+            var routeCoordinates: [CLLocationCoordinate2D] = []
+            for i in 0..<coordinatesArray.count {
+                let annotation = MKPointAnnotation()
+                let annotationCoordinate = CLLocationCoordinate2DMake(coordinatesArray[i]["lat"] as! CLLocationDegrees, coordinatesArray[i]["lon"] as! CLLocationDegrees)
+                annotation.coordinate = annotationCoordinate
+                routeCoordinates.append(annotationCoordinate)
+                self.MapView.addAnnotation(annotation)
+            }
+            var myRoute: MKRoute!
+            let directionsRequest = MKDirections.Request()
+            var placemarks = [MKMapItem]()
+            //routeCoordinatesの配列からMKMapItemの配列にに変換
+            for item in routeCoordinates{
+                let placemark = MKPlacemark(coordinate: item, addressDictionary: nil)
+                placemarks.append(MKMapItem(placemark: placemark))
+            }
+            directionsRequest.transportType = .walking //移動手段は徒歩
+            for (k, item) in placemarks.enumerated(){
+                if k < (placemarks.count - 1){
+                    directionsRequest.source = item //スタート地点
+                    directionsRequest.destination = placemarks[k + 1] //目標地点
+                    let direction = MKDirections(request: directionsRequest)
+                    direction.calculate(completionHandler: {(response, error) in
+                        if error == nil {
+                            myRoute = response?.routes[0]
+                            self.MapView.addOverlay(myRoute.polyline, level: .aboveRoads) //mapViewに絵画
+                        }
+                    })
                 }
-                var myRoute: MKRoute!
-                let directionsRequest = MKDirections.Request()
-                var placemarks = [MKMapItem]()
-                //routeCoordinatesの配列からMKMapItemの配列にに変換
-                for item in routeCoordinates{
-                    let placemark = MKPlacemark(coordinate: item, addressDictionary: nil)
-                    placemarks.append(MKMapItem(placemark: placemark))
-                }
-                directionsRequest.transportType = .walking //移動手段は徒歩
-                for (k, item) in placemarks.enumerated(){
-                    if k < (placemarks.count - 1){
-                        directionsRequest.source = item //スタート地点
-                        directionsRequest.destination = placemarks[k + 1] //目標地点
-                        let direction = MKDirections(request: directionsRequest)
-                        direction.calculate(completionHandler: {(response, error) in
-                            if error == nil {
-                                myRoute = response?.routes[0]
-                                self.MapView.addOverlay(myRoute.polyline, level: .aboveRoads) //mapViewに絵画
-                            }
-                        })
-                    }
-                }
-                //ルートがマップに収まるように
-                if let firstOverlay = self.MapView.overlays.first{
-                    let rect = self.MapView.overlays.reduce(firstOverlay.boundingMapRect, {$0.union($1.boundingMapRect)})
-                    self.MapView.setVisibleMapRect(rect, edgePadding: UIEdgeInsets(top: 35, left: 35, bottom: 35, right: 35), animated: true)
-                }
+            }
+            //ルートがマップに収まるように
+            if let firstOverlay = self.MapView.overlays.first{
+                let rect = self.MapView.overlays.reduce(firstOverlay.boundingMapRect, {$0.union($1.boundingMapRect)})
+                self.MapView.setVisibleMapRect(rect, edgePadding: UIEdgeInsets(top: 35, left: 35, bottom: 35, right: 35), animated: true)
             }
         }
+    }
     
     //行きたい場所リスト追加ボタンタップ時の処理
     @IBAction func wannaGoPlaceButtonTapped(_ sender: Any) {
@@ -382,16 +386,16 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
     @IBAction func mapCheckButtonTapped(_ sender: Any) {
         performSegue(withIdentifier: "topToDetailsSegue",sender: self)
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if segue.identifier == "topToDetailsSegue" {
-                //遷移先ViewCntrollerの取得
-                let nextView = segue.destination as! LocationDetailsViewController
-                //値の設定
-                //searchBarの値がここが呼ばれる前に初期化されてるので、何かで値をもらいたい！
-                nextView.address = a!
-            }
+        if segue.identifier == "topToDetailsSegue" {
+            //遷移先ViewCntrollerの取得
+            let nextView = segue.destination as! LocationDetailsViewController
+            //値の設定
+            //searchBarの値がここが呼ばれる前に初期化されてるので、何かで値をもらいたい！
+            nextView.address = a!
         }
+    }
     
     func initMap() {
         // 縮尺を設定
@@ -436,6 +440,31 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
     @objc func menuTaped(_ sender : UITapGestureRecognizer) {
         performSegue(withIdentifier: "topToMenuSegue", sender: self)
     }
+    
+        func checkPermission() {
+            let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
+            
+            switch photoAuthorizationStatus {
+            case .authorized:
+                print("auth")
+                PHPhotoLibrary.requestAuthorization({
+                    (newStatus) in
+                    if newStatus == PHAuthorizationStatus.authorized {
+                        print("success")
+                    }
+                })
+            case .notDetermined:
+                print("notDetermined")
+            case .restricted:
+                print("restricted")
+            case .denied:
+                print("denied")
+            default:
+                print("none")
+            }
+        }
+        
+    }
 
     //ローカルストレージから読み込み。
     func loadHistory() -> History {
@@ -446,7 +475,7 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
             return History()
         }
     }
-}
+
 //マップローカル検索用の拡張クラス
 extension MKPlacemark {
     var address: String {
@@ -480,13 +509,13 @@ struct Map {
 }
 
 extension ViewController:MKMapViewDelegate {
-        
-        //ピンを繋げている線の幅や色を調整
-        func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-            let route: MKPolyline = overlay as! MKPolyline
-            let routeRenderer = MKPolylineRenderer(polyline: route)
-            routeRenderer.strokeColor = UIColor(red:1.00, green:0.35, blue:0.30, alpha:1.0)
-            routeRenderer.lineWidth = 3.0
-            return routeRenderer
-        }
+    
+    //ピンを繋げている線の幅や色を調整
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let route: MKPolyline = overlay as! MKPolyline
+        let routeRenderer = MKPolylineRenderer(polyline: route)
+        routeRenderer.strokeColor = UIColor(red:1.00, green:0.35, blue:0.30, alpha:1.0)
+        routeRenderer.lineWidth = 3.0
+        return routeRenderer
+    }
 }

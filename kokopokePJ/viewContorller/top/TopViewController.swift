@@ -260,6 +260,8 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
                         annotation.coordinate = map.placemark.coordinate
                         annotation.title = map.name ?? "名前がありません"
                         MapView?.addAnnotation(annotation)
+                        let DesLon = (annotation.coordinate.longitude)
+                        let DesLat = (annotation.coordinate.latitude)
                     }
                     
                     let point = MKCoordinateRegion(center: (mapItems.first?.placemark.coordinate)!,
@@ -301,11 +303,11 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations:[CLLocation]) {
+        // 位置情報取得間隔を指定(10m移動したら、位置情報を通知)
+        self.locManager.distanceFilter = 10;
         // 現在地取得
-        let StsrtLon = (locations.last?.coordinate.longitude.description)!
-        let StsrtLat = (locations.last?.coordinate.latitude.description)!
-        print("lon : " + StsrtLon)
-        print("lat : " + StsrtLat)
+        StsrtLon = (locations.last?.coordinate.longitude)!
+        StsrtLat = (locations.last?.coordinate.latitude)!
         // 現在位置とタッウプした位置の距離(m)を算出する
         let distance = calcDistance(MapView.userLocation.coordinate, pointAno.coordinate)
         
@@ -325,63 +327,58 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
     //ナビ開始ボタンタップ時の処理
     @IBAction func naviStartButtonTapped(_ sender: Any) {
         
-         //座標の配列
-            let coordinatesArray = [
-                ["name":"開始位置",    "lat":StsrtLat,  "lon": StsrtLon],
-                ["name":"目的地",   "lat":DesLat,  "lon": DesLon]
-            ]
-         
-        func viewDidLoad() {
-                super.viewDidLoad()
-            self.MapView.delegate = self as? MKMapViewDelegate
-                makeMap()
-            }
-            
-            func makeMap(){
-                //マップの表示域を設定
-                let coordinate = CLLocationCoordinate2DMake(coordinatesArray[0]["lat"] as! CLLocationDegrees, coordinatesArray[0]["lon"] as! CLLocationDegrees)
-                let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-                let region = MKCoordinateRegion(center: coordinate, span: span)
-                self.MapView.setRegion(region, animated: true)
-                
-                
-                var routeCoordinates: [CLLocationCoordinate2D] = []
-                for i in 0..<coordinatesArray.count {
-                    let annotation = MKPointAnnotation()
-                    let annotationCoordinate = CLLocationCoordinate2DMake(coordinatesArray[i]["lat"] as! CLLocationDegrees, coordinatesArray[i]["lon"] as! CLLocationDegrees)
-                    annotation.coordinate = annotationCoordinate
-                    routeCoordinates.append(annotationCoordinate)
-                    self.MapView.addAnnotation(annotation)
-                }
-                var myRoute: MKRoute!
-                let directionsRequest = MKDirections.Request()
-                var placemarks = [MKMapItem]()
-                //routeCoordinatesの配列からMKMapItemの配列にに変換
-                for item in routeCoordinates{
-                    let placemark = MKPlacemark(coordinate: item, addressDictionary: nil)
-                    placemarks.append(MKMapItem(placemark: placemark))
-                }
-                directionsRequest.transportType = .walking //移動手段は徒歩
-                for (k, item) in placemarks.enumerated(){
-                    if k < (placemarks.count - 1){
-                        directionsRequest.source = item //スタート地点
-                        directionsRequest.destination = placemarks[k + 1] //目標地点
-                        let direction = MKDirections(request: directionsRequest)
-                        direction.calculate(completionHandler: {(response, error) in
-                            if error == nil {
-                                myRoute = response?.routes[0]
-                                self.MapView.addOverlay(myRoute.polyline, level: .aboveRoads) //mapViewに絵画
-                            }
-                        })
+        //座標の配列
+        let coordinatesArray = [
+            ["name":"開始位置",    "lat":StsrtLat,  "lon": StsrtLon],
+            ["name":"目的地",   "lat":DesLat,  "lon": DesLon]
+        ]
+        self.MapView.delegate = self as? MKMapViewDelegate
+        
+        
+        //マップの表示域を設定
+        let coordinate = CLLocationCoordinate2DMake(coordinatesArray[0]["lat"] as! CLLocationDegrees, coordinatesArray[0]["lon"] as! CLLocationDegrees)
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let region = MKCoordinateRegion(center: coordinate, span: span)
+        self.MapView.setRegion(region, animated: true)
+        
+        //マップの表示域を設定
+        var routeCoordinates: [CLLocationCoordinate2D] = []
+        for i in 0..<coordinatesArray.count {
+            let annotation = MKPointAnnotation()
+            let annotationCoordinate = CLLocationCoordinate2DMake(coordinatesArray[i]["lat"] as! CLLocationDegrees, coordinatesArray[i]["lon"] as! CLLocationDegrees)
+            annotation.coordinate = annotationCoordinate
+            routeCoordinates.append(annotationCoordinate)
+            self.MapView.addAnnotation(annotation)
+        }
+        
+        var myRoute: MKRoute!
+        let directionsRequest = MKDirections.Request()
+        var placemarks = [MKMapItem]()
+        //routeCoordinatesの配列からMKMapItemの配列にに変換
+        for item in routeCoordinates{
+            let placemark = MKPlacemark(coordinate: item, addressDictionary: nil)
+            placemarks.append(MKMapItem(placemark: placemark))
+        }
+        directionsRequest.transportType = .walking //移動手段は徒歩
+        for (k, item) in placemarks.enumerated(){
+            if k < (placemarks.count - 1){
+                directionsRequest.source = item //スタート地点
+                directionsRequest.destination = placemarks[k + 1] //目標地点
+                let direction = MKDirections(request: directionsRequest)
+                direction.calculate(completionHandler: {(response, error) in
+                    if error == nil {
+                        myRoute = response?.routes[0]
+                        self.MapView.addOverlay(myRoute.polyline, level: .aboveRoads) //mapViewに絵画
                     }
-                }
-                //ルートがマップに収まるように
-                if let firstOverlay = self.MapView.overlays.first{
-                    let rect = self.MapView.overlays.reduce(firstOverlay.boundingMapRect, {$0.union($1.boundingMapRect)})
-                    self.MapView.setVisibleMapRect(rect, edgePadding: UIEdgeInsets(top: 35, left: 35, bottom: 35, right: 35), animated: true)
-                }
+                })
             }
         }
+        //ルートがマップに収まるように
+        if let firstOverlay = self.MapView.overlays.first{
+            let rect = self.MapView.overlays.reduce(firstOverlay.boundingMapRect, {$0.union($1.boundingMapRect)})
+            self.MapView.setVisibleMapRect(rect, edgePadding: UIEdgeInsets(top: 35, left: 35, bottom: 35, right: 35), animated: true)
+        }
+    }
     
     //行きたい場所リスト追加ボタンタップ時の処理
     @IBAction func wannaGoPlaceButtonTapped(_ sender: Any) {
@@ -430,7 +427,7 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
     }
     
     // UILongPressGestureRecognizerのdelegate：ロングタップを検出する
-    @IBAction func mapViewDidLongPress(_ sender: UILongPressGestureRecognizer) {
+    @IBAction func mapViewDidLongPress(_ sender: UILongPressGestureRecognizer ) {
         // ロングタップ開始
         if sender.state == .began {
         }
@@ -439,11 +436,6 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
             // タップした位置（CGPoint）を指定してMkMapView上の緯度経度を取得する
             let tapPoint = sender.location(in: view)
             let center = MapView.convert(tapPoint, toCoordinateFrom: MapView)
-            
-            let DesLon = center.longitude.description
-            let DesLat = center.latitude.description
-            print("lon : " + DesLon)
-            print("lon : " + DesLat)
             
             // ロングタップを検出した位置にピンを立てる
             pointAno.coordinate = center

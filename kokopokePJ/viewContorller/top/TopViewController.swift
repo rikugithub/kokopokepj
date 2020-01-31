@@ -260,8 +260,8 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
                         annotation.coordinate = map.placemark.coordinate
                         annotation.title = map.name ?? "名前がありません"
                         MapView?.addAnnotation(annotation)
-                        let DesLon = (annotation.coordinate.longitude)
-                        let DesLat = (annotation.coordinate.latitude)
+                        self.DesLon = (annotation.coordinate.longitude)
+                        self.DesLat = (annotation.coordinate.latitude)
                     }
                     
                     let point = MKCoordinateRegion(center: (mapItems.first?.placemark.coordinate)!,
@@ -335,17 +335,18 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
         self.MapView.delegate = self as? MKMapViewDelegate
         
         
-        //マップの表示域を設定
+        //現在地の表示域を設定
         let coordinate = CLLocationCoordinate2DMake(coordinatesArray[0]["lat"] as! CLLocationDegrees, coordinatesArray[0]["lon"] as! CLLocationDegrees)
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: coordinate, span: span)
         self.MapView.setRegion(region, animated: true)
         
-        //マップの表示域を設定
+        //アノテーションとマップの表示域を設定
         var routeCoordinates: [CLLocationCoordinate2D] = []
         for i in 0..<coordinatesArray.count {
             let annotation = MKPointAnnotation()
             let annotationCoordinate = CLLocationCoordinate2DMake(coordinatesArray[i]["lat"] as! CLLocationDegrees, coordinatesArray[i]["lon"] as! CLLocationDegrees)
+            annotation.title = coordinatesArray[i]["name"] as? String //ピンの吹き出しに名前が出るように
             annotation.coordinate = annotationCoordinate
             routeCoordinates.append(annotationCoordinate)
             self.MapView.addAnnotation(annotation)
@@ -359,6 +360,7 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
             let placemark = MKPlacemark(coordinate: item, addressDictionary: nil)
             placemarks.append(MKMapItem(placemark: placemark))
         }
+        // Any (なんでも）Automobile（車）Transit（バスなどの交通機関）Walking（徒歩）
         directionsRequest.transportType = .walking //移動手段は徒歩
         for (k, item) in placemarks.enumerated(){
             if k < (placemarks.count - 1){

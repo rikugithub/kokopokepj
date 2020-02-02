@@ -27,10 +27,25 @@ class WantToGoViewController: UIViewController,UITableViewDataSource ,UITableVie
         tableView.dataSource = self
         
         //モデルに設定
-        wannaGoPlaces = loadVisitedPlace()!
-        wannaGoPlaces.forEach { e in
-            wannaGoPlacesTitle.append(e.getName())
+        wannaGoPlaces = loadVisitedPlace()
+        if wannaGoPlaces.count == 0 {
+            makeNoneView()
+        } else {
+            wannaGoPlaces.forEach { e in
+                wannaGoPlacesTitle.append(e.getName())
+            }
         }
+    }
+    
+    fileprivate func makeNoneView() {
+        let groupNoneView = UIView(frame: CGRect(x: 0,y: 0,width: self.view.frame.width,height: self.view.frame.height))
+        groupNoneView.backgroundColor = UIColor.white
+        let title = UILabel(frame: CGRect(x:self.view.frame.width/2,y: self.view.frame.height/2,width: 250,height:250))
+        title.text = "場所が登録されていません"
+        title.textAlignment = .center
+        title.center = self.view.center
+        groupNoneView.addSubview(title)
+        self.view.addSubview(groupNoneView)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,12 +74,12 @@ class WantToGoViewController: UIViewController,UITableViewDataSource ,UITableVie
     }
     
     //ローカルストレージから読み込み
-    func loadVisitedPlace() -> [VisitedPlace]?{
+    func loadVisitedPlace() -> [VisitedPlace]{
         if let loadedData = UserDefaults().data(forKey: "wannaGoPlaces") {
             let wannaGoPlace = NSKeyedUnarchiver.unarchiveObject(with: loadedData) as! [VisitedPlace]
             return wannaGoPlace
         }else {
-            return nil
+            return []
         }
     }
 }

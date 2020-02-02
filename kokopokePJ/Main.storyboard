@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -671,6 +671,13 @@
                                     <action selector="seeReviewButtonTapped:" destination="Gbz-wE-pmt" eventType="touchUpInside" id="qLV-Qv-VpO"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i1L-Ha-7Nl">
+                                <rect key="frame" x="261" y="404" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Oyv-51-d16"/>
@@ -678,7 +685,11 @@
                     <navigationItem key="navigationItem" title="詳細" id="xUw-EH-nYQ"/>
                     <connections>
                         <outlet property="PostOrSaveButton" destination="WE0-6f-yTF" id="a1g-2H-mmx"/>
+                        <outlet property="congestionLabel" destination="i1L-Ha-7Nl" id="0Oo-kP-STl"/>
                         <outlet property="seeReviewButton" destination="drf-5K-l4H" id="cmp-z5-Z0j"/>
+                        <outlet property="visitedMapView" destination="LSN-mz-gfj" id="r4Y-xX-7er"/>
+                        <outlet property="visitedPlaceName" destination="ESB-Vf-Svf" id="3zg-Dc-1Ev"/>
+                        <outlet property="visitedgenre" destination="zUj-2Z-LOv" id="zrr-ka-hul"/>
                         <segue destination="pBf-bD-ZbQ" kind="show" identifier="detailToReviewSegue" id="eRE-Dv-H98"/>
                         <segue destination="wo4-0v-zjR" kind="show" identifier="detailToPostSegue" id="xS6-Hu-nhr"/>
                     </connections>

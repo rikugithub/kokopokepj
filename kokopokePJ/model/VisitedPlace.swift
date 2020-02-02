@@ -15,7 +15,7 @@ class VisitedPlace : NSObject, NSCoding{
     //訪れた場所
     private var name:String
     //訪問日時
-    private var timestamp:Date
+    private var timestamp:String
     //緯度
     private var latitude:Double
     //経度
@@ -25,7 +25,7 @@ class VisitedPlace : NSObject, NSCoding{
     
     required init?(coder aDecoder: NSCoder) {
         self.name = aDecoder.decodeObject(forKey: "name") as! String
-        self.timestamp = aDecoder.decodeObject(forKey: "timestamp") as! Date
+        self.timestamp = aDecoder.decodeObject(forKey: "timestamp") as! String
         self.latitude = aDecoder.decodeDouble(forKey: "latitude")
         self.longitude = aDecoder.decodeDouble(forKey: "longitude")
         self.genre = aDecoder.decodeInteger(forKey: "genre")
@@ -43,7 +43,7 @@ class VisitedPlace : NSObject, NSCoding{
         let name = dic["name"] as? String
         self.name = name!
         
-        let timestamp = dic["timestamp"] as? Date
+        let timestamp = dic["timestamp"] as? String
         self.timestamp = timestamp!
         
         let latitude = dic["latitude"] as? Double
@@ -57,7 +57,7 @@ class VisitedPlace : NSObject, NSCoding{
     }
     
     //Viewからモデル生成
-    init(n:String, t:Date, la:Double, lo:Double, g:Int) {
+    init(n:String, t:String, la:Double, lo:Double, g:Int) {
         self.name = n
         self.timestamp = t
         self.latitude = la
@@ -69,7 +69,7 @@ class VisitedPlace : NSObject, NSCoding{
         return self.name
     }
     
-    public func getTimestamp() -> Date {
+    public func getTimestamp() -> String {
         return self.timestamp
     }
     
@@ -83,5 +83,16 @@ class VisitedPlace : NSObject, NSCoding{
     
     public func getGenre() -> Int {
         return self.genre
+    }
+    
+    //辞書型変換(DB格納時用)
+    func toDictionary() -> [String:Any] {
+        return [
+            "name":name,
+            "timestamp":timestamp,
+            "latitude":latitude,
+            "longitude":longitude,
+            "genre":genre,
+        ]
     }
 }

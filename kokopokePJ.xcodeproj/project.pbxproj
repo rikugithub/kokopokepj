@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24520C9223E723890092D74D /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24520C9123E723890092D74D /* UIViewController+Extension.swift */; };
 		2459DECC23A75E24006027A1 /* ReviewConfirmViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2459DEC723A75E24006027A1 /* ReviewConfirmViewConroller.swift */; };
 		2459DECD23A75E24006027A1 /* ReviewListViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2459DEC823A75E24006027A1 /* ReviewListViewConroller.swift */; };
 		2459DECE23A75E24006027A1 /* ReviewPostViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2459DEC923A75E24006027A1 /* ReviewPostViewConroller.swift */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		20BC471902BE98B11422B315 /* Pods_kokopokePJ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kokopokePJ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24520C9123E723890092D74D /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		2459DEC723A75E24006027A1 /* ReviewConfirmViewConroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewConfirmViewConroller.swift; sourceTree = "<group>"; };
 		2459DEC823A75E24006027A1 /* ReviewListViewConroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewListViewConroller.swift; sourceTree = "<group>"; };
 		2459DEC923A75E24006027A1 /* ReviewPostViewConroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewPostViewConroller.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				247CD0F923AE0F54001B2768 /* UIView+Border.swift */,
+				24520C9123E723890092D74D /* UIViewController+Extension.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 				44263F762394B750008D0BA3 /* kokopokePJ.xcdatamodeld in Sources */,
 				247CD0FE23AE6E15001B2768 /* WantToGoDetailViewController.swift in Sources */,
 				44263F702394B750008D0BA3 /* ViewController.swift in Sources */,
+				24520C9223E723890092D74D /* UIViewController+Extension.swift in Sources */,
 				440BF85623D97F71008FB96B /* HistoryTableViewCell.swift in Sources */,
 				A9FD560623AC5163006CBE77 /* ReviewPostFormViewController.swift in Sources */,
 				24741E5923A31D6000B41FE1 /* MenuViewController.swift in Sources */,
@@ -628,7 +632,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.DirectionTorture.kokopokePJ;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.DirectionTorture.kokopokePJ-gonchan";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -647,7 +651,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.DirectionTorture.kokopokePJ;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.DirectionTorture.kokopokePJ-gonchan";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

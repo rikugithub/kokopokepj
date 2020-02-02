@@ -12,8 +12,9 @@ import MapKit
 import CoreLocation
 import Firebase
 import Photos
+import UserNotifications
 
-class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerDelegate,UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource {
+class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,CLLocationManagerDelegate,UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource ,UNUserNotificationCenterDelegate{
     
     @IBOutlet var MapView: MKMapView!
     @IBOutlet var LongPressGesRec: UILongPressGestureRecognizer!
@@ -59,6 +60,11 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
     //検索履歴モデル
     var history:History!
     
+    //位置情報起動フラグ
+    var isLocationFirst:Bool = true
+    
+    var geoRegions:[CLRegion] = []
+    
     var a: String?
     
     
@@ -70,6 +76,8 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        MapView.delegate = self
         
         //ステータスバーのデザイン設定
         let statusBar = UIView(frame:CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.size.width, height: 20.0))
@@ -135,7 +143,52 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
         searchedView.backgroundColor = UIColor.white
         self.searchedView.isHidden = true
         
+        // 通知許可ダイアログを表示
+        UNUserNotificationCenter.current()
+        .requestAuthorization(options: [.badge, .sound, .alert], completionHandler: { (granted, error) in
+            // 許可されない場合は、アプリを終了する
+            if !granted {
+                let alert = UIAlertController(
+                    title: "エラー",
+                    message: "プッシュ通知が拒否されています。設定から有効にしてください。",
+                    preferredStyle: .alert
+                )
+                
+                // 終了処理
+                let closeAction = UIAlertAction(title: "閉じる", style: .default) { _ in exit(1) }
+                alert.addAction(closeAction)
+                
+                // ダイアログを表示
+                self.present(alert, animated: true, completion: nil)
+            }
+        })
+        
         history = loadHistory()
+        wannaGoPlaces = loadVisitedPlace()
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+        }
+        let reuseId = "pin"
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
+        if pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView?.canShowCallout = true //吹き出しで情報を表示出来るように
+        }else{
+            pinView?.annotation = annotation
+        }
+        return pinView
+    }
+    
+    //ピンを繋げている線の幅や色を調整
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let route: MKPolyline = overlay as! MKPolyline
+        let routeRenderer = MKPolylineRenderer(polyline: route)
+        routeRenderer.strokeColor = UIColor.red
+        routeRenderer.lineWidth = 3.0
+        return routeRenderer
     }
     
     //シングルタップによる入力解除の処理
@@ -271,11 +324,13 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
                     
                     let name = mapItems.first?.placemark.name
                     let time = Date()
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yMMMdHms", options: 0, locale: Locale(identifier: "ja_JP"))
                     let latitude = mapItems.first?.placemark.coordinate.latitude
                     let longitude = mapItems.first?.placemark.coordinate.longitude
                     let genre = 0
                     
-                    self.searchedPlace = VisitedPlace(n: name!, t: time, la: latitude!, lo: longitude!, g: genre)
+                    self.searchedPlace = VisitedPlace(n: name!, t: dateFormatter.string(from: time), la: latitude!, lo: longitude!, g: genre)
                 case .failure(let error):
                     print("error \(error.localizedDescription)")
                 }
@@ -322,45 +377,95 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
                 MapView.addAnnotation(pointAno)
             }
         }
+        
+        if isLocationFirst {
+            for item in wannaGoPlaces {
+                let location = CLLocationCoordinate2DMake(item.getLatitude(),item.getLongitude())
+                let radius = 100.0
+                let identifier = item.getName()
+                let geoRegion = CLCircularRegion.init(center: location, radius: radius, identifier: identifier)
+                geoRegion.notifyOnEntry = true
+                geoRegion.notifyOnExit = true
+                locManager.startMonitoring(for: geoRegion)
+                locManager.requestState(for: geoRegion)
+                geoRegions.append(geoRegion)
+            }
+            isLocationFirst = false
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion) {
+        if state == CLRegionState.inside {
+            timedNotifications(region:region,inSeconds: 3) {(success) in
+                if success {
+                    print("Successfully Notified")
+                    self.addVisitedPlace(placeName: region.identifier)
+                    self.locManager.stopMonitoring(for: region)
+                }
+            }
+        } else {
+            print(region.identifier + "outside")
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
+        print(region.identifier + "start")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion)  {
+        print(region.identifier + "設定したジオフェンスに入りました。")
+        timedNotifications(region:region,inSeconds: 5) {(success) in
+            if success {
+                print("Successfully Notified")
+                self.addVisitedPlace(placeName: region.identifier)
+                self.locManager.stopMonitoring(for: region)
+            }
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        print(region.identifier + "設定したジオフェンスから出ました。")
+    }
+    
+    func timedNotifications(region: CLRegion, inSeconds: TimeInterval, completion: @escaping (_ _Success: Bool) -> ()){
+        let content = UNMutableNotificationContent()
+        content.title = "お知らせ"
+        content.body = region.identifier + "に到着しました"
+        content.sound = UNNotificationSound.default
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: inSeconds, repeats: false)
+        let request = UNNotificationRequest(identifier: "customNotification", content: content,trigger: trigger)
+        UNUserNotificationCenter.current().add(request) { (error) in
+            if error != nil {
+                completion(false)
+                
+            }else{
+                completion(true)
+            }
+        }
     }
     
     //ナビ開始ボタンタップ時の処理
     @IBAction func naviStartButtonTapped(_ sender: Any) {
         
-        //座標の配列
-        let coordinatesArray = [
-            ["name":"開始位置",    "lat":StsrtLat,  "lon": StsrtLon],
-            ["name":"目的地",   "lat":DesLat,  "lon": DesLon]
-        ]
-        self.MapView.delegate = self as? MKMapViewDelegate
+        let targetLat = self.searchedPlace!.getLatitude()
+        let targetLon = self.searchedPlace!.getLongitude()
         
+        let myArea = CLLocationCoordinate2D(latitude: StsrtLat, longitude: StsrtLon)
+        let longTapped = CLLocationCoordinate2D(latitude: targetLat, longitude: targetLon)
         
-        //現在地の表示域を設定
-        let coordinate = CLLocationCoordinate2DMake(coordinatesArray[0]["lat"] as! CLLocationDegrees, coordinatesArray[0]["lon"] as! CLLocationDegrees)
-        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-        let region = MKCoordinateRegion(center: coordinate, span: span)
-        self.MapView.setRegion(region, animated: true)
-        
-        //アノテーションとマップの表示域を設定
         var routeCoordinates: [CLLocationCoordinate2D] = []
-        for i in 0..<coordinatesArray.count {
-            let annotation = MKPointAnnotation()
-            let annotationCoordinate = CLLocationCoordinate2DMake(coordinatesArray[i]["lat"] as! CLLocationDegrees, coordinatesArray[i]["lon"] as! CLLocationDegrees)
-            annotation.title = coordinatesArray[i]["name"] as? String //ピンの吹き出しに名前が出るように
-            annotation.coordinate = annotationCoordinate
-            routeCoordinates.append(annotationCoordinate)
-            self.MapView.addAnnotation(annotation)
-        }
+        routeCoordinates.append(myArea)
+        routeCoordinates.append(longTapped)
         
-        var myRoute: MKRoute!
-        let directionsRequest = MKDirections.Request()
         var placemarks = [MKMapItem]()
         //routeCoordinatesの配列からMKMapItemの配列にに変換
         for item in routeCoordinates{
             let placemark = MKPlacemark(coordinate: item, addressDictionary: nil)
             placemarks.append(MKMapItem(placemark: placemark))
         }
-        // Any (なんでも）Automobile（車）Transit（バスなどの交通機関）Walking（徒歩）
+        var myRoute: MKRoute!
+        let directionsRequest = MKDirections.Request()
         directionsRequest.transportType = .walking //移動手段は徒歩
         for (k, item) in placemarks.enumerated(){
             if k < (placemarks.count - 1){
@@ -371,15 +476,17 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
                     if error == nil {
                         myRoute = response?.routes[0]
                         self.MapView.addOverlay(myRoute.polyline, level: .aboveRoads) //mapViewに絵画
+                        //self.MapView.showAnnotations(self.MapView.annotations, animated: true)
                     }
                 })
             }
         }
-        //ルートがマップに収まるように
+        //FIXME: 2回目以降はスコープされない
         if let firstOverlay = self.MapView.overlays.first{
             let rect = self.MapView.overlays.reduce(firstOverlay.boundingMapRect, {$0.union($1.boundingMapRect)})
             self.MapView.setVisibleMapRect(rect, edgePadding: UIEdgeInsets(top: 35, left: 35, bottom: 35, right: 35), animated: true)
         }
+        routeCoordinates = []
     }
     
     //行きたい場所リスト追加ボタンタップ時の処理
@@ -449,31 +556,29 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
         performSegue(withIdentifier: "topToMenuSegue", sender: self)
     }
     
-        func checkPermission() {
-            let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
-            
-            switch photoAuthorizationStatus {
-            case .authorized:
-                print("auth")
-                PHPhotoLibrary.requestAuthorization({
-                    (newStatus) in
-                    if newStatus == PHAuthorizationStatus.authorized {
-                        print("success")
-                    }
-                })
-            case .notDetermined:
-                print("notDetermined")
-            case .restricted:
-                print("restricted")
-            case .denied:
-                print("denied")
-            default:
-                print("none")
-            }
-        }
+    func checkPermission() {
+        let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
         
+        switch photoAuthorizationStatus {
+        case .authorized:
+            print("auth")
+            PHPhotoLibrary.requestAuthorization({
+                (newStatus) in
+                if newStatus == PHAuthorizationStatus.authorized {
+                    print("success")
+                }
+            })
+        case .notDetermined:
+            print("notDetermined")
+        case .restricted:
+            print("restricted")
+        case .denied:
+            print("denied")
+        default:
+            print("none")
+        }
     }
-
+    
     //ローカルストレージから読み込み。
     func loadHistory() -> History {
         if let loadedData = UserDefaults().data(forKey: "history") {
@@ -483,6 +588,36 @@ class TopViewController: UIViewController,UISearchBarDelegate,CLLocationManagerD
             return History()
         }
     }
+    
+    //ローカルストレージから読み込み
+    func loadVisitedPlace() -> [VisitedPlace]{
+        if let loadedData = UserDefaults().data(forKey: "wannaGoPlaces") {
+            let wannaGoPlace = NSKeyedUnarchiver.unarchiveObject(with: loadedData) as! [VisitedPlace]
+            return wannaGoPlace
+        }else {
+            return []
+        }
+    }
+    
+    func addVisitedPlace(placeName:String) {
+        var targetPlace:VisitedPlace?
+        for wannaGoPlace in wannaGoPlaces {
+            if wannaGoPlace.getName() == placeName {
+                targetPlace = wannaGoPlace
+            }
+        }
+        
+        guard let _ = targetPlace else {
+            return
+        }
+        
+        //FIXME　エミュレーターではどうなるんだろう...
+        let deviceId = UIDevice.current.identifierForVendor?.uuidString
+        ref = Database.database().reference().child("VisitedPlaces").child(deviceId!).child(targetPlace!.getTimestamp())
+        ref.setValue(targetPlace!.toDictionary())
+    }
+}
+
 
 //マップローカル検索用の拡張クラス
 extension MKPlacemark {
@@ -515,15 +650,13 @@ struct Map {
         }
     }
 }
-
-extension ViewController:MKMapViewDelegate {
-    
-    //ピンを繋げている線の幅や色を調整
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        let route: MKPolyline = overlay as! MKPolyline
-        let routeRenderer = MKPolylineRenderer(polyline: route)
-        routeRenderer.strokeColor = UIColor(red:1.00, green:0.35, blue:0.30, alpha:1.0)
-        routeRenderer.lineWidth = 3.0
-        return routeRenderer
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        willPresent notification: UNNotification,
+        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
+    {
+        // アプリ起動時も通知を行う
+        completionHandler([ .badge, .sound, .alert ])
     }
 }

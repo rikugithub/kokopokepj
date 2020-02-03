@@ -1955,7 +1955,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="投稿"/>
                                                     <connections>
-                                                        <action selector="postTouchButton:" destination="ovv-Gx-5pI" eventType="touchUpInside" id="73w-k9-AKE"/>
+                                                        <action selector="postTouch:" destination="ovv-Gx-5pI" eventType="touchUpInside" id="UAP-fe-vga"/>
                                                         <segue destination="wiO-pI-efJ" kind="presentation" id="FyY-H0-yNc"/>
                                                     </connections>
                                                 </button>

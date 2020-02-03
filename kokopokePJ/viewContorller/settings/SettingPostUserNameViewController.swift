@@ -60,6 +60,9 @@ class SettingPostUserNameViewController: UIViewController {
         //保存するためにはsynchronizeメソッドを実行する
         userDefaults.synchronize()
         Params.authorName = name
+        if name.count == 0 {
+            Params.pinTheAuthor = false
+        }
         
     }
 

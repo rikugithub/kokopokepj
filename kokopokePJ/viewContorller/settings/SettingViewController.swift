@@ -10,15 +10,16 @@ import Foundation
 import UIKit
 
 //設定
-class SettingTableViewController: UITableViewController {
+class SettingTableViewController: UITableViewController, UINavigationControllerDelegate {
     
     @IBOutlet var settingTable: UITableView!
     @IBOutlet weak var shareSwitch: UISwitch!
     
-    var pinTheAuthor:Bool = false
+    var pinTheAuthor:Bool = Params.pinTheAuthor
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.delegate = self
         self.settingTable.delegate = self
         self.settingTable.dataSource = self
         
@@ -75,13 +76,15 @@ class SettingTableViewController: UITableViewController {
         UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //各項目の値を保存するために、UserDefaultsに値をセットする
-        let userDefaults = UserDefaults.standard
-        userDefaults.set(pinTheAuthor, forKey: "pinTheAuthor")
-        //保存するためにはsynchronizeメソッドを実行する
-        userDefaults.synchronize()
-        Params.pinTheAuthor = pinTheAuthor
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        if viewController is MenuViewController {
+            //各項目の値を保存するために、UserDefaultsに値をセットする
+            let userDefaults = UserDefaults.standard
+            userDefaults.set(pinTheAuthor, forKey: "pinTheAuthor")
+            //保存するためにはsynchronizeメソッドを実行する
+            userDefaults.synchronize()
+            Params.pinTheAuthor = pinTheAuthor
+        }
     }
     
     private func dispCacheCleanAlart() {
@@ -116,6 +119,9 @@ class SettingTableViewController: UITableViewController {
             if Params.authorName == "" {
                 dispSwitchAlart()
             }
+            pinTheAuthor = true
+        } else {
+            pinTheAuthor = false
         }
     }
     //検索ワードの初期化

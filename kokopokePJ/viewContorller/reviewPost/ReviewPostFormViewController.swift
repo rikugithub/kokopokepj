@@ -31,6 +31,8 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
     var genrePicker:UIPickerView = UIPickerView()
     var whoWithPicker:UIPickerView = UIPickerView()
     
+    var pinTheAuthor:Bool = Params.pinTheAuthor
+    
     //　画像を定義
     var img1 = UIImage(named:"1")!
     var img2 = UIImage(named:"2")!
@@ -58,6 +60,8 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
         super.viewDidLoad()
         
         reviewText.text = ""
+        
+        authorSettingSwitch.isOn = pinTheAuthor
         
         // ピッカー設定
         datePicker.datePickerMode = UIDatePicker.Mode.date
@@ -244,6 +248,13 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         checkEvalution()
+        //各項目の値を保存するために、UserDefaultsに値をセットする
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(pinTheAuthor, forKey: "pinTheAuthor")
+        //保存するためにはsynchronizeメソッドを実行する
+        userDefaults.synchronize()
+        Params.pinTheAuthor = pinTheAuthor
+        
         if segue.identifier == "postToConfirmSegue" {
             let nextVC = segue.destination as! ReviewConfirmViewConroller
             if let postHostName = postHostName.text {

@@ -448,17 +448,14 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
     }
     
     //ナビ開始ボタンタップ時の処理
-    @IBAction func naviStartButtonTapped(_ sender: Any) {
-        
-        let targetLat = self.searchedPlace!.getLatitude()
-        let targetLon = self.searchedPlace!.getLongitude()
+    public func startNavigation(targetLat:Double,targetLon:Double) {
         
         let myArea = CLLocationCoordinate2D(latitude: StsrtLat, longitude: StsrtLon)
-        let longTapped = CLLocationCoordinate2D(latitude: targetLat, longitude: targetLon)
+        let targetArea = CLLocationCoordinate2D(latitude: targetLat, longitude: targetLon)
         
         var routeCoordinates: [CLLocationCoordinate2D] = []
         routeCoordinates.append(myArea)
-        routeCoordinates.append(longTapped)
+        routeCoordinates.append(targetArea)
         
         var placemarks = [MKMapItem]()
         //routeCoordinatesの配列からMKMapItemの配列にに変換
@@ -489,6 +486,12 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
             self.MapView.setVisibleMapRect(rect, edgePadding: UIEdgeInsets(top: 35, left: 35, bottom: 35, right: 35), animated: true)
         }
         routeCoordinates = []
+    }
+    
+    @IBAction func naviStartButtonTapped(_ sender: Any) {
+        let targetLat = self.searchedPlace!.getLatitude()
+        let targetLon = self.searchedPlace!.getLongitude()
+        startNavigation(targetLat: targetLat,targetLon: targetLon)
     }
     
     //行きたい場所リスト追加ボタンタップ時の処理

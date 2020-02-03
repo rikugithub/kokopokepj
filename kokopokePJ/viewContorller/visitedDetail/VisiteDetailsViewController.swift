@@ -13,11 +13,8 @@ import MapKit
 //訪れた場所の詳しい情報
 class VisiteDetailsViewController: UIViewController{
     
-    @IBOutlet weak var seeReviewButton: UIButton!
-    @IBOutlet weak var PostOrSaveButton: UIButton!
     @IBOutlet weak var visitedMapView: MKMapView!
     @IBOutlet weak var visitedPlaceName: UILabel!
-    @IBOutlet weak var congestionLabel: UILabel!
     
     public var visitedPlace:VisitedPlace!
     
@@ -43,6 +40,12 @@ class VisiteDetailsViewController: UIViewController{
     }
     
     @IBAction func startNavigationButtonTapped(_ sender: Any) {
+        // 2つ前のViewControllerに戻る
+        let index = navigationController!.viewControllers.count - 4
+        let controller = navigationController!.viewControllers[index] as? TopViewController
+        //self.navigationController?.popToRootViewController(animated: true)
+        navigationController?.popToViewController(navigationController!.viewControllers[index], animated: true)
+        controller?.startNavigation(targetLat: self.visitedPlace.getLatitude(), targetLon: self.visitedPlace.getLongitude())
     }
     //segue遷移直前に実行される処理
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

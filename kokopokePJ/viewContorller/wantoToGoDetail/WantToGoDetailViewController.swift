@@ -7,13 +7,25 @@
 //
 
 import UIKit
+import MapKit
 
 class WantToGoDetailViewController: UIViewController {
     
     public var area:VisitedPlace!
-
+    @IBOutlet weak var wannaGoPlanceName: UILabel!
+    @IBOutlet weak var wannaGoMapView: MKMapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let location = CLLocationCoordinate2D(latitude: area.getLatitude(),longitude: area.getLongitude())
+        self.wannaGoMapView.setCenter(location, animated: true)
+        let mySpan: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
+        let myRegion: MKCoordinateRegion = MKCoordinateRegion(center: location, span: mySpan)
+
+        wannaGoMapView.region = myRegion
+        wannaGoPlanceName.text = area.getName()
+        
     }
     
     @IBAction func checkReviewListButtonTapped(_ sender: Any) {
@@ -21,12 +33,18 @@ class WantToGoDetailViewController: UIViewController {
     }
     
     @IBAction func startNaviButtonTapped(_ sender: Any) {
-        //TODO: ナビゲーション機能の実装
+        // 2つ前のViewControllerに戻る
+        let index = navigationController!.viewControllers.count - 4
+        let controller = navigationController!.viewControllers[index] as? TopViewController
+        //self.navigationController?.popToRootViewController(animated: true)
+        navigationController?.popToViewController(navigationController!.viewControllers[index], animated: true)
+        controller?.startNavigation(targetLat: self.area.getLatitude(), targetLon: self.area.getLongitude())
     }
     
     @IBAction func postReviewButtonTapped(_ sender: Any) {
-        //TODO: 口コミ投稿画面へ遷移
+        performSegue(withIdentifier: "wannaGoDetailToPostSegue", sender: self)
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "wantDetailToReviewSegue" {
             let nextVC = segue.destination as! ReviewListViewConroller

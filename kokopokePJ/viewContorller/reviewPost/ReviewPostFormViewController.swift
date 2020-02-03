@@ -19,17 +19,15 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
     @IBOutlet weak var whoWithInputFiled: UITextField!
     @IBOutlet weak var imageClipButton: UIImageView!
     @IBOutlet weak var visitedImageView: UIImageView!
-    @IBOutlet weak var evaluationDisplay: UIImageView!
-    @IBOutlet weak var evaluationOne: UIButton!
-    @IBOutlet weak var evaluationTwo: UIButton!
-    @IBOutlet weak var evaluationThree: UIButton!
-    @IBOutlet weak var evaluationFour: UIButton!
-    @IBOutlet weak var evaluationFive: UIButton!
+    @IBOutlet weak var reviewRating: UITextField!
     @IBOutlet weak var reviewText: UITextView!
     
     var datePicker:UIDatePicker = UIDatePicker()
     var genrePicker:UIPickerView = UIPickerView()
     var whoWithPicker:UIPickerView = UIPickerView()
+    var ratingPicker:UIPickerView = UIPickerView()
+    
+    public var placeName:String!
     
     var pinTheAuthor:Bool = Params.pinTheAuthor
     
@@ -39,7 +37,6 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
     var img3 = UIImage(named:"3")!
     var img4 = UIImage(named:"4")!
     var img5 = UIImage(named:"5")!
-    var evaluationString:String = ""
     
     let imagePicker = UIImagePickerController()
     
@@ -53,6 +50,10 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
     
     let withList = [
         " ","１人","家族","友達","恋人","その他"
+    ]
+    
+    let ratingList = [
+        "☆☆☆☆☆","★☆☆☆☆","★★☆☆☆","★★★☆☆","★★★★☆","★★★★★"
     ]
     
     
@@ -99,6 +100,18 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
         whoWithToolbar.setItems([whoWithCancelItem, whoWithDoneItem], animated: true)
         self.whoWithInputFiled.inputView = whoWithPicker
         self.whoWithInputFiled.inputAccessoryView = whoWithToolbar
+        
+        //評価ピッカーの設定
+        reviewRating.borderStyle = UITextField.BorderStyle.none
+        ratingPicker.delegate = self
+        ratingPicker.dataSource = self
+        ratingPicker.tag = 3
+        let ratingToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 0, height: 35))
+        let ratingDoneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(ratingDone))
+        let ratingCancelItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(ratingCancel))
+        ratingToolbar.setItems([ratingCancelItem, ratingDoneItem], animated: true)
+        self.reviewRating.inputView = ratingPicker
+        self.reviewRating.inputAccessoryView = ratingToolbar
         
         imagePicker.delegate = self
         imageClipButton.isUserInteractionEnabled = true
@@ -152,6 +165,15 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
         self.whoWithInputFiled.endEditing(true)
     }
     
+    @objc func ratingCancel() {
+        self.reviewRating.text = ""
+        self.reviewRating.endEditing(true)
+    }
+    
+    @objc func ratingDone() {
+        self.reviewRating.endEditing(true)
+    }
+    
     @objc func start() {
         visitedDateInputFiled.endEditing(true)
         let startDate = dateFormat()
@@ -165,24 +187,30 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView.tag == 1 {
             return genreList.count
-        } else {
+        } else if pickerView.tag == 2 {
             return withList.count
+        } else {
+            return ratingList.count
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView.tag == 1 {
             return genreList[row]
-        } else {
+        } else if pickerView.tag == 2 {
             return withList[row]
+        } else {
+            return ratingList[row]
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView.tag == 1 {
             self.genreInputFiled.text = genreList[row]
-        } else {
+        } else if pickerView.tag == 2{
             self.whoWithInputFiled.text = withList[row]
+        } else {
+            self.reviewRating.text = ratingList[row]
         }
     }
     
@@ -196,26 +224,6 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
         return formatter.string(from: datePicker.date)
     }
     
-    // 評価を表示
-    @IBAction func evaluationOne(_ sender: UIButton) {
-        evaluationDisplay.image = img1
-    }
-    
-    @IBAction func evaluationTwo(_ sender: UIButton) {
-        evaluationDisplay.image = img2
-    }
-    
-    @IBAction func evaluationThree(_ sender: UIButton) {
-        evaluationDisplay.image = img3
-    }
-    
-    @IBAction func evaluationFour(_ sender: UIButton) {
-        evaluationDisplay.image = img4
-    }
-    
-    @IBAction func evaluationFive(_ sender: UIButton) {
-        evaluationDisplay.image = img5
-    }
     
     @IBAction func postButtonTapped(_ sender: Any) {
         performSegue(withIdentifier: "postToConfirmSegue", sender: self)
@@ -224,60 +232,106 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
         print(result)
     }
     
-    private func checkEvalution() {
-        switch evaluationDisplay.image {
-        case img1:
-            evaluationString = "★☆☆☆☆"
-            break
-        case img2:
-            evaluationString = "★★☆☆☆"
-            break
-        case img3:
-            evaluationString = "★★★☆☆"
-            break
-        case img4:
-            evaluationString = "★★★★☆"
-            break
-        case img5:
-            evaluationString = "★★★★★"
-            break
-        default:
-            evaluationString = "☆☆☆☆☆"
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "postToConfirmSegue" {
+            let nextVC = segue.destination as! ReviewConfirmViewConroller
+            nextVC.image = visitedImageView.image
+            //            if let postUserName = postHostName.text {
+            //                nextVC.postHostText = postUserName
+            //            }
+            //            if let visitedDate = visitedDateInputFiled.text {
+            //                nextVC.visitedDayText = visitedDate
+            //            }
+            //            nextVC.evaluationText = reviewRating.text
+            //            if let genre = genreInputFiled.text {
+            //                nextVC.genreText = genre
+            //            }
+            //            if let whoWith = whoWithInputFiled.text {
+            //                nextVC.withHumanText = whoWith
+            //            }
+            //            if let visitedImage = visitedImageView.image {
+            //                nextVC.imageViewImg = visitedImage
+            //            }
+            //            if let reviewText = reviewText.text {
+            //                nextVC.reviewText = reviewText
+            //            }
+            let review = Review(visitedPlaceName: placeName ,
+                                postUserName: postHostName.text!,
+                                postUserAge: "",
+                                postUserGender: false,
+                                visitedTimestamp: "",
+                                postTimestamp: "",
+                                rating: convertRating(s: reviewRating.text!),
+                                visitedPlaceGenre: convertGenre(s: genreInputFiled.text!),
+                                withWho: convertWhoWith(s: whoWithInputFiled.text!),
+                                //TODO: その他ってどうするの？
+                withWhoElse: "",
+                imgURL: "",
+                reviewContent: reviewText.text,
+                memo: reviewText.text)
+            nextVC.review = review
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        checkEvalution()
-        //各項目の値を保存するために、UserDefaultsに値をセットする
-        let userDefaults = UserDefaults.standard
-        userDefaults.set(pinTheAuthor, forKey: "pinTheAuthor")
-        //保存するためにはsynchronizeメソッドを実行する
-        userDefaults.synchronize()
-        Params.pinTheAuthor = pinTheAuthor
-        
-        if segue.identifier == "postToConfirmSegue" {
-            let nextVC = segue.destination as! ReviewConfirmViewConroller
-            if let postHostName = postHostName.text {
-                nextVC.postHostText = postHostName
-            }
-            if let visitedDate = visitedDateInputFiled.text {
-                nextVC.visitedDayText = visitedDate
-            }
-            nextVC.evaluationText = evaluationString
-            if let genre = genreInputFiled.text {
-                nextVC.genreText = genre
-            }
-            if let whoWith = whoWithInputFiled.text {
-                nextVC.withHumanText = whoWith
-            }
-            if let visitedImage = visitedImageView.image {
-                nextVC.imageViewImg = visitedImage
-            }
-            
-            if let reviewText = reviewText.text {
-                nextVC.reviewText = reviewText
-                
-            }
+    private func convertRating(s:String) -> Int {
+        switch s {
+        case "☆☆☆☆☆":
+            return 0
+        case "★☆☆☆☆":
+            return 1
+        case "★★☆☆☆":
+            return 2
+        case "★★★☆☆":
+            return 3
+        case "★★★★☆":
+            return 4
+        case "★★★★★":
+            return 5
+        default:
+            return 0
         }
     }
+    private func convertGenre(s:String) -> Int {
+        switch s {
+        case " ":
+            return 1
+        case "飲食":
+            return 2
+        case "娯楽":
+            return 3
+        case "ショッピング":
+            return 4
+        case "交通":
+            return 5
+        case "生活":
+            return 6
+        case "ゲーム":
+            return 7
+        case "その他":
+            return 8
+        default:
+            return 0
+        }
+    }
+    
+    
+    private func convertWhoWith(s:String) -> Int {
+        switch s {
+        case " ":
+            return 1
+        case "１人":
+            return 2
+        case "家族":
+            return 3
+        case "恋人":
+            return 4
+        case "その他":
+            return 5
+        default:
+            return 0
+        }
+        
+    }
+    
 }

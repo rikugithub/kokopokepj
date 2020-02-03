@@ -19,35 +19,85 @@ class ReviewConfirmViewConroller: UITableViewController {
     @IBOutlet weak var imageViewTwo: UIImageView!
     @IBOutlet weak var reviewLabel: UILabel!
     
+    public var review:Review!
+    let storage = Storage.storage()
     var ref = Database.database().reference();
     
-    var postHostText:String?
-    var visitedDayText:String?
-    var evaluationText:String?
-    var genreText:String?
-    var withHumanText:String?
-    var imageViewImg:UIImage?
-    var reviewText:String?
-    
+    public var image:UIImage!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        postHostLabel.text = postHostText
-        visitedDay.text = visitedDayText
-        evaluationLabel.text = evaluationText
-        genreLabel.text = genreText
-        withHuman.text = withHumanText
-        imageViewTwo.image = imageViewImg
-        reviewLabel.text = reviewText
+        postHostLabel.text = review.getPostUserName()
+        visitedDay.text = review.getVisitedTimestamp()
+        evaluationLabel.text = review.getRating()
+        genreLabel.text = review.getVisitedPlaceGenre()
+        withHuman.text = review.getWithWho()
+        imageViewTwo.image = image
+        reviewLabel.text = review.getReviewContent()
         
     }
     
     @IBAction func postTouch(_ sender: Any) {
-        func addDB(vPN:String,pUN:String,pUA:String,pUG:Bool,vT:String,pT:String,vPG:Int,wW:Int,wWE:String,iURL:String,rC:String,memo:String) {
-            let review = Review(vPN: vPN, pUN: pUN, pUA: pUA, pUG: pUG, vT: vT, pT: pT,rt: 1, vPG: vPG, wW: wW, wWE: wWE, iURL: iURL, rC: rC, memo: memo)
-            let newRf = ref.child("reviews").child(vPN).childByAutoId()
-            newRf.setValue(review.toDictionary())
+        upload(comp: { url in
+            if let u = url {
+                self.review.setImgURL(imgURL: u.absoluteString)
+                let newRf = self.ref.child("reviews").child(self.review.getVisitedPlaceName()).childByAutoId()
+                newRf.setValue(self.review.toDictionary())
+                self.dispSwitchAlart()
+            } else {
+                self.dispErrorAlart()
+            }
+            //くるくる終了
+            self.dismissIndicator()
+        })
+        //くるくる終了
+        self.dismissIndicator()
+    }
+    
+    private func upload(comp:@escaping(URL?) -> Void) {
+        let date = NSDate()
+        let currentTimeStampInSecond = UInt64(floor(date.timeIntervalSince1970 * 1000))
+        let storageRef = Storage.storage().reference().child("images").child("review").child("\(currentTimeStampInSecond).jpg")
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpg"
+        if let uploadData = self.imageViewTwo.image?.jpegData(compressionQuality: 0.9) {
+            storageRef.putData(uploadData, metadata: metaData) { (metadata , error) in
+                if let e = error {
+                    print("error: \(e.localizedDescription)")
+                }
+                storageRef.downloadURL(completion: { (url, error) in
+                    if let e = error {
+                        print("error: \(e.localizedDescription)")
+                        comp(nil)
+                    }
+                    if let u = url {
+                        print("url: \(u.absoluteString)")
+                        comp(u)
+                    }
+                })
+            }
         }
+    }
+    
+    private func dispSwitchAlart() {
+        let alert: UIAlertController = UIAlertController(title: nil, message: "投稿完了", preferredStyle:  UIAlertController.Style.alert)
+        let defaultAction: UIAlertAction = UIAlertAction(title:"閉じる" , style: UIAlertAction.Style.default, handler: {
+            (action: UIAlertAction!) -> Void in
+            self.navigationController?.popToRootViewController(animated: true)
+        })
+        alert.addAction(defaultAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func dispErrorAlart() {
+        let alert: UIAlertController = UIAlertController(title: nil, message: "投稿に失敗しました", preferredStyle:  UIAlertController.Style.alert)
+        let defaultAction: UIAlertAction = UIAlertAction(title:"閉じる" , style: UIAlertAction.Style.default, handler: {
+            (action: UIAlertAction!) -> Void in
+            //do nothing..
+        })
+        alert.addAction(defaultAction)
+        present(alert, animated: true, completion: nil)
     }
 }
 

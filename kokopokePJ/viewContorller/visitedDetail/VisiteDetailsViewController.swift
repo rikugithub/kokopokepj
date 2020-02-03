@@ -52,6 +52,9 @@ class VisiteDetailsViewController: UIViewController{
         if segue.identifier == "detailToReviewSegue" {
             let nextVC = segue.destination as! ReviewListViewConroller
             nextVC.areaName = visitedPlace.getName()
+        } else if segue.identifier == "detailToPostSegue" {
+            let nextVC = segue.destination as! ReviewPostFormViewController
+            nextVC.placeName = visitedPlace.getName()
         }
     }
 }

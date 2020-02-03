@@ -49,6 +49,9 @@ class WantToGoDetailViewController: UIViewController {
         if segue.identifier == "wantDetailToReviewSegue" {
             let nextVC = segue.destination as! ReviewListViewConroller
             nextVC.areaName = area.getName()
+        } else if segue.identifier == "wannaGoDetailToPostSegue" {
+            let nextVC = segue.destination as! ReviewPostFormViewController
+            nextVC.placeName = area.getName()
         }
     }
 

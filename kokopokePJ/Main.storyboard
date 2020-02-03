@@ -1955,7 +1955,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="投稿"/>
                                                     <connections>
-                                                        <action selector="touch:" destination="ovv-Gx-5pI" eventType="touchUpInside" id="uEl-fT-mj1"/>
+                                                        <action selector="postTouchButton:" destination="ovv-Gx-5pI" eventType="touchUpInside" id="73w-k9-AKE"/>
                                                         <segue destination="wiO-pI-efJ" kind="presentation" id="FyY-H0-yNc"/>
                                                     </connections>
                                                 </button>
@@ -2273,7 +2273,7 @@
         <image name="whiteLogo.png" width="2000" height="889"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eRE-Dv-H98"/>
+        <segue reference="yqQ-Bt-dHq"/>
         <segue reference="R0N-TN-2JW"/>
     </inferredMetricsTieBreakers>
 </document>

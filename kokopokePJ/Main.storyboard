@@ -636,95 +636,12 @@
                     <navigationItem key="navigationItem" title="訪れた場所" id="iuw-O5-tTb"/>
                     <connections>
                         <outlet property="tableView" destination="Hm9-kb-U8t" id="2Ov-8W-pn7"/>
-                        <segue destination="Gbz-wE-pmt" kind="show" identifier="visitedToDetailSegue" id="TMl-Kv-Ifu"/>
+                        <segue destination="gVb-KG-A9I" kind="show" identifier="visitedToDetailSegue" id="rhq-1z-Ftg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ozA-NF-bcr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2940" y="143"/>
-        </scene>
-        <!--詳細-->
-        <scene sceneID="IYU-Ku-7h1">
-            <objects>
-                <viewController storyboardIdentifier="visitedDetail" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Gbz-wE-pmt" customClass="VisiteDetailsViewController" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="OdB-Cu-KqM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="選択された場所名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ESB-Vf-Svf">
-                                <rect key="frame" x="19" y="76" width="166" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="★ジャンル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zUj-2Z-LOv">
-                                <rect key="frame" x="261" y="98" width="98" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LSN-mz-gfj">
-                                <rect key="frame" x="0.0" y="127" width="375" height="243"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="この場所の利用者数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nLx-XL-HR3">
-                                <rect key="frame" x="16" y="378" width="183" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="通常この時間帯は" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uGg-94-bVg">
-                                <rect key="frame" x="38" y="413" width="139" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WE0-6f-yTF">
-                                <rect key="frame" x="16" y="495" width="215" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="口コミを投稿またはメモを保存"/>
-                                <connections>
-                                    <action selector="PostOrSaveButtonTapped:" destination="Gbz-wE-pmt" eventType="touchUpInside" id="Rjc-K4-RQd"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drf-5K-l4H">
-                                <rect key="frame" x="16" y="463" width="169" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="この場所の口コミを見る"/>
-                                <connections>
-                                    <action selector="seeReviewButtonTapped:" destination="Gbz-wE-pmt" eventType="touchUpInside" id="qLV-Qv-VpO"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i1L-Ha-7Nl">
-                                <rect key="frame" x="261" y="404" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="Oyv-51-d16"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="詳細" id="xUw-EH-nYQ"/>
-                    <connections>
-                        <outlet property="PostOrSaveButton" destination="WE0-6f-yTF" id="a1g-2H-mmx"/>
-                        <outlet property="congestionLabel" destination="i1L-Ha-7Nl" id="0Oo-kP-STl"/>
-                        <outlet property="seeReviewButton" destination="drf-5K-l4H" id="cmp-z5-Z0j"/>
-                        <outlet property="visitedMapView" destination="LSN-mz-gfj" id="r4Y-xX-7er"/>
-                        <outlet property="visitedPlaceName" destination="ESB-Vf-Svf" id="3zg-Dc-1Ev"/>
-                        <outlet property="visitedgenre" destination="zUj-2Z-LOv" id="zrr-ka-hul"/>
-                        <segue destination="pBf-bD-ZbQ" kind="show" identifier="detailToReviewSegue" id="eRE-Dv-H98"/>
-                        <segue destination="wo4-0v-zjR" kind="show" identifier="detailToPostSegue" id="xS6-Hu-nhr"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hid-47-r6T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3750" y="143"/>
         </scene>
         <!--Review Complete View Conroller-->
         <scene sceneID="Vki-07-dPx">
@@ -2262,56 +2179,163 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="選択された場所名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFu-uw-uQm">
-                                <rect key="frame" x="16" y="77" width="164" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="★ジャンル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TAt-6D-3Bn">
-                                <rect key="frame" x="272" y="87" width="87" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="G3n-Oi-aQH">
-                                <rect key="frame" x="0.0" y="129" width="375" height="241"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dho-D6-Bb6">
+                                <rect key="frame" x="0.0" y="44" width="375" height="47"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="選択された場所名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFu-uw-uQm">
+                                        <rect key="frame" x="12" y="8" width="350" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.58643005015774774" blue="1" alpha="0.14520012842465754" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Dho-D6-Bb6" secondAttribute="height" multiplier="375:47" id="cxg-X6-Ien"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pgQ-a8-TLh">
+                                <rect key="frame" x="0.0" y="517" width="375" height="150"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="この場所までのナビを開始" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ioq-XM-3it">
+                                        <rect key="frame" x="41" y="20" width="273" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="hDV-4T-QP8"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="47E-In-fB9">
+                                        <rect key="frame" x="319" y="15" width="46" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="46" id="Bf0-gf-NGZ"/>
+                                            <constraint firstAttribute="height" constant="30" id="VjK-3i-17G"/>
+                                        </constraints>
+                                        <state key="normal" title="開始"/>
+                                        <connections>
+                                            <action selector="startNaviButtonTapped:" destination="4l5-OK-LtF" eventType="touchUpInside" id="2vk-Hy-CmF"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="口コミを投稿" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p63-rX-A0C">
+                                        <rect key="frame" x="41" y="65" width="278" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="lfo-Q2-FBo"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZnC-MY-H29">
+                                        <rect key="frame" x="319" y="60" width="46" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="46" id="ebw-kS-mlc"/>
+                                            <constraint firstAttribute="height" constant="30" id="ucn-3y-FdF"/>
+                                        </constraints>
+                                        <state key="normal" title="投稿"/>
+                                        <connections>
+                                            <action selector="postReviewButtonTapped:" destination="4l5-OK-LtF" eventType="touchUpInside" id="De4-72-qJx"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="この場所の口コミを見る" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOF-AS-wK4">
+                                        <rect key="frame" x="41" y="110" width="278" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="4Ok-DJ-PCV"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZTs-47-daK">
+                                        <rect key="frame" x="319" y="105" width="46" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="CaS-3q-Gfo"/>
+                                            <constraint firstAttribute="width" constant="46" id="Sif-kE-Xrw"/>
+                                        </constraints>
+                                        <state key="normal" title="確認"/>
+                                        <connections>
+                                            <action selector="checkReviewListButtonTapped:" destination="4l5-OK-LtF" eventType="touchUpInside" id="cmn-Bi-aJ6"/>
+                                        </connections>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="location.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="VXb-z4-TQg">
+                                        <rect key="frame" x="8" y="18.5" width="25" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="Dd9-Mn-LOc"/>
+                                            <constraint firstAttribute="height" constant="25" id="bg5-5z-RQo"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="doc.plaintext" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="SdZ-o1-KP9">
+                                        <rect key="frame" x="8" y="107" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="dhD-v5-4nB"/>
+                                            <constraint firstAttribute="width" constant="25" id="fjU-lg-ObW"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="folder.badge.plus" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="W1N-lV-lpb">
+                                        <rect key="frame" x="8" y="62.5" width="25" height="23"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="Cu7-eU-BXC"/>
+                                            <constraint firstAttribute="width" constant="25" id="blH-Ln-sGa"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="W1N-lV-lpb" firstAttribute="leading" secondItem="pgQ-a8-TLh" secondAttribute="leading" constant="8" id="1Ui-ef-z9V"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZTs-47-daK" secondAttribute="trailing" constant="10" id="3Oq-b2-OGd"/>
+                                    <constraint firstItem="47E-In-fB9" firstAttribute="top" secondItem="pgQ-a8-TLh" secondAttribute="top" constant="15" id="71D-HG-yc7"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZnC-MY-H29" secondAttribute="trailing" constant="10" id="80u-bz-MYF"/>
+                                    <constraint firstItem="ZnC-MY-H29" firstAttribute="top" secondItem="47E-In-fB9" secondAttribute="bottom" constant="15" id="Dp0-AJ-Uuc"/>
+                                    <constraint firstAttribute="height" constant="150" id="Lgz-5x-s14"/>
+                                    <constraint firstItem="VXb-z4-TQg" firstAttribute="leading" secondItem="pgQ-a8-TLh" secondAttribute="leading" constant="8" id="Mmt-ps-ZaN"/>
+                                    <constraint firstItem="p63-rX-A0C" firstAttribute="leading" secondItem="W1N-lV-lpb" secondAttribute="trailing" constant="8" id="NEN-uF-9Nm"/>
+                                    <constraint firstItem="HOF-AS-wK4" firstAttribute="top" secondItem="p63-rX-A0C" secondAttribute="bottom" constant="24" id="OiH-RJ-Sdv"/>
+                                    <constraint firstItem="W1N-lV-lpb" firstAttribute="top" secondItem="VXb-z4-TQg" secondAttribute="bottom" constant="19" id="R0Q-Fz-vBd"/>
+                                    <constraint firstItem="47E-In-fB9" firstAttribute="leading" secondItem="Ioq-XM-3it" secondAttribute="trailing" constant="5" id="R9P-iX-yVO"/>
+                                    <constraint firstItem="VXb-z4-TQg" firstAttribute="top" secondItem="pgQ-a8-TLh" secondAttribute="top" constant="18" id="Vz0-Yn-nbC"/>
+                                    <constraint firstItem="SdZ-o1-KP9" firstAttribute="top" secondItem="W1N-lV-lpb" secondAttribute="bottom" constant="20" id="ZCf-Lm-m7Y"/>
+                                    <constraint firstAttribute="trailing" secondItem="47E-In-fB9" secondAttribute="trailing" constant="10" id="b9X-1U-8rl"/>
+                                    <constraint firstItem="HOF-AS-wK4" firstAttribute="leading" secondItem="SdZ-o1-KP9" secondAttribute="trailing" constant="8" id="c7P-xf-eJa"/>
+                                    <constraint firstItem="SdZ-o1-KP9" firstAttribute="leading" secondItem="pgQ-a8-TLh" secondAttribute="leading" constant="8" id="hOg-39-piu"/>
+                                    <constraint firstItem="ZTs-47-daK" firstAttribute="top" secondItem="ZnC-MY-H29" secondAttribute="bottom" constant="15" id="l45-Ss-7ig"/>
+                                    <constraint firstItem="Ioq-XM-3it" firstAttribute="top" secondItem="pgQ-a8-TLh" secondAttribute="top" constant="20" id="pRG-6N-DNX"/>
+                                    <constraint firstItem="Ioq-XM-3it" firstAttribute="leading" secondItem="VXb-z4-TQg" secondAttribute="trailing" constant="8" id="qeJ-6j-acE"/>
+                                    <constraint firstItem="ZTs-47-daK" firstAttribute="leading" secondItem="HOF-AS-wK4" secondAttribute="trailing" id="suM-9U-1Sp"/>
+                                    <constraint firstAttribute="width" secondItem="pgQ-a8-TLh" secondAttribute="height" multiplier="5:2" id="uqk-AO-DgO"/>
+                                    <constraint firstItem="p63-rX-A0C" firstAttribute="top" secondItem="Ioq-XM-3it" secondAttribute="bottom" constant="24" id="wdG-CL-NO3"/>
+                                    <constraint firstItem="ZnC-MY-H29" firstAttribute="leading" secondItem="p63-rX-A0C" secondAttribute="trailing" id="y2r-cw-EJ7"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="G3n-Oi-aQH">
+                                <rect key="frame" x="0.0" y="91" width="375" height="423"/>
                             </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="この場所の利用者数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9sl-Ht-r77">
-                                <rect key="frame" x="16" y="378" width="175" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="通常この時間帯は" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xut-VF-a18">
-                                <rect key="frame" x="34" y="409" width="139" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5J6-45-WE7">
-                                <rect key="frame" x="16" y="449" width="169" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="この場所の口コミを見る"/>
-                                <connections>
-                                    <action selector="checkReviewListButtonTapped:" destination="4l5-OK-LtF" eventType="touchUpInside" id="4a8-00-cZT"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o77-AC-gMf">
-                                <rect key="frame" x="16" y="482" width="215" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="この場所までのナビを開始する"/>
-                                <connections>
-                                    <action selector="startNaviButtonTapped:" destination="4l5-OK-LtF" eventType="touchUpInside" id="tvG-gi-9a9"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="pgQ-a8-TLh" firstAttribute="top" secondItem="G3n-Oi-aQH" secondAttribute="bottom" constant="3" id="Kti-Ua-S0L"/>
+                            <constraint firstItem="pgQ-a8-TLh" firstAttribute="top" secondItem="G3n-Oi-aQH" secondAttribute="bottom" constant="3" id="NGd-6m-wMI"/>
+                            <constraint firstItem="G3n-Oi-aQH" firstAttribute="trailing" secondItem="hwj-3v-j7M" secondAttribute="trailing" id="Noj-J3-pJa"/>
+                            <constraint firstItem="Dho-D6-Bb6" firstAttribute="leading" secondItem="hwj-3v-j7M" secondAttribute="leading" id="X3Q-fY-dyF"/>
+                            <constraint firstItem="pgQ-a8-TLh" firstAttribute="trailing" secondItem="hwj-3v-j7M" secondAttribute="trailing" id="Zcs-yT-cQi"/>
+                            <constraint firstItem="G3n-Oi-aQH" firstAttribute="leading" secondItem="hwj-3v-j7M" secondAttribute="leading" id="d0Z-Gf-LyG"/>
+                            <constraint firstItem="pgQ-a8-TLh" firstAttribute="bottom" secondItem="hwj-3v-j7M" secondAttribute="bottom" id="hYN-NU-wlh"/>
+                            <constraint firstItem="G3n-Oi-aQH" firstAttribute="top" secondItem="Dho-D6-Bb6" secondAttribute="bottom" id="oH5-N8-bWC"/>
+                            <constraint firstItem="Dho-D6-Bb6" firstAttribute="trailing" secondItem="hwj-3v-j7M" secondAttribute="trailing" id="ws7-UK-5tF"/>
+                            <constraint firstItem="Dho-D6-Bb6" firstAttribute="top" secondItem="hwj-3v-j7M" secondAttribute="top" id="yrc-lE-Hbs"/>
+                            <constraint firstItem="pgQ-a8-TLh" firstAttribute="leading" secondItem="hwj-3v-j7M" secondAttribute="leading" id="zxf-Ol-T6R"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="hwj-3v-j7M"/>
                     </view>
                     <navigationItem key="navigationItem" id="YD2-h6-Gp2"/>
@@ -2323,6 +2347,186 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IYc-5p-FlZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3749.5999999999999" y="-591.45427286356824"/>
+        </scene>
+        <!--Visite Details View Controller-->
+        <scene sceneID="GIs-c6-iOZ">
+            <objects>
+                <viewController id="gVb-KG-A9I" customClass="VisiteDetailsViewController" customModule="kokopokePJ" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gmL-Lo-88D">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nkt-F8-u9o">
+                                <rect key="frame" x="0.0" y="44" width="375" height="47"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="選択された場所名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGZ-qI-7Bn">
+                                        <rect key="frame" x="12" y="8" width="350" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.58643005020000005" blue="1" alpha="0.14520012839999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="nkt-F8-u9o" secondAttribute="height" multiplier="375:47" id="j9u-Rs-QWW"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="73j-4F-xr0">
+                                <rect key="frame" x="0.0" y="517" width="375" height="150"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="この場所までのナビを開始" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3W-Kt-sfm">
+                                        <rect key="frame" x="41" y="20" width="273" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="f9h-3P-xVd"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ucB-lS-Wse">
+                                        <rect key="frame" x="319" y="15" width="46" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="46" id="5GH-S3-AJ6"/>
+                                            <constraint firstAttribute="height" constant="30" id="5Yc-sn-rgE"/>
+                                        </constraints>
+                                        <state key="normal" title="開始"/>
+                                        <connections>
+                                            <action selector="startNavigationButtonTapped:" destination="gVb-KG-A9I" eventType="touchUpInside" id="d3G-o7-IPr"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="口コミを投稿" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bdu-f5-amo">
+                                        <rect key="frame" x="41" y="65" width="278" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="Kil-Mi-Z1K"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWn-nR-wCp">
+                                        <rect key="frame" x="319" y="60" width="46" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="f43-ce-HU6"/>
+                                            <constraint firstAttribute="width" constant="46" id="g3e-fy-9cr"/>
+                                        </constraints>
+                                        <state key="normal" title="投稿"/>
+                                        <connections>
+                                            <action selector="PostOrSaveButtonTapped:" destination="gVb-KG-A9I" eventType="touchUpInside" id="clc-i2-7fc"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="この場所の口コミを見る" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IHC-V6-LmJ">
+                                        <rect key="frame" x="41" y="110" width="278" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="wOn-y0-fdz"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbK-5V-cDv">
+                                        <rect key="frame" x="319" y="105" width="46" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="8sa-Uu-K0t"/>
+                                            <constraint firstAttribute="width" constant="46" id="g6X-fh-RqT"/>
+                                        </constraints>
+                                        <state key="normal" title="確認"/>
+                                        <connections>
+                                            <action selector="seeReviewButtonTapped:" destination="gVb-KG-A9I" eventType="touchUpInside" id="3QP-3g-daZ"/>
+                                        </connections>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="location.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5R9-SK-VdE">
+                                        <rect key="frame" x="8" y="18.5" width="25" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="UuZ-Uk-bYB"/>
+                                            <constraint firstAttribute="height" constant="25" id="aBF-8P-JQl"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="doc.plaintext" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="m2o-PL-Fxa">
+                                        <rect key="frame" x="8" y="107" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="SQQ-tk-ycK"/>
+                                            <constraint firstAttribute="height" constant="25" id="tlF-Ot-JIN"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="folder.badge.plus" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="UVz-oY-ZQX">
+                                        <rect key="frame" x="8" y="62.5" width="25" height="23"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="Ksr-Qp-t3U"/>
+                                            <constraint firstAttribute="width" constant="25" id="di5-Mt-vFg"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ucB-lS-Wse" secondAttribute="trailing" constant="10" id="0Ts-Uw-nWy"/>
+                                    <constraint firstItem="ucB-lS-Wse" firstAttribute="top" secondItem="73j-4F-xr0" secondAttribute="top" constant="15" id="3bD-qa-zJ9"/>
+                                    <constraint firstItem="Bdu-f5-amo" firstAttribute="leading" secondItem="UVz-oY-ZQX" secondAttribute="trailing" constant="8" id="7Ad-dA-bYg"/>
+                                    <constraint firstAttribute="height" constant="150" id="8IA-SD-wgK"/>
+                                    <constraint firstItem="IHC-V6-LmJ" firstAttribute="leading" secondItem="m2o-PL-Fxa" secondAttribute="trailing" constant="8" id="D69-oF-Lxq"/>
+                                    <constraint firstAttribute="trailing" secondItem="cbK-5V-cDv" secondAttribute="trailing" constant="10" id="Er0-np-rzO"/>
+                                    <constraint firstItem="C3W-Kt-sfm" firstAttribute="top" secondItem="73j-4F-xr0" secondAttribute="top" constant="20" id="FaG-Z8-zfG"/>
+                                    <constraint firstItem="cbK-5V-cDv" firstAttribute="leading" secondItem="IHC-V6-LmJ" secondAttribute="trailing" id="IMX-3m-170"/>
+                                    <constraint firstItem="ucB-lS-Wse" firstAttribute="leading" secondItem="C3W-Kt-sfm" secondAttribute="trailing" constant="5" id="JDp-PO-QLh"/>
+                                    <constraint firstItem="5R9-SK-VdE" firstAttribute="top" secondItem="73j-4F-xr0" secondAttribute="top" constant="18" id="Rgr-3p-hFB"/>
+                                    <constraint firstItem="m2o-PL-Fxa" firstAttribute="leading" secondItem="73j-4F-xr0" secondAttribute="leading" constant="8" id="UK8-wj-Wvg"/>
+                                    <constraint firstItem="fWn-nR-wCp" firstAttribute="leading" secondItem="Bdu-f5-amo" secondAttribute="trailing" id="Xof-cO-Dro"/>
+                                    <constraint firstItem="UVz-oY-ZQX" firstAttribute="top" secondItem="5R9-SK-VdE" secondAttribute="bottom" constant="19" id="Z8R-Bz-Cn1"/>
+                                    <constraint firstItem="C3W-Kt-sfm" firstAttribute="leading" secondItem="5R9-SK-VdE" secondAttribute="trailing" constant="8" id="afj-PM-XIC"/>
+                                    <constraint firstItem="UVz-oY-ZQX" firstAttribute="leading" secondItem="73j-4F-xr0" secondAttribute="leading" constant="8" id="cOM-Vk-2qL"/>
+                                    <constraint firstAttribute="width" secondItem="73j-4F-xr0" secondAttribute="height" multiplier="5:2" id="eKP-Mp-siS"/>
+                                    <constraint firstItem="Bdu-f5-amo" firstAttribute="top" secondItem="C3W-Kt-sfm" secondAttribute="bottom" constant="24" id="eQD-0h-9YP"/>
+                                    <constraint firstItem="5R9-SK-VdE" firstAttribute="leading" secondItem="73j-4F-xr0" secondAttribute="leading" constant="8" id="fI8-Ik-xet"/>
+                                    <constraint firstItem="fWn-nR-wCp" firstAttribute="top" secondItem="ucB-lS-Wse" secondAttribute="bottom" constant="15" id="ftJ-Ou-7Ne"/>
+                                    <constraint firstAttribute="trailing" secondItem="fWn-nR-wCp" secondAttribute="trailing" constant="10" id="iMU-tf-kBQ"/>
+                                    <constraint firstItem="cbK-5V-cDv" firstAttribute="top" secondItem="fWn-nR-wCp" secondAttribute="bottom" constant="15" id="m0I-HW-tQu"/>
+                                    <constraint firstItem="m2o-PL-Fxa" firstAttribute="top" secondItem="UVz-oY-ZQX" secondAttribute="bottom" constant="20" id="oT7-o6-thB"/>
+                                    <constraint firstItem="IHC-V6-LmJ" firstAttribute="top" secondItem="Bdu-f5-amo" secondAttribute="bottom" constant="24" id="x5n-9A-Te2"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="0nk-Nx-kcS">
+                                <rect key="frame" x="0.0" y="91" width="375" height="423"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="73j-4F-xr0" firstAttribute="leading" secondItem="IIq-FC-W2z" secondAttribute="leading" id="1Ln-5A-giO"/>
+                            <constraint firstItem="nkt-F8-u9o" firstAttribute="top" secondItem="IIq-FC-W2z" secondAttribute="top" id="NWl-Ni-qmE"/>
+                            <constraint firstItem="nkt-F8-u9o" firstAttribute="trailing" secondItem="IIq-FC-W2z" secondAttribute="trailing" id="Qeh-nk-baV"/>
+                            <constraint firstItem="0nk-Nx-kcS" firstAttribute="leading" secondItem="IIq-FC-W2z" secondAttribute="leading" id="b1f-cg-7jP"/>
+                            <constraint firstItem="73j-4F-xr0" firstAttribute="top" secondItem="0nk-Nx-kcS" secondAttribute="bottom" constant="3" id="cvV-0w-ucO"/>
+                            <constraint firstItem="0nk-Nx-kcS" firstAttribute="trailing" secondItem="IIq-FC-W2z" secondAttribute="trailing" id="fxT-ms-sY3"/>
+                            <constraint firstItem="73j-4F-xr0" firstAttribute="trailing" secondItem="IIq-FC-W2z" secondAttribute="trailing" id="gwU-pd-pHZ"/>
+                            <constraint firstItem="0nk-Nx-kcS" firstAttribute="top" secondItem="nkt-F8-u9o" secondAttribute="bottom" id="hT4-1f-lTM"/>
+                            <constraint firstItem="73j-4F-xr0" firstAttribute="bottom" secondItem="IIq-FC-W2z" secondAttribute="bottom" id="hfH-Ic-aDT"/>
+                            <constraint firstItem="nkt-F8-u9o" firstAttribute="leading" secondItem="IIq-FC-W2z" secondAttribute="leading" id="jBI-6G-ctt"/>
+                            <constraint firstItem="73j-4F-xr0" firstAttribute="top" secondItem="0nk-Nx-kcS" secondAttribute="bottom" constant="3" id="zE6-Qw-xlt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="IIq-FC-W2z"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="cKA-xJ-tLW"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="visitedMapView" destination="0nk-Nx-kcS" id="aF7-t0-foX"/>
+                        <outlet property="visitedPlaceName" destination="GGZ-qI-7Bn" id="zgJ-EH-BPX"/>
+                        <segue destination="pBf-bD-ZbQ" kind="show" identifier="detailToReviewSegue" id="3bi-JQ-2SP"/>
+                        <segue destination="wo4-0v-zjR" kind="show" identifier="detailToPostSegue" id="lKU-bR-s6e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iAf-8d-0ht" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3750" y="143"/>
         </scene>
     </scenes>
     <resources>
@@ -2337,7 +2541,7 @@
         <image name="whiteLogo.png" width="2000" height="889"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yqQ-Bt-dHq"/>
-        <segue reference="R0N-TN-2JW"/>
+        <segue reference="3bi-JQ-2SP"/>
+        <segue reference="UsO-og-jzP"/>
     </inferredMetricsTieBreakers>
 </document>

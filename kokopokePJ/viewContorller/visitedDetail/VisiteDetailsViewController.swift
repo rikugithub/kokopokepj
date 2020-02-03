@@ -15,7 +15,6 @@ class VisiteDetailsViewController: UIViewController{
     
     @IBOutlet weak var seeReviewButton: UIButton!
     @IBOutlet weak var PostOrSaveButton: UIButton!
-    @IBOutlet weak var visitedgenre: UILabel!
     @IBOutlet weak var visitedMapView: MKMapView!
     @IBOutlet weak var visitedPlaceName: UILabel!
     @IBOutlet weak var congestionLabel: UILabel!
@@ -33,8 +32,6 @@ class VisiteDetailsViewController: UIViewController{
         visitedMapView.region = myRegion
         
         visitedPlaceName.text = visitedPlace.getName()
-        //FIXME: 変換
-        visitedgenre.text = visitedPlace.getGenre().description
     }
     
     @IBAction func seeReviewButtonTapped(_ sender: Any) {
@@ -45,6 +42,8 @@ class VisiteDetailsViewController: UIViewController{
         performSegue(withIdentifier: "detailToPostSegue", sender: self)
     }
     
+    @IBAction func startNavigationButtonTapped(_ sender: Any) {
+    }
     //segue遷移直前に実行される処理
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detailToReviewSegue" {

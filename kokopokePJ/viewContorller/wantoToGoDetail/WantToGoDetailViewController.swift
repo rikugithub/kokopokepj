@@ -21,9 +21,12 @@ class WantToGoDetailViewController: UIViewController {
     }
     
     @IBAction func startNaviButtonTapped(_ sender: Any) {
-            //TODO: ナビゲーション機能の実装
+        //TODO: ナビゲーション機能の実装
     }
     
+    @IBAction func postReviewButtonTapped(_ sender: Any) {
+        //TODO: 口コミ投稿画面へ遷移
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "wantDetailToReviewSegue" {
             let nextVC = segue.destination as! ReviewListViewConroller

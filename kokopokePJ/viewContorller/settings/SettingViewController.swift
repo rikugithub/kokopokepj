@@ -10,46 +10,60 @@ import Foundation
 import UIKit
 
 //設定
-class SettingTableViewController: UIViewController, UITableViewDataSource{
-
+class SettingTableViewController: UITableViewController {
     
-    @IBOutlet weak var postNameSetting: UITableViewCell!
-    @IBOutlet weak var postNameLabel: UILabel!
+    @IBOutlet var settingTable: UITableView!
     @IBOutlet weak var shareSwitch: UISwitch!
-    @IBOutlet weak var GPSSetting: UIView!
-    @IBOutlet weak var GPSsettingLabel: UILabel!
-    @IBOutlet weak var searchHistoryClear: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.settingTable.delegate = self
+        self.settingTable.dataSource = self
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 3
     }
-    //セルの中身設定
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel!.text = "aaaa"
-        return cell
-    }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: // 「口コミ投稿情報」のセクション
             return 2
         case 1 : // 「GPS」のセクション
-            return 2
+            return 1
         case 2: //「検索履歴」のセクション
             return 1
         default: // ここが実行されることは無いはず
-          return 0
+            return 0
         }
     }
-    
+
     //cellが選択された時の処理
-     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-     }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0: // 「口コミ投稿情報」のセクション
+            switch indexPath.row {
+            case 0:
+                performSegue(withIdentifier: "toPostUserNameEditSegue", sender: nil)
+                break
+            case 1:
+                //do nothing..
+                break
+            default:
+                //do nothing..
+                break
+            }
+        case 1 : // 「GPS」のセクション
+            //performSegue(withIdentifier: , sender: )
+            break
+        case 2: //「検索履歴」のセクション
+            //performSegue(withIdentifier: , sender: )
+            break
+        default: // ここが実行されることは無いはず
+            //do nothing
+            break
+        }
+    }
     
 }

@@ -77,6 +77,13 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //初回動作時など、UserDefaultsに値が保存されていなかった場合に使用する初期値を指定。
+        let userDefaults = UserDefaults.standard
+        userDefaults.register(defaults: ["pinTheAuthor": false])
+        userDefaults.register(defaults: ["authorName": ""])
+        Params.pinTheAuthor = userDefaults.bool(forKey: "pinTheAuthor")
+        Params.authorName = userDefaults.string(forKey: "authorName")
+        
         MapView.delegate = self
         
         //ステータスバーのデザイン設定
@@ -350,12 +357,7 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
         self.view.sendSubviewToBack(self.searchedView!)
         print("キャンセルボタンがタップ")
     }
-    
-    //検索ワードの初期化
-    func clearCache() {
-        history.clear()
-        userDefaults.set(NSKeyedArchiver.archivedData(withRootObject: history),forKey: "history")
-    }
+
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations:[CLLocation]) {
         // 位置情報取得間隔を指定(10m移動したら、位置情報を通知)

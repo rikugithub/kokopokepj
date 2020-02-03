@@ -14,6 +14,7 @@ class SettingPostUserNameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        editPostUserName.text = Params.authorName
         editPostUserName.becomeFirstResponder()
         // Do any additional setup after loading the view.
         
@@ -46,12 +47,20 @@ class SettingPostUserNameViewController: UIViewController {
     }
     
     @objc func loadUi(_ selder: UIBarButtonItem) {
-//        createGroup(comp: {
-//            //くるくる終了
-//            self.dismissIndicator()
-//        })
-        //くるくる開始
-        startIndicator()
+        if let name = self.editPostUserName.text {
+            registerLocalStorage(name:name)
+        }
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    private func registerLocalStorage(name:String) {
+        //各項目の値を保存するために、UserDefaultsに値をセットする
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(name, forKey: "authorName")
+        //保存するためにはsynchronizeメソッドを実行する
+        userDefaults.synchronize()
+        Params.authorName = name
+        
     }
 
     /*

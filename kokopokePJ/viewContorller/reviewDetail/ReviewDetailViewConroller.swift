@@ -10,12 +10,34 @@ import UIKit
 
 class ReviewDetailViewConroller: UIViewController {
     
+    @IBOutlet weak var ratingValueLabel: UILabel!
+    @IBOutlet weak var visitedTimestamp: UILabel!
+    @IBOutlet weak var postNameLabel: UILabel!
+    @IBOutlet weak var reviewContent: UITextView!
+    @IBOutlet weak var reviewPostImage: UIImageView!
+    
     public var review:Review!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //以下を画面に出力すればOK.
-        print(review)
+        ratingValueLabel.text = review.getRating()
+        visitedTimestamp.text = review.getPostTimestamp()
+        postNameLabel.text = review.getPostUserName()
+        reviewContent.text = review.getReviewContent()
+        if let image = loadImage(url: review.getImgURL()) {
+            reviewPostImage.image = image
+        }
+    }
+    
+    func loadImage(url:String) -> UIImage? {
+        let url = URL(string: url)
+        let data:Data
+        do {
+            data = try Data(contentsOf: url!)
+        } catch {
+            return nil
+        }
+        return UIImage(data: data)
     }
 }

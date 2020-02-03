@@ -56,7 +56,7 @@ class ReviewListViewConroller: UIViewController, UITableViewDataSource ,UITableV
         // セルに表示する値を設定する
         cell.postUserName.text = reviews[indexPath.row].getPostUserName()
         cell.postDateLabel.text = reviews[indexPath.row].getPostTimestamp()
-        cell.rating.text = convertRating(i:reviews[indexPath.row].getRating())
+        cell.rating.text = reviews[indexPath.row].getRating()
         cell.postContent.text = reviews[indexPath.row].getReviewContent()
         return cell
     }
@@ -79,26 +79,5 @@ class ReviewListViewConroller: UIViewController, UITableViewDataSource ,UITableV
         let f = DateFormatter()
         f.dateFormat = "yyyy/MM/dd HH:mm:ss"
         return f.string(from: d)
-    }
-    
-    //数値を評価に変換
-    private func convertRating(i:Int) -> String {
-        switch i {
-        case 0:
-            return "☆☆☆☆☆"
-        case 1:
-            return "★☆☆☆☆"
-        case 2:
-            return "★★☆☆☆"
-        case 3:
-            return "★★★☆☆"
-        case 4:
-            return "★★★★☆"
-        case 5:
-            return "★★★★★"
-        default:
-            //ここに来ることはない
-            return "評価なし"
-        }
     }
 }

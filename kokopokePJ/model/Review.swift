@@ -120,8 +120,8 @@ class Review {
         return self.postTimestamp
     }
     
-    public func getRating() -> Int {
-        return self.rating
+    public func getRating() -> String {
+        return self.convertRating(i: self.rating)
     }
     
     public func getVisitedPlaceGenre() -> Int {
@@ -165,5 +165,26 @@ class Review {
             "reviewContent":reviewContent,
             "memo":memo
         ]
+    }
+    
+    //数値を評価に変換
+    private func convertRating(i:Int) -> String {
+        switch i {
+        case 0:
+            return "☆☆☆☆☆"
+        case 1:
+            return "★☆☆☆☆"
+        case 2:
+            return "★★☆☆☆"
+        case 3:
+            return "★★★☆☆"
+        case 4:
+            return "★★★★☆"
+        case 5:
+            return "★★★★★"
+        default:
+            //ここに来ることはない
+            return "評価なし"
+        }
     }
 }

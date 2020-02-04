@@ -10,7 +10,6 @@
 		24520C9223E723890092D74D /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24520C9123E723890092D74D /* UIViewController+Extension.swift */; };
 		2459DECC23A75E24006027A1 /* ReviewConfirmViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2459DEC723A75E24006027A1 /* ReviewConfirmViewConroller.swift */; };
 		2459DECD23A75E24006027A1 /* ReviewListViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2459DEC823A75E24006027A1 /* ReviewListViewConroller.swift */; };
-		2459DECE23A75E24006027A1 /* ReviewPostViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2459DEC923A75E24006027A1 /* ReviewPostViewConroller.swift */; };
 		2459DECF23A75E24006027A1 /* ReviewDetailViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2459DECA23A75E24006027A1 /* ReviewDetailViewConroller.swift */; };
 		2459DED023A75E24006027A1 /* ReviewCompleteViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2459DECB23A75E24006027A1 /* ReviewCompleteViewConroller.swift */; };
 		24741E5923A31D6000B41FE1 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24741E5823A31D6000B41FE1 /* MenuViewController.swift */; };
@@ -22,6 +21,8 @@
 		247CD0FA23AE0F54001B2768 /* UIView+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247CD0F923AE0F54001B2768 /* UIView+Border.swift */; };
 		247CD0FC23AE59F5001B2768 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247CD0FB23AE59F5001B2768 /* ReviewTableViewCell.swift */; };
 		247CD0FE23AE6E15001B2768 /* WantToGoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247CD0FD23AE6E15001B2768 /* WantToGoDetailViewController.swift */; };
+		2491DB9823E8313300D1C40B /* SettingPostUserNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2491DB9723E8313300D1C40B /* SettingPostUserNameViewController.swift */; };
+		2491DB9A23E849E800D1C40B /* Params.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2491DB9923E849E800D1C40B /* Params.swift */; };
 		24CAC74C23ADD45800D5CE94 /* VisitedPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CAC74B23ADD45800D5CE94 /* VisitedPlace.swift */; };
 		24CAC74E23ADD46500D5CE94 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CAC74D23ADD46500D5CE94 /* Review.swift */; };
 		32D74D26239DE4B300CA2BBE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32D74D25239DE4B300CA2BBE /* GoogleService-Info.plist */; };
@@ -55,7 +56,6 @@
 		24520C9123E723890092D74D /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		2459DEC723A75E24006027A1 /* ReviewConfirmViewConroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewConfirmViewConroller.swift; sourceTree = "<group>"; };
 		2459DEC823A75E24006027A1 /* ReviewListViewConroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewListViewConroller.swift; sourceTree = "<group>"; };
-		2459DEC923A75E24006027A1 /* ReviewPostViewConroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewPostViewConroller.swift; sourceTree = "<group>"; };
 		2459DECA23A75E24006027A1 /* ReviewDetailViewConroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailViewConroller.swift; sourceTree = "<group>"; };
 		2459DECB23A75E24006027A1 /* ReviewCompleteViewConroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewCompleteViewConroller.swift; sourceTree = "<group>"; };
 		24741E5823A31D6000B41FE1 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +67,8 @@
 		247CD0F923AE0F54001B2768 /* UIView+Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Border.swift"; sourceTree = "<group>"; };
 		247CD0FB23AE59F5001B2768 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		247CD0FD23AE6E15001B2768 /* WantToGoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WantToGoDetailViewController.swift; sourceTree = "<group>"; };
+		2491DB9723E8313300D1C40B /* SettingPostUserNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPostUserNameViewController.swift; sourceTree = "<group>"; };
+		2491DB9923E849E800D1C40B /* Params.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Params.swift; sourceTree = "<group>"; };
 		24CAC74B23ADD45800D5CE94 /* VisitedPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedPlace.swift; sourceTree = "<group>"; };
 		24CAC74D23ADD46500D5CE94 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		32D74D25239DE4B300CA2BBE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				24CAC74D23ADD46500D5CE94 /* Review.swift */,
 				44913CEB23B08A02003CA29E /* History.swift */,
 				440BF85323D6DA1C008FB96B /* sarchWord.swift */,
+				2491DB9923E849E800D1C40B /* Params.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -213,7 +216,6 @@
 		247CD10923AF0F52001B2768 /* reviewPost */ = {
 			isa = PBXGroup;
 			children = (
-				2459DEC923A75E24006027A1 /* ReviewPostViewConroller.swift */,
 				A9FD560523AC5163006CBE77 /* ReviewPostFormViewController.swift */,
 			);
 			path = reviewPost;
@@ -256,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				24741E6223A31EEE00B41FE1 /* SettingViewController.swift */,
+				2491DB9723E8313300D1C40B /* SettingPostUserNameViewController.swift */,
 			);
 			path = settings;
 			sourceTree = "<group>";
@@ -472,13 +475,14 @@
 				24741E5B23A31DC400B41FE1 /* TopViewController.swift in Sources */,
 				2459DECC23A75E24006027A1 /* ReviewConfirmViewConroller.swift in Sources */,
 				24741E5D23A31E0600B41FE1 /* VisitedViewController.swift in Sources */,
+				2491DB9A23E849E800D1C40B /* Params.swift in Sources */,
 				24CAC74E23ADD46500D5CE94 /* Review.swift in Sources */,
 				247CD0FA23AE0F54001B2768 /* UIView+Border.swift in Sources */,
 				2459DED023A75E24006027A1 /* ReviewCompleteViewConroller.swift in Sources */,
 				24741E6323A31EEE00B41FE1 /* SettingViewController.swift in Sources */,
 				44913CEC23B08A02003CA29E /* History.swift in Sources */,
-				2459DECE23A75E24006027A1 /* ReviewPostViewConroller.swift in Sources */,
 				32FDBAA323DE7470003411B1 /* ProfanityFilter.swift in Sources */,
+				2491DB9823E8313300D1C40B /* SettingPostUserNameViewController.swift in Sources */,
 				44263F6C2394B750008D0BA3 /* AppDelegate.swift in Sources */,
 				44263F6E2394B750008D0BA3 /* SceneDelegate.swift in Sources */,
 				24CAC74C23ADD45800D5CE94 /* VisitedPlace.swift in Sources */,
@@ -626,13 +630,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CK6FRUMY8N;
+				DEVELOPMENT_TEAM = 5PRVM435C9;
 				INFOPLIST_FILE = kokopokePJ/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.DirectionTorture.kokopokePJ;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.DirectionTorture.kokopokePJ-gonchan";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -645,13 +649,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CK6FRUMY8N;
+				DEVELOPMENT_TEAM = 5PRVM435C9;
 				INFOPLIST_FILE = kokopokePJ/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.DirectionTorture.kokopokePJ;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.DirectionTorture.kokopokePJ-gonchan";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

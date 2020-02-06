@@ -31,13 +31,6 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
     
     var pinTheAuthor:Bool = Params.pinTheAuthor
     
-    //　画像を定義
-    var img1 = UIImage(named:"1")!
-    var img2 = UIImage(named:"2")!
-    var img3 = UIImage(named:"3")!
-    var img4 = UIImage(named:"4")!
-    var img5 = UIImage(named:"5")!
-    
     let imagePicker = UIImagePickerController()
     
     let storage = Storage.storage()
@@ -117,17 +110,6 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
         imageClipButton.isUserInteractionEnabled = true
         imageClipButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.addImageButtonTapped(_:))))
     }
-    
-    
-    //       if let remoteUrl = params.photoURL {
-    //         do {
-    //           let url = URL(string: remoteUrl.absoluteString)
-    //           let data = try Data(contentsOf: url!)
-    //           self.myProfileImg.image = UIImage(data: data)
-    //         } catch {
-    //           print(error)
-    //         }
-    //       }
     
     @objc func addImageButtonTapped(_ sender : UITapGestureRecognizer) {
         imagePicker.allowsEditing = true //画像の切り抜きが出来るようになります。
@@ -237,25 +219,7 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
         if segue.identifier == "postToConfirmSegue" {
             let nextVC = segue.destination as! ReviewConfirmViewConroller
             nextVC.image = visitedImageView.image
-            //            if let postUserName = postHostName.text {
-            //                nextVC.postHostText = postUserName
-            //            }
-            //            if let visitedDate = visitedDateInputFiled.text {
-            //                nextVC.visitedDayText = visitedDate
-            //            }
-            //            nextVC.evaluationText = reviewRating.text
-            //            if let genre = genreInputFiled.text {
-            //                nextVC.genreText = genre
-            //            }
-            //            if let whoWith = whoWithInputFiled.text {
-            //                nextVC.withHumanText = whoWith
-            //            }
-            //            if let visitedImage = visitedImageView.image {
-            //                nextVC.imageViewImg = visitedImage
-            //            }
-            //            if let reviewText = reviewText.text {
-            //                nextVC.reviewText = reviewText
-            //            }
+            
             let review = Review(visitedPlaceName: placeName ,
                                 postUserName: postHostName.text!,
                                 postUserAge: "",

@@ -28,6 +28,7 @@
 		32D74D26239DE4B300CA2BBE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32D74D25239DE4B300CA2BBE /* GoogleService-Info.plist */; };
 		32FDBAA123DE71D3003411B1 /* PhotoReviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FDBAA023DE71D3003411B1 /* PhotoReviewController.swift */; };
 		32FDBAA323DE7470003411B1 /* ProfanityFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FDBAA223DE7470003411B1 /* ProfanityFilter.swift */; };
+		440031CB23EAC5F9004A5189 /* LocationDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440031CA23EAC5F9004A5189 /* LocationDetail.swift */; };
 		440BF85423D6DA1C008FB96B /* sarchWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440BF85323D6DA1C008FB96B /* sarchWord.swift */; };
 		440BF85623D97F71008FB96B /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440BF85523D97F71008FB96B /* HistoryTableViewCell.swift */; };
 		4412846A23974CAC0025E051 /* whiteLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4412846923974CAC0025E051 /* whiteLogo.png */; };
@@ -47,7 +48,7 @@
 		A9FD55CF23AB2017006CBE77 /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = A9FD55C923AB2017006CBE77 /* 0.png */; };
 		A9FD55D023AB2017006CBE77 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = A9FD55CA23AB2017006CBE77 /* 2.png */; };
 		A9FD55D123AB2017006CBE77 /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = A9FD55CB23AB2017006CBE77 /* 5.png */; };
-		A9FD560423AC50AE006CBE77 /* LocationIDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD560223AC50AE006CBE77 /* LocationIDetailsViewController.swift */; };
+		A9FD560423AC50AE006CBE77 /* LocationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD560223AC50AE006CBE77 /* LocationDetailViewController.swift */; };
 		A9FD560623AC5163006CBE77 /* ReviewPostFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD560523AC5163006CBE77 /* ReviewPostFormViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		32FDBAA023DE71D3003411B1 /* PhotoReviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoReviewController.swift; sourceTree = "<group>"; };
 		32FDBAA223DE7470003411B1 /* ProfanityFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfanityFilter.swift; sourceTree = "<group>"; };
 		3D174E553BD93697ABB53BDD /* Pods-kokopokePJ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kokopokePJ.release.xcconfig"; path = "Target Support Files/Pods-kokopokePJ/Pods-kokopokePJ.release.xcconfig"; sourceTree = "<group>"; };
+		440031CA23EAC5F9004A5189 /* LocationDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetail.swift; sourceTree = "<group>"; };
 		440BF85323D6DA1C008FB96B /* sarchWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sarchWord.swift; sourceTree = "<group>"; };
 		440BF85523D97F71008FB96B /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		4412846923974CAC0025E051 /* whiteLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteLogo.png; sourceTree = "<group>"; };
@@ -96,7 +98,7 @@
 		A9FD55C923AB2017006CBE77 /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
 		A9FD55CA23AB2017006CBE77 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		A9FD55CB23AB2017006CBE77 /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
-		A9FD560223AC50AE006CBE77 /* LocationIDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationIDetailsViewController.swift; sourceTree = "<group>"; };
+		A9FD560223AC50AE006CBE77 /* LocationDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetailViewController.swift; sourceTree = "<group>"; };
 		A9FD560523AC5163006CBE77 /* ReviewPostFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPostFormViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,6 +122,7 @@
 				44913CEB23B08A02003CA29E /* History.swift */,
 				440BF85323D6DA1C008FB96B /* sarchWord.swift */,
 				2491DB9923E849E800D1C40B /* Params.swift */,
+				440031CA23EAC5F9004A5189 /* LocationDetail.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -266,7 +269,7 @@
 		247CD10F23AF12F8001B2768 /* locationDetail */ = {
 			isa = PBXGroup;
 			children = (
-				A9FD560223AC50AE006CBE77 /* LocationIDetailsViewController.swift */,
+				A9FD560223AC50AE006CBE77 /* LocationDetailViewController.swift */,
 			);
 			path = locationDetail;
 			sourceTree = "<group>";
@@ -464,7 +467,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9FD560423AC50AE006CBE77 /* LocationIDetailsViewController.swift in Sources */,
+				A9FD560423AC50AE006CBE77 /* LocationDetailViewController.swift in Sources */,
 				44263F762394B750008D0BA3 /* kokopokePJ.xcdatamodeld in Sources */,
 				247CD0FE23AE6E15001B2768 /* WantToGoDetailViewController.swift in Sources */,
 				44263F702394B750008D0BA3 /* ViewController.swift in Sources */,
@@ -473,6 +476,7 @@
 				A9FD560623AC5163006CBE77 /* ReviewPostFormViewController.swift in Sources */,
 				24741E5923A31D6000B41FE1 /* MenuViewController.swift in Sources */,
 				24741E5B23A31DC400B41FE1 /* TopViewController.swift in Sources */,
+				440031CB23EAC5F9004A5189 /* LocationDetail.swift in Sources */,
 				2459DECC23A75E24006027A1 /* ReviewConfirmViewConroller.swift in Sources */,
 				24741E5D23A31E0600B41FE1 /* VisitedViewController.swift in Sources */,
 				2491DB9A23E849E800D1C40B /* Params.swift in Sources */,

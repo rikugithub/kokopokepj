@@ -65,9 +65,8 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
     
     var geoRegions:[CLRegion] = []
     
-    var a: String?
-    
-    
+    var findWord : String = ""
+
     override func viewDidAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: true)
         self.searchedView.isHidden = true
@@ -287,12 +286,15 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
             return
         }
         
-        a = searchBar.text
+        let str:String = searchBar.text!
+        findWord = str
+        
         //検索ワードをローカルストレージへ登録
         let word = searchWord(word: address, timestamp: Date())
         history.append(searchWord: word)
         userDefaults.set(NSKeyedArchiver.archivedData(withRootObject: history), forKey: "history")
         
+        //検索ワード保存
         mapSearch(address: address)
         
         self.searchBar.text = ""
@@ -300,8 +302,7 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
         tableView?.reloadData()
     }
     
-    
-    
+
     func mapSearch(address:String){
         //TODO:もし海外エリアとかを検索したい場合は考えないとなぁ...
         CLGeocoder().geocodeAddressString("札幌") { [weak MapView] placemarks, error in
@@ -504,19 +505,24 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
     
     //確認ボタンタップ時の処理
     @IBAction func mapCheckButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: "topToDetailsSegue",sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "topToDetailsSegue" {
-            //遷移先ViewCntrollerの取得
-            let nextView = segue.destination as! LocationDetailsViewController
-            //値の設定
-            //searchBarの値がここが呼ばれる前に初期化されてるので、何かで値をもらいたい！
-            nextView.address = a!
+        
+        let searchUrl = "https://www.google.co.jp/search?q=" + findWord
+        guard let url = NSURL(string: searchUrl.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!) else {
+            return
+        }
+        if UIApplication.shared.canOpenURL(url as URL){
+            UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
         }
     }
     
+//    //この場所の情報を見る
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "topToDetailsSegue" {
+//            //遷移先ViewCntrollerの取得
+//            let nextView = segue.destination as! LocationDetailsViewController
+//        }
+//    }
+//
     func initMap() {
         // 縮尺を設定
         var region:MKCoordinateRegion = MapView.region

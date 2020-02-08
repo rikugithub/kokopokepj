@@ -42,12 +42,6 @@
 		44913CEC23B08A02003CA29E /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44913CEB23B08A02003CA29E /* History.swift */; };
 		44D095B123E1634E006E5614 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44D095B023E1634D006E5614 /* Main.storyboard */; };
 		6CDEAC31B91F181F51571D7F /* Pods_kokopokePJ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20BC471902BE98B11422B315 /* Pods_kokopokePJ.framework */; };
-		A9FD55C423AB1FE5006CBE77 /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = A9FD55BE23AB1FE5006CBE77 /* 4.png */; };
-		A9FD55CD23AB2017006CBE77 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = A9FD55C723AB2017006CBE77 /* 1.png */; };
-		A9FD55CE23AB2017006CBE77 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = A9FD55C823AB2017006CBE77 /* 3.png */; };
-		A9FD55CF23AB2017006CBE77 /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = A9FD55C923AB2017006CBE77 /* 0.png */; };
-		A9FD55D023AB2017006CBE77 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = A9FD55CA23AB2017006CBE77 /* 2.png */; };
-		A9FD55D123AB2017006CBE77 /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = A9FD55CB23AB2017006CBE77 /* 5.png */; };
 		A9FD560423AC50AE006CBE77 /* LocationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD560223AC50AE006CBE77 /* LocationDetailViewController.swift */; };
 		A9FD560623AC5163006CBE77 /* ReviewPostFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD560523AC5163006CBE77 /* ReviewPostFormViewController.swift */; };
 /* End PBXBuildFile section */
@@ -92,12 +86,6 @@
 		44913CEB23B08A02003CA29E /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		44D095B023E1634D006E5614 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		7F4047F435F9C02E668BB618 /* Pods-kokopokePJ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kokopokePJ.debug.xcconfig"; path = "Target Support Files/Pods-kokopokePJ/Pods-kokopokePJ.debug.xcconfig"; sourceTree = "<group>"; };
-		A9FD55BE23AB1FE5006CBE77 /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
-		A9FD55C723AB2017006CBE77 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
-		A9FD55C823AB2017006CBE77 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
-		A9FD55C923AB2017006CBE77 /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
-		A9FD55CA23AB2017006CBE77 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
-		A9FD55CB23AB2017006CBE77 /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
 		A9FD560223AC50AE006CBE77 /* LocationDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetailViewController.swift; sourceTree = "<group>"; };
 		A9FD560523AC5163006CBE77 /* ReviewPostFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPostFormViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -315,12 +303,6 @@
 				44263F742394B750008D0BA3 /* kokopokePJ.xcdatamodeld */,
 				4412846923974CAC0025E051 /* whiteLogo.png */,
 				4412846B23977CBC0025E051 /* logo.png */,
-				A9FD55C923AB2017006CBE77 /* 0.png */,
-				A9FD55C723AB2017006CBE77 /* 1.png */,
-				A9FD55CA23AB2017006CBE77 /* 2.png */,
-				A9FD55C823AB2017006CBE77 /* 3.png */,
-				A9FD55BE23AB1FE5006CBE77 /* 4.png */,
-				A9FD55CB23AB2017006CBE77 /* 5.png */,
 				32D74D25239DE4B300CA2BBE /* GoogleService-Info.plist */,
 			);
 			path = kokopokePJ;
@@ -403,17 +385,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9FD55CF23AB2017006CBE77 /* 0.png in Resources */,
 				4412846A23974CAC0025E051 /* whiteLogo.png in Resources */,
-				A9FD55D023AB2017006CBE77 /* 2.png in Resources */,
 				4412846C23977CBC0025E051 /* logo.png in Resources */,
-				A9FD55C423AB1FE5006CBE77 /* 4.png in Resources */,
 				44263F7B2394B751008D0BA3 /* LaunchScreen.storyboard in Resources */,
-				A9FD55CD23AB2017006CBE77 /* 1.png in Resources */,
 				44D095B123E1634E006E5614 /* Main.storyboard in Resources */,
 				44263F782394B751008D0BA3 /* Assets.xcassets in Resources */,
-				A9FD55CE23AB2017006CBE77 /* 3.png in Resources */,
-				A9FD55D123AB2017006CBE77 /* 5.png in Resources */,
 				32D74D26239DE4B300CA2BBE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

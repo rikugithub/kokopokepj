@@ -39,6 +39,9 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
     public var DesLon = 139.75074
     public var DesLat = 35.69555
     
+    // ナビ用フラグ
+    public var LocFlg
+    
     //位置情報コントローラー
     var locManager: CLLocationManager!
     

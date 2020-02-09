@@ -65,7 +65,7 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
         // ピッカー設定
         datePicker.datePickerMode = UIDatePicker.Mode.date
         datePicker.timeZone = NSTimeZone.local
-        datePicker.locale = Locale.current
+        datePicker.locale = Locale(identifier: "ja")
         visitedDateInputFiled.inputView = datePicker
         // 開始DatePickerの生成
         let startToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))

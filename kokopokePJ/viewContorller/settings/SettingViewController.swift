@@ -17,14 +17,45 @@ class SettingTableViewController: UITableViewController, UINavigationControllerD
     
     var pinTheAuthor:Bool = Params.pinTheAuthor
     
+    //tableViewのバックグラウンドカラー
+    public let backGroundColor:UIColor = UIColor(red: 236/255, green: 235/255, blue: 241/255, alpha: 1)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.delegate = self
         self.settingTable.delegate = self
         self.settingTable.dataSource = self
+        //背景色を指定
+        self.view.backgroundColor = backGroundColor
         
         shareSwitch.addTarget(self, action: #selector(SettingTableViewController.onClickMySwicth(sender:)), for: UIControl.Event.valueChanged)
         shareSwitch.isOn = pinTheAuthor
+    }
+    
+    //Headerの高さ
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    //Footerの高さ
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
+    //Headerが表示される時の処理
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let header = view as? UITableViewHeaderFooterView else { return }
+        //Headerのラベルの文字色を設定
+        header.textLabel?.textColor = UIColor.gray
+        //Headerの背景色を設定
+        header.contentView.backgroundColor = backGroundColor
+    }
+    //Footerが表示される時の処理
+    override func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        guard let footer = view as? UITableViewHeaderFooterView else { return }
+        //Footerのラベルの文字色を設定
+        footer.textLabel?.textColor = UIColor.white
+        //Footerの背景色を設定
+        footer.contentView.backgroundColor = backGroundColor
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

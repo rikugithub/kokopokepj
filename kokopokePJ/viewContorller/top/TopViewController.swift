@@ -40,7 +40,7 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
     public var DesLat = 35.69555
     
     // ナビ用フラグ
-    public var LocFlg
+   // public var LocFlg
     
     //位置情報コントローラー
     var locManager: CLLocationManager!
@@ -249,6 +249,7 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         singleTap()
         let word = sortHistoryWord(indexPath: indexPath)
+        findWord = word
         mapSearch(address: word)
         tableView.deselectRow(at: indexPath, animated: true)
     }

@@ -211,10 +211,20 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
         return formatter.string(from: datePicker.date)
     }
     
+    private func validate() -> Bool {
+        if "" == postHostName.text! {return true}
+        if "" == reviewRating.text! {return true}
+        return false
+    }
+    
     
     @IBAction func postButtonTapped(_ sender: Any) {
+        //バリデーションチェック
+        if validate() {
+            alert(title: "警告", message: "必須項目が未入力です")
+            return
+        }
         performSegue(withIdentifier: "postToConfirmSegue", sender: self)
-        let text = reviewText.text!
     }
     
     

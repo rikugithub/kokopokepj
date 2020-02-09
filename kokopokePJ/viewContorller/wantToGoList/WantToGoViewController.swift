@@ -40,11 +40,18 @@ class WantToGoViewController: UIViewController,UITableViewDataSource ,UITableVie
     fileprivate func makeNoneView() {
         let groupNoneView = UIView(frame: CGRect(x: 0,y: 0,width: self.view.frame.width,height: self.view.frame.height))
         groupNoneView.backgroundColor = UIColor.white
+        let img = UIImageView(image: UIImage(named: "kokopoket_image"))
+        let height = img.frame.height
+        let width = img.frame.width
+        img.frame = CGRect(x:self.view.frame.width/2-width/2,y: self.view.frame.height/2+height/4,width: width,height:height/2)
+        img.contentMode = UIView.ContentMode.scaleAspectFit
+        
         let title = UILabel(frame: CGRect(x:self.view.frame.width/2,y: self.view.frame.height/2,width: 250,height:250))
         title.text = "場所が登録されていません"
         title.textAlignment = .center
         title.center = self.view.center
         groupNoneView.addSubview(title)
+        groupNoneView.addSubview(img)
         self.view.addSubview(groupNoneView)
     }
     

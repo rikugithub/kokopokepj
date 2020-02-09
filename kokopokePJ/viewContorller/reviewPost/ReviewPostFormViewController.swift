@@ -27,6 +27,8 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
     var whoWithPicker:UIPickerView = UIPickerView()
     var ratingPicker:UIPickerView = UIPickerView()
     
+    var alertController: UIAlertController!
+    
     public var placeName:String!
     
     var pinTheAuthor:Bool = Params.pinTheAuthor
@@ -55,7 +57,10 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
         
         reviewText.text = ""
         
+        
         authorSettingSwitch.isOn = pinTheAuthor
+        // セルを選択不可
+        self.tableView.allowsSelection = false
         
         // ピッカー設定
         datePicker.datePickerMode = UIDatePicker.Mode.date
@@ -210,8 +215,6 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
     @IBAction func postButtonTapped(_ sender: Any) {
         performSegue(withIdentifier: "postToConfirmSegue", sender: self)
         let text = reviewText.text!
-        let result = ProfanityFilter.cleanUp(text)
-        print(result)
     }
     
     
@@ -236,6 +239,16 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
                 memo: reviewText.text)
             nextVC.review = review
         }
+    }
+    
+    func alert(title:String, message:String) {
+        alertController = UIAlertController(title: title,
+                                   message: message,
+                                   preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK",
+                                       style: .default,
+                                       handler: nil))
+        present(alertController, animated: true)
     }
     
     private func convertRating(s:String) -> Int {

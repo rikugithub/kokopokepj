@@ -157,9 +157,13 @@ class SettingTableViewController: UITableViewController, UINavigationControllerD
     }
     //検索ワードの初期化
     func clearCache() {
-        let history = History()
         let userDefaults = UserDefaults.standard
+        
+        let history = History()
         userDefaults.set(NSKeyedArchiver.archivedData(withRootObject: history),forKey: "history")
+//
+//        let wannaGoPlaces:[VisitedPlace] = []
+//        userDefaults.set(NSKeyedArchiver.archivedData(withRootObject: wannaGoPlaces), forKey: "wannaGoPlaces")
     }
     
 }

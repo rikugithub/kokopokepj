@@ -176,6 +176,11 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
         wannaGoPlaces = loadVisitedPlace()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        history = loadHistory()
+        self.tableView?.reloadData()
+    }
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {
             return nil

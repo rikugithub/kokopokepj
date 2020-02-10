@@ -31,8 +31,6 @@ class ReviewDetailViewConroller: UIViewController {
     }
     
     func loadImage(url:String) -> UIImage? {
-        //くるくる開始
-        startIndicator()
         guard let url = URL(string: url) else {
             return nil
         }

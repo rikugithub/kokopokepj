@@ -40,7 +40,7 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
     public var DesLat = 35.69555
     
     // ナビ用フラグ
-   // public var LocFlg
+    public var LocFlg = false
     
     //位置情報コントローラー
     var locManager: CLLocationManager!
@@ -370,25 +370,12 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
         // 現在地取得
         StsrtLon = (locations.last?.coordinate.longitude)!
         StsrtLat = (locations.last?.coordinate.latitude)!
-        // 現在位置とタッウプした位置の距離(m)を算出する
-        let distance = calcDistance(MapView.userLocation.coordinate, pointAno.coordinate)
-        
-        if (0 != distance) {
-            // ピンに設定する文字列を生成する
-            var str:String = Int(distance).description
-            str = str + " m"
-            
-            if pointAno.title != str {
-                // ピンまでの距離に変化があればtitleを更新する
-                pointAno.title = str
-                MapView.addAnnotation(pointAno)
-            }
-        }
         
         if isLocationFirst {
             for item in wannaGoPlaces {
                 let location = CLLocationCoordinate2DMake(item.getLatitude(),item.getLongitude())
-                let radius = 100.0
+                // 通知がくる半径
+                let radius = 50.0
                 let identifier = item.getName()
                 let geoRegion = CLCircularRegion.init(center: location, radius: radius, identifier: identifier)
                 geoRegion.notifyOnEntry = true
@@ -455,42 +442,48 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
     //ナビ開始ボタンタップ時の処理
     public func startNavigation(targetLat:Double,targetLon:Double) {
         
-        let myArea = CLLocationCoordinate2D(latitude: StsrtLat, longitude: StsrtLon)
-        let targetArea = CLLocationCoordinate2D(latitude: targetLat, longitude: targetLon)
-        
-        var routeCoordinates: [CLLocationCoordinate2D] = []
-        routeCoordinates.append(myArea)
-        routeCoordinates.append(targetArea)
-        
-        var placemarks = [MKMapItem]()
-        //routeCoordinatesの配列からMKMapItemの配列にに変換
-        for item in routeCoordinates{
-            let placemark = MKPlacemark(coordinate: item, addressDictionary: nil)
-            placemarks.append(MKMapItem(placemark: placemark))
+        if (LocFlg == true) {
+            
+            
         }
-        var myRoute: MKRoute!
-        let directionsRequest = MKDirections.Request()
-        directionsRequest.transportType = .walking //移動手段は徒歩
-        for (k, item) in placemarks.enumerated(){
-            if k < (placemarks.count - 1){
-                directionsRequest.source = item //スタート地点
-                directionsRequest.destination = placemarks[k + 1] //目標地点
-                let direction = MKDirections(request: directionsRequest)
-                direction.calculate(completionHandler: {(response, error) in
-                    if error == nil {
-                        myRoute = response?.routes[0]
-                        self.MapView.addOverlay(myRoute.polyline, level: .aboveRoads) //mapViewに絵画
-                        //self.MapView.showAnnotations(self.MapView.annotations, animated: true)
-                    }
-                })
+        
+            let myArea = CLLocationCoordinate2D(latitude: StsrtLat, longitude: StsrtLon)
+            let targetArea = CLLocationCoordinate2D(latitude: targetLat, longitude: targetLon)
+            
+            var routeCoordinates: [CLLocationCoordinate2D] = []
+            routeCoordinates.append(myArea)
+            routeCoordinates.append(targetArea)
+            
+            var placemarks = [MKMapItem]()
+            //routeCoordinatesの配列からMKMapItemの配列にに変換
+            for item in routeCoordinates{
+                let placemark = MKPlacemark(coordinate: item, addressDictionary: nil)
+                placemarks.append(MKMapItem(placemark: placemark))
             }
-        }
-        //FIXME: 2回目以降はスコープされない
-        if let firstOverlay = self.MapView.overlays.first{
-            let rect = self.MapView.overlays.reduce(firstOverlay.boundingMapRect, {$0.union($1.boundingMapRect)})
-            self.MapView.setVisibleMapRect(rect, edgePadding: UIEdgeInsets(top: 35, left: 35, bottom: 35, right: 35), animated: true)
-        }
-        routeCoordinates = []
+            var myRoute: MKRoute!
+            let directionsRequest = MKDirections.Request()
+            directionsRequest.transportType = .walking //移動手段は徒歩
+            for (k, item) in placemarks.enumerated(){
+                if k < (placemarks.count - 1){
+                    directionsRequest.source = item //スタート地点
+                    directionsRequest.destination = placemarks[k + 1] //目標地点
+                    let direction = MKDirections(request: directionsRequest)
+                    direction.calculate(completionHandler: {(response, error) in
+                        if error == nil {
+                            myRoute = response?.routes[0]
+                            self.MapView.addOverlay(myRoute.polyline, level: .aboveRoads) //mapViewに絵画
+                            //self.MapView.showAnnotations(self.MapView.annotations, animated: true)
+                        }
+                    })
+                }
+            }
+            //FIXME: 2回目以降はスコープされない
+            if let firstOverlay = self.MapView.overlays.first{
+                let rect = self.MapView.overlays.reduce(firstOverlay.boundingMapRect, {$0.union($1.boundingMapRect)})
+                self.MapView.setVisibleMapRect(rect, edgePadding: UIEdgeInsets(top: 35, left: 35, bottom: 35, right: 35), animated: true)
+            }
+            routeCoordinates = []
+            
     }
     
     @IBAction func naviStartButtonTapped(_ sender: Any) {
@@ -519,14 +512,6 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
         }
     }
     
-//    //この場所の情報を見る
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "topToDetailsSegue" {
-//            //遷移先ViewCntrollerの取得
-//            let nextView = segue.destination as! LocationDetailsViewController
-//        }
-//    }
-//
     func initMap() {
         // 縮尺を設定
         var region:MKCoordinateRegion = MapView.region

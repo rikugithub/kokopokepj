@@ -9,10 +9,11 @@
 import Foundation
 import UIKit
 import MapKit
+import Firebase
 
 //訪れた場所の詳しい情報
 class VisiteDetailsViewController: UIViewController{
-    
+    var ref:DatabaseReference!
     @IBOutlet weak var visitedMapView: MKMapView!
     @IBOutlet weak var visitedPlaceName: UILabel!
     
@@ -29,6 +30,26 @@ class VisiteDetailsViewController: UIViewController{
         visitedMapView.region = myRegion
         
         visitedPlaceName.text = visitedPlace.getName()
+        loadRating(palceName: visitedPlace.getName(), comp: { result in
+            print(result)
+        })
+    }
+    
+    func loadRating(palceName:String,comp:@escaping(Int) -> Void) {
+        ref = Database.database().reference().child("reviews").child(palceName)
+        ref.observe(.value, with: { snapshot in
+            var result:Int = 0
+            if let values = snapshot.value as? [String:[String:Any]] {
+                var rating:Int = 0
+                for value in values {
+                    let val = value.value
+                    let review = Review(dic: val)
+                    rating = rating + review.getRating()
+                }
+                result = rating / values.count
+            }
+            comp(result)
+        })
     }
     
     @IBAction func seeReviewButtonTapped(_ sender: Any) {

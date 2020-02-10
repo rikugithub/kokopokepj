@@ -140,6 +140,10 @@ class Review {
         return self.convertRating(i: self.rating)
     }
     
+    public func getRating() -> Int {
+        return self.rating
+    }
+    
     public func getVisitedPlaceGenre() -> String {
         return convertGenreString(i: self.visitedPlaceGenre)
     }

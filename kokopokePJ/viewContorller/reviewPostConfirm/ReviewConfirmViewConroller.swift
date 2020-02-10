@@ -24,7 +24,7 @@ class ReviewConfirmViewConroller: UITableViewController {
     var ref = Database.database().reference();
     
     public var image:UIImage!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,17 +42,16 @@ class ReviewConfirmViewConroller: UITableViewController {
         upload(comp: { url in
             if let u = url {
                 self.review.setImgURL(imgURL: u.absoluteString)
-                let newRf = self.ref.child("reviews").child(self.review.getVisitedPlaceName()).childByAutoId()
-                newRf.setValue(self.review.toDictionary())
-                self.dispSwitchAlart()
-            } else {
-                self.dispErrorAlart()
             }
+            let newRf = self.ref.child("reviews").child(self.review.getVisitedPlaceName()).childByAutoId()
+            newRf.setValue(self.review.toDictionary())
+            self.dispSwitchAlart()
+            //self.dispErrorAlart()
             //くるくる終了
             self.dismissIndicator()
         })
         //くるくる終了
-        self.dismissIndicator()
+        self.startIndicator()
     }
     
     private func upload(comp:@escaping(URL?) -> Void) {
@@ -78,6 +77,8 @@ class ReviewConfirmViewConroller: UITableViewController {
                 })
             }
         }
+        //画像が選択されていない場合
+        comp(nil)
     }
     
     private func dispSwitchAlart() {

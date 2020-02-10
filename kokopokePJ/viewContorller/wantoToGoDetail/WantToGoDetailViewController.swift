@@ -8,12 +8,15 @@
 
 import UIKit
 import MapKit
+import Firebase
 
 class WantToGoDetailViewController: UIViewController {
-    
+    var ref:DatabaseReference!
     public var area:VisitedPlace!
     @IBOutlet weak var wannaGoPlanceName: UILabel!
     @IBOutlet weak var wannaGoMapView: MKMapView!
+    
+    @IBOutlet weak var ratingLabel:UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +28,26 @@ class WantToGoDetailViewController: UIViewController {
 
         wannaGoMapView.region = myRegion
         wannaGoPlanceName.text = area.getName()
-        
+        loadRating(palceName: area.getName(), comp: { result in
+            self.ratingLabel.text = self.convertRating(i: result)
+        })
+    }
+    
+    func loadRating(palceName:String,comp:@escaping(Int) -> Void) {
+        ref = Database.database().reference().child("reviews").child(palceName)
+        ref.observe(.value, with: { snapshot in
+            var result:Int = 0
+            if let values = snapshot.value as? [String:[String:Any]] {
+                var rating:Int = 0
+                for value in values {
+                    let val = value.value
+                    let review = Review(dic: val)
+                    rating = rating + review.getRating()
+                }
+                result = rating / values.count
+            }
+            comp(result)
+        })
     }
     
     @IBAction func checkReviewListButtonTapped(_ sender: Any) {
@@ -52,6 +74,27 @@ class WantToGoDetailViewController: UIViewController {
         } else if segue.identifier == "wannaGoDetailToPostSegue" {
             let nextVC = segue.destination as! ReviewPostFormViewController
             nextVC.placeName = area.getName()
+        }
+    }
+    
+    //数値を評価に変換
+    private func convertRating(i:Int) -> String {
+        switch i {
+        case 0:
+            return "☆☆☆☆☆"
+        case 1:
+            return "★☆☆☆☆"
+        case 2:
+            return "★★☆☆☆"
+        case 3:
+            return "★★★☆☆"
+        case 4:
+            return "★★★★☆"
+        case 5:
+            return "★★★★★"
+        default:
+            //ここに来ることはない
+            return "評価なし"
         }
     }
 

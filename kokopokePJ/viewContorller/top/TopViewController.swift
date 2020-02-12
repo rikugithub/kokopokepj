@@ -39,9 +39,6 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
     public var DesLon = 139.75074
     public var DesLat = 35.69555
     
-    // ナビ用フラグ
-    public var LocFlg = false
-    
     //位置情報コントローラー
     var locManager: CLLocationManager!
     
@@ -447,47 +444,45 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
     //ナビ開始ボタンタップ時の処理
     public func startNavigation(targetLat:Double,targetLon:Double) {
         
-        if (LocFlg == true) {
-            
-            
-        }
+        let overlays = MapView.overlays
+        MapView.removeOverlays(overlays)
         
-            let myArea = CLLocationCoordinate2D(latitude: StsrtLat, longitude: StsrtLon)
-            let targetArea = CLLocationCoordinate2D(latitude: targetLat, longitude: targetLon)
-            
-            var routeCoordinates: [CLLocationCoordinate2D] = []
-            routeCoordinates.append(myArea)
-            routeCoordinates.append(targetArea)
-            
-            var placemarks = [MKMapItem]()
-            //routeCoordinatesの配列からMKMapItemの配列にに変換
-            for item in routeCoordinates{
-                let placemark = MKPlacemark(coordinate: item, addressDictionary: nil)
-                placemarks.append(MKMapItem(placemark: placemark))
+        let myArea = CLLocationCoordinate2D(latitude: StsrtLat, longitude: StsrtLon)
+        let targetArea = CLLocationCoordinate2D(latitude: targetLat, longitude: targetLon)
+        
+        var routeCoordinates: [CLLocationCoordinate2D] = []
+        routeCoordinates.append(myArea)
+        routeCoordinates.append(targetArea)
+        
+        var placemarks = [MKMapItem]()
+        //routeCoordinatesの配列からMKMapItemの配列にに変換
+        for item in routeCoordinates{
+            let placemark = MKPlacemark(coordinate: item, addressDictionary: nil)
+            placemarks.append(MKMapItem(placemark: placemark))
+        }
+        var myRoute: MKRoute!
+        let directionsRequest = MKDirections.Request()
+        directionsRequest.transportType = .walking //移動手段は徒歩
+        for (k, item) in placemarks.enumerated(){
+            if k < (placemarks.count - 1){
+                directionsRequest.source = item //スタート地点
+                directionsRequest.destination = placemarks[k + 1] //目標地点
+                let direction = MKDirections(request: directionsRequest)
+                direction.calculate(completionHandler: {(response, error) in
+                    if error == nil {
+                        myRoute = response?.routes[0]
+                        self.MapView.addOverlay(myRoute.polyline, level: .aboveRoads) //mapViewに絵画
+                        //self.MapView.showAnnotations(self.MapView.annotations, animated: true)
+                    }
+                })
             }
-            var myRoute: MKRoute!
-            let directionsRequest = MKDirections.Request()
-            directionsRequest.transportType = .walking //移動手段は徒歩
-            for (k, item) in placemarks.enumerated(){
-                if k < (placemarks.count - 1){
-                    directionsRequest.source = item //スタート地点
-                    directionsRequest.destination = placemarks[k + 1] //目標地点
-                    let direction = MKDirections(request: directionsRequest)
-                    direction.calculate(completionHandler: {(response, error) in
-                        if error == nil {
-                            myRoute = response?.routes[0]
-                            self.MapView.addOverlay(myRoute.polyline, level: .aboveRoads) //mapViewに絵画
-                            //self.MapView.showAnnotations(self.MapView.annotations, animated: true)
-                        }
-                    })
-                }
-            }
-            //FIXME: 2回目以降はスコープされない
-            if let firstOverlay = self.MapView.overlays.first{
-                let rect = self.MapView.overlays.reduce(firstOverlay.boundingMapRect, {$0.union($1.boundingMapRect)})
-                self.MapView.setVisibleMapRect(rect, edgePadding: UIEdgeInsets(top: 35, left: 35, bottom: 35, right: 35), animated: true)
-            }
-            routeCoordinates = []
+        }
+        //FIXME: 2回目以降はスコープされない
+        if let firstOverlay = self.MapView.overlays.first{
+            let rect = self.MapView.overlays.reduce(firstOverlay.boundingMapRect, {$0.union($1.boundingMapRect)})
+            self.MapView.setVisibleMapRect(rect, edgePadding: UIEdgeInsets(top: 35, left: 35, bottom: 35, right: 35), animated: true)
+        }
+        routeCoordinates = []
             
     }
     

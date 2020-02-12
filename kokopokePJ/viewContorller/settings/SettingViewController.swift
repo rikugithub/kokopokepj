@@ -14,6 +14,7 @@ class SettingTableViewController: UITableViewController, UINavigationControllerD
     
     @IBOutlet var settingTable: UITableView!
     @IBOutlet weak var shareSwitch: UISwitch!
+    @IBOutlet weak var postNameLabel: UILabel!
     
     var pinTheAuthor:Bool = Params.pinTheAuthor
     

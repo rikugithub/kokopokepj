@@ -68,6 +68,7 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
         if let postName:String = UserDefaults().string(forKey: "authorName"){
             postHostName.text = postName
             postHostName.isEnabled = false
+            authorSettingSwitch.isEnabled = false
         } else {
             postHostName.text = ""
         }
@@ -234,6 +235,16 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
             alert(title: "警告", message: "必須項目が未入力です")
             return
         }
+        
+        if authorSettingSwitch.isEnabled == true {
+            
+            //各項目の値を保存するために、UserDefaultsに値をセットする
+            let userDefaults = UserDefaults.standard
+            userDefaults.set(postHostName, forKey: "authorName")
+            //保存するためにはsynchronizeメソッドを実行する
+            userDefaults.synchronize()
+        }
+
         performSegue(withIdentifier: "postToConfirmSegue", sender: self)
     }
     

@@ -17,6 +17,8 @@ class SettingTableViewController: UITableViewController, UINavigationControllerD
     
     var pinTheAuthor:Bool = Params.pinTheAuthor
     
+    let userDefaults = UserDefaults.standard
+
     //tableViewのバックグラウンドカラー
     public let backGroundColor:UIColor = UIColor(red: 236/255, green: 235/255, blue: 241/255, alpha: 1)
     
@@ -30,6 +32,9 @@ class SettingTableViewController: UITableViewController, UINavigationControllerD
         
         shareSwitch.addTarget(self, action: #selector(SettingTableViewController.onClickMySwicth(sender:)), for: UIControl.Event.valueChanged)
         shareSwitch.isOn = pinTheAuthor
+        
+        if let postName = UserDefaults().string(forKey: "authorName") {
+        }
     }
     
     //Headerの高さ

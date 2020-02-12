@@ -604,11 +604,18 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
         }
     }
     
+    
     func addVisitedPlace(placeName:String) {
         var targetPlace:VisitedPlace?
         for wannaGoPlace in wannaGoPlaces {
             if wannaGoPlace.getName() == placeName {
                 targetPlace = wannaGoPlace
+                let wordIndex = wannaGoPlaces.firstIndex(of:targetPlace!)
+                
+                wannaGoPlaces.remove(at: wordIndex!)
+                userDefaults.removeObject(forKey: "wannaGoPlaces")
+                userDefaults.set(NSKeyedArchiver.archivedData(withRootObject: wannaGoPlaces), forKey: "wannaGoPlaces")
+                
             }
         }
         

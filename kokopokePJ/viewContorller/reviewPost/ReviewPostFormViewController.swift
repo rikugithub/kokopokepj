@@ -36,6 +36,8 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
     let imagePicker = UIImagePickerController()
     
     let storage = Storage.storage()
+    
+    public let userDefaults = UserDefaults.standard
     // ジャンル内容
     let genreList = [
         " ","飲食","娯楽","ショッピング","交通",
@@ -61,6 +63,14 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
         authorSettingSwitch.isOn = pinTheAuthor
         // セルを選択不可
         self.tableView.allowsSelection = false
+        
+        //投稿者名が設定されていた場合は入力させない
+        if let postName:String = UserDefaults().string(forKey: "authorName"){
+            postHostName.text = postName
+            postHostName.isEnabled = false
+        } else {
+            postHostName.text = ""
+        }
         
         // ピッカー設定
         datePicker.datePickerMode = UIDatePicker.Mode.date

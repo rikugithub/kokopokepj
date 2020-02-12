@@ -11,7 +11,7 @@ import UIKit
 class SettingPostUserNameViewController: UIViewController {
     
     @IBOutlet weak var editPostUserName: UITextField!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         editPostUserName.text = Params.authorName
@@ -33,6 +33,7 @@ class SettingPostUserNameViewController: UIViewController {
     @objc func textFieldDidChange(notification: NSNotification) {
         let textField = notification.object as! UITextField
         let nextActionBar = UIBarButtonItem(title: "作成", style: .plain, target: self, action: #selector(loadUi))
+        
         if let _ = textField.text {
             if 0 >= textField.text!.count {
                 self.navigationItem.setRightBarButton(nil, animated: true)

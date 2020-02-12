@@ -2107,8 +2107,13 @@
                                         <rect key="frame" x="12" y="8" width="250" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EkF-0H-VqM">
                                         <rect key="frame" x="287" y="18" width="80" height="21"/>
@@ -2118,7 +2123,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.58643005015774774" blue="1" alpha="0.14520012842465754" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.2489149296" green="0.3403017518" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Dho-D6-Bb6" secondAttribute="height" multiplier="375:47" id="cxg-X6-Ien"/>
                                 </constraints>
@@ -2426,8 +2431,8 @@
                                         <rect key="frame" x="12" y="8" width="250" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
+                                        <color key="textColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="highlightedColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AzS-Zz-JlR">
                                         <rect key="frame" x="292" y="18" width="75" height="21"/>
@@ -2437,7 +2442,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.58643005020000005" blue="1" alpha="0.14520012839999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.2489149296" green="0.3403017518" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="nkt-F8-u9o" secondAttribute="height" multiplier="375:47" id="j9u-Rs-QWW"/>
                                 </constraints>
@@ -2610,8 +2615,8 @@
         <image name="whiteLogo.png" width="2000" height="889"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gZS-Qi-P6M"/>
-        <segue reference="yqQ-Bt-dHq"/>
+        <segue reference="lKU-bR-s6e"/>
+        <segue reference="3bi-JQ-2SP"/>
         <segue reference="UsO-og-jzP"/>
     </inferredMetricsTieBreakers>
 </document>

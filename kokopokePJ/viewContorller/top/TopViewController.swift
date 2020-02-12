@@ -494,6 +494,18 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
     
     //行きたい場所リスト追加ボタンタップ時の処理
     @IBAction func wannaGoPlaceButtonTapped(_ sender: Any) {
+        
+        for _ in wannaGoPlaces {
+            let alert: UIAlertController = UIAlertController(title: "ERROR!", message: "すでに行きたい場所リストへ追加済みです", preferredStyle:  UIAlertController.Style.alert)
+            
+            let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{
+                (action: UIAlertAction!) -> Void in
+                print("OK")
+            })
+            alert.addAction(defaultAction)
+            present(alert, animated: true, completion: nil)
+            return
+        }
         wannaGoPlaces.append(searchedPlace!)
         userDefaults.set(NSKeyedArchiver.archivedData(withRootObject: wannaGoPlaces), forKey: "wannaGoPlaces")
         navigationController?.setNavigationBarHidden(false, animated: true)
@@ -610,7 +622,6 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
                 wannaGoPlaces.remove(at: wordIndex!)
                 userDefaults.removeObject(forKey: "wannaGoPlaces")
                 userDefaults.set(NSKeyedArchiver.archivedData(withRootObject: wannaGoPlaces), forKey: "wannaGoPlaces")
-                
             }
         }
         

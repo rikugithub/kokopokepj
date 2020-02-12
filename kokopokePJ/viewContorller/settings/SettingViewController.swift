@@ -23,8 +23,8 @@ class SettingTableViewController: UITableViewController, UINavigationControllerD
     //tableViewのバックグラウンドカラー
     public let backGroundColor:UIColor = UIColor(red: 236/255, green: 235/255, blue: 241/255, alpha: 1)
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        
         self.navigationController?.delegate = self
         self.settingTable.delegate = self
         self.settingTable.dataSource = self
@@ -35,8 +35,24 @@ class SettingTableViewController: UITableViewController, UINavigationControllerD
         shareSwitch.isOn = pinTheAuthor
         
         if let postName = UserDefaults().string(forKey: "authorName") {
+            postNameLabel.text = postName
         }
     }
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        self.navigationController?.delegate = self
+//        self.settingTable.delegate = self
+//        self.settingTable.dataSource = self
+//        //背景色を指定
+//        self.view.backgroundColor = backGroundColor
+//
+//        shareSwitch.addTarget(self, action: #selector(SettingTableViewController.onClickMySwicth(sender:)), for: UIControl.Event.valueChanged)
+//        shareSwitch.isOn = pinTheAuthor
+//
+//        if let postName = UserDefaults().string(forKey: "authorName") {
+//            postNameLabel.text = postName
+//        }
+//    }
     
     //Headerの高さ
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -167,9 +183,9 @@ class SettingTableViewController: UITableViewController, UINavigationControllerD
         
         let history = History()
         userDefaults.set(NSKeyedArchiver.archivedData(withRootObject: history),forKey: "history")
-//
-//        let wannaGoPlaces:[VisitedPlace] = []
-//        userDefaults.set(NSKeyedArchiver.archivedData(withRootObject: wannaGoPlaces), forKey: "wannaGoPlaces")
+
+        let wannaGoPlaces:[VisitedPlace] = []
+        userDefaults.set(NSKeyedArchiver.archivedData(withRootObject: wannaGoPlaces), forKey: "wannaGoPlaces")
     }
     
 }

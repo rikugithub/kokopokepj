@@ -64,7 +64,6 @@ class SettingPostUserNameViewController: UIViewController {
         if name.count == 0 {
             Params.pinTheAuthor = false
         }
-        
     }
 
 }

@@ -42,9 +42,6 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
     //位置情報コントローラー
     var locManager: CLLocationManager!
     
-    //ピン
-    var pointAno: MKPointAnnotation = MKPointAnnotation()
-    
     //検索履歴テーブルビュー
     var tableView: UITableView?
     
@@ -558,24 +555,6 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
         // CLLocationオブジェクトのdistanceで2点間の距離(m)を算出
         let dist = bLoc.distance(from: aLoc)
         return dist
-    }
-    
-    // UILongPressGestureRecognizerのdelegate：ロングタップを検出する
-    @IBAction func mapViewDidLongPress(_ sender: UILongPressGestureRecognizer ) {
-        // ロングタップ開始
-        if sender.state == .began {
-        }
-            // ロングタップ終了（手を離した）
-        else if sender.state == .ended {
-            // タップした位置（CGPoint）を指定してMkMapView上の緯度経度を取得する
-            let tapPoint = sender.location(in: view)
-            let center = MapView.convert(tapPoint, toCoordinateFrom: MapView)
-            
-            // ロングタップを検出した位置にピンを立てる
-            pointAno.coordinate = center
-            MapView.addAnnotation(pointAno)
-            
-        }
     }
     @objc func menuTaped(_ sender : UITapGestureRecognizer) {
         performSegue(withIdentifier: "topToMenuSegue", sender: self)

@@ -229,6 +229,8 @@ class ReviewPostFormViewController: UITableViewController, UIPickerViewDelegate,
     }
     
     
+    
+    //ここでめもと共有分ける！！！
     @IBAction func postButtonTapped(_ sender: Any) {
         //バリデーションチェック
         if validate() {

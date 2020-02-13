@@ -94,7 +94,7 @@ class VistedViewController: UIViewController, UITableViewDataSource ,UITableView
         img.contentMode = UIView.ContentMode.scaleAspectFit
         
         let title = UILabel(frame: CGRect(x:self.view.frame.width/2,y: self.view.frame.height/2,width: 250,height:250))
-        title.text = "場所が登録されていません"
+        title.text = "場所が登録されてないよ！"
         title.textAlignment = .center
         title.center = self.view.center
         groupNoneView.addSubview(title)

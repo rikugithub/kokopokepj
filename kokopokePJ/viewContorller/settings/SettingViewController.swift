@@ -38,21 +38,6 @@ class SettingTableViewController: UITableViewController, UINavigationControllerD
             postNameLabel.text = postName
         }
     }
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        self.navigationController?.delegate = self
-//        self.settingTable.delegate = self
-//        self.settingTable.dataSource = self
-//        //背景色を指定
-//        self.view.backgroundColor = backGroundColor
-//
-//        shareSwitch.addTarget(self, action: #selector(SettingTableViewController.onClickMySwicth(sender:)), for: UIControl.Event.valueChanged)
-//        shareSwitch.isOn = pinTheAuthor
-//
-//        if let postName = UserDefaults().string(forKey: "authorName") {
-//            postNameLabel.text = postName
-//        }
-//    }
     
     //Headerの高さ
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -60,7 +45,7 @@ class SettingTableViewController: UITableViewController, UINavigationControllerD
     }
     //Footerの高さ
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 10
+        return 12
     }
     
     //Headerが表示される時の処理
@@ -92,7 +77,7 @@ class SettingTableViewController: UITableViewController, UINavigationControllerD
         case 1 : // 「GPS」のセクション
             return 1
         case 2: //「検索履歴」のセクション
-            return 1
+            return 2
         default: // ここが実行されることは無いはず
             return 0
         }
@@ -117,8 +102,7 @@ class SettingTableViewController: UITableViewController, UINavigationControllerD
             osSettingScheme()
             break
         case 2: //「検索履歴」のセクション
-            dispCacheCleanAlart()
-            break
+            dispCacheCleanAlart(deleteNum: indexPath.row)
         default: // ここが実行されることは無いはず
             //do nothing
             break
@@ -140,11 +124,16 @@ class SettingTableViewController: UITableViewController, UINavigationControllerD
         }
     }
     
-    private func dispCacheCleanAlart() {
+    private func dispCacheCleanAlart(deleteNum:Int) {
     let alert: UIAlertController = UIAlertController(title: "確認", message: "本当によろしいですか\n復元することはできません", preferredStyle:  UIAlertController.Style.alert)
         let defaultAction: UIAlertAction = UIAlertAction(title:"OK" , style: UIAlertAction.Style.default, handler: {
             (action: UIAlertAction!) -> Void in
-            self.clearCache()
+            
+            if deleteNum == 0 {
+            self.clearCache(deleteNum: deleteNum)
+            } else {
+                self.clearCache(deleteNum: deleteNum)
+            }
         })
         let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{
             (action: UIAlertAction!) -> Void in
@@ -178,14 +167,17 @@ class SettingTableViewController: UITableViewController, UINavigationControllerD
         }
     }
     //検索ワードの初期化
-    func clearCache() {
+    func clearCache(deleteNum : Int) {
         let userDefaults = UserDefaults.standard
         
+        if deleteNum == 0 {
         let history = History()
         userDefaults.set(NSKeyedArchiver.archivedData(withRootObject: history),forKey: "history")
-
-        let wannaGoPlaces:[VisitedPlace] = []
+        } else {
+        var wannaGoPlaces:[VisitedPlace] = []
+            wannaGoPlaces.removeAll()
         userDefaults.set(NSKeyedArchiver.archivedData(withRootObject: wannaGoPlaces), forKey: "wannaGoPlaces")
+        }
     }
     
 }

@@ -297,6 +297,13 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
         
         //検索ワードをローカルストレージへ登録
         let word = searchWord(word: address, timestamp: Date())
+        guard var loadedData = UserDefaults().data(forKey: "history") ?? nil else {
+            return
+        }
+//        for str in loadedData {
+//            let index = loadedData.index(after: )
+//            loadedData.remove(at: index)
+//        }
         history.append(searchWord: word)
         userDefaults.set(NSKeyedArchiver.archivedData(withRootObject: history), forKey: "history")
         
@@ -495,8 +502,17 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
     //行きたい場所リスト追加ボタンタップ時の処理
     @IBAction func wannaGoPlaceButtonTapped(_ sender: Any) {
         
+        if checkHistoryDuplication() {
+        wannaGoPlaces.append(searchedPlace!)
+        userDefaults.set(NSKeyedArchiver.archivedData(withRootObject: wannaGoPlaces), forKey: "wannaGoPlaces")
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        performSegue(withIdentifier: "topToWantSegue", sender: self)
+        }
+    }
+    
+    func checkHistoryDuplication() -> Bool{
         for _ in wannaGoPlaces {
-            let alert: UIAlertController = UIAlertController(title: "ERROR!", message: "すでに行きたい場所リストへ追加済みです", preferredStyle:  UIAlertController.Style.alert)
+            let alert: UIAlertController = UIAlertController(title: "エラー", message: "すでに行きたい場所リストへ追加済みです", preferredStyle:  UIAlertController.Style.alert)
             
             let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{
                 (action: UIAlertAction!) -> Void in
@@ -504,12 +520,9 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
             })
             alert.addAction(defaultAction)
             present(alert, animated: true, completion: nil)
-            return
+            return false
         }
-        wannaGoPlaces.append(searchedPlace!)
-        userDefaults.set(NSKeyedArchiver.archivedData(withRootObject: wannaGoPlaces), forKey: "wannaGoPlaces")
-        navigationController?.setNavigationBarHidden(false, animated: true)
-        performSegue(withIdentifier: "topToWantSegue", sender: self)
+        return true
     }
     
     //確認ボタンタップ時の処理

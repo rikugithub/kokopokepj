@@ -28,7 +28,7 @@ class WantToGoViewController: UIViewController,UITableViewDataSource ,UITableVie
         
         //モデルに設定
         wannaGoPlaces = loadVisitedPlace()
-        if wannaGoPlaces.count == 0 {
+        if wannaGoPlaces.isEmpty {
             makeNoneView()
         } else {
             wannaGoPlaces.forEach { e in
@@ -47,8 +47,9 @@ class WantToGoViewController: UIViewController,UITableViewDataSource ,UITableVie
         img.contentMode = UIView.ContentMode.scaleAspectFit
         
         let title = UILabel(frame: CGRect(x:self.view.frame.width/2,y: self.view.frame.height/2,width: 250,height:250))
-        title.text = "場所が登録されていません"
+        title.text = "場所が登録されてないよ♪"
         title.textAlignment = .center
+        title.textColor = UIColor.black
         title.center = self.view.center
         groupNoneView.addSubview(title)
         groupNoneView.addSubview(img)

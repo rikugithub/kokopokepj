@@ -276,6 +276,11 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
     //検索ボタン押下時の処理
     func searchBarSearchButtonClicked(_ searchBar:UISearchBar) {
         
+        
+        //くるくる開始
+        startIndicator()
+
+        
         //履歴表示を消す
         self.view.sendSubviewToBack(self.tableView!)
         
@@ -294,9 +299,11 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
         
         //検索ワードをローカルストレージへ登録
         let word = searchWord(word: address, timestamp: Date())
-        guard var loadedData = UserDefaults().data(forKey: "history") ?? nil else {
-            return
-        }
+//        guard var loadedData = UserDefaults().data(forKey: "history") ?? nil else {
+//            return
+//        }
+        
+        
 //        for str in loadedData {
 //            let index = loadedData.index(after: )
 //            loadedData.remove(at: index)
@@ -310,8 +317,8 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
         self.searchBar.text = ""
         history = loadHistory()
         tableView?.reloadData()
+        
     }
-    
 
     func mapSearch(address:String){
         //TODO:もし海外エリアとかを検索したい場合は考えないとなぁ...
@@ -319,10 +326,11 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
             guard let loc = placemarks?.first?.location?.coordinate else {
                 return
             }
+            
             // 縮尺を設定
             let region = MKCoordinateRegion(center: loc,
                                             span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
-            
+                                           
             Map.search(query: address, region: region) { (result) in
                 switch result {
                 case .success(let mapItems):
@@ -339,6 +347,9 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
                                                    span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
                     MapView?.setRegion(point,animated:true)
                     self.searchedView.isHidden = false
+
+                    //くるくる終了
+                    self.dismissIndicator()
                     
                     let name = mapItems.first?.placemark.name
                     let time = Date()

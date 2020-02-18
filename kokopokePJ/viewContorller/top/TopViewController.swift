@@ -299,15 +299,7 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
         
         //検索ワードをローカルストレージへ登録
         let word = searchWord(word: address, timestamp: Date())
-//        guard var loadedData = UserDefaults().data(forKey: "history") ?? nil else {
-//            return
-//        }
-        
-        
-//        for str in loadedData {
-//            let index = loadedData.index(after: )
-//            loadedData.remove(at: index)
-//        }
+
         history.append(searchWord: word)
         userDefaults.set(NSKeyedArchiver.archivedData(withRootObject: history), forKey: "history")
         
@@ -519,7 +511,9 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
     }
     
     func checkHistoryDuplication() -> Bool{
-        for _ in wannaGoPlaces {
+        
+        for i in wannaGoPlaces {
+            if findWord == i.getName() {
             let alert: UIAlertController = UIAlertController(title: "エラー", message: "すでに行きたい場所リストへ追加済みです", preferredStyle:  UIAlertController.Style.alert)
             
             let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{
@@ -529,6 +523,7 @@ class TopViewController: UIViewController,MKMapViewDelegate,UISearchBarDelegate,
             alert.addAction(defaultAction)
             present(alert, animated: true, completion: nil)
             return false
+        }
         }
         return true
     }
